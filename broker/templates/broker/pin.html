@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PIN Verification</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+
+    <div class="bg-white shadow-xl rounded-2xl p-6 w-full max-w-sm">
+
+        <!-- Dynamic PIN Text -->
+        <h2 id="pin-text" class="text-lg font-semibold text-gray-800 text-center mb-4">
+            Are you sure you want to make this transaction?
+        </h2>
+
+        <!-- Lock Icon -->
+        <div class="flex justify-center mb-4">
+            <span class="material-icons text-5xl text-gray-700">lock</span>
+        </div>
+
+        <!-- PIN Dots -->
+        <div class="flex justify-center gap-3 mb-6">
+            <div class="w-4 h-4 rounded-full bg-gray-300 pin-dot"></div>
+            <div class="w-4 h-4 rounded-full bg-gray-300 pin-dot"></div>
+            <div class="w-4 h-4 rounded-full bg-gray-300 pin-dot"></div>
+            <div class="w-4 h-4 rounded-full bg-gray-300 pin-dot"></div>
+        </div>
+
+        <!-- Keypad -->
+        <div class="grid grid-cols-3 gap-4 text-center text-xl font-semibold select-none">
+
+            <button data-value="1" class="bg-gray-200 py-3 rounded-xl hover:bg-gray-300 keypad-btn">1</button>
+            <button data-value="2" class="bg-gray-200 py-3 rounded-xl hover:bg-gray-300 keypad-btn">2</button>
+            <button data-value="3" class="bg-gray-200 py-3 rounded-xl hover:bg-gray-300 keypad-btn">3</button>
+
+            <button data-value="4" class="bg-gray-200 py-3 rounded-xl hover:bg-gray-300 keypad-btn">4</button>
+            <button data-value="5" class="bg-gray-200 py-3 rounded-xl hover:bg-gray-300 keypad-btn">5</button>
+            <button data-value="6" class="bg-gray-200 py-3 rounded-xl hover:bg-gray-300 keypad-btn">6</button>
+
+            <button data-value="7" class="bg-gray-200 py-3 rounded-xl hover:bg-gray-300 keypad-btn">7</button>
+            <button data-value="8" class="bg-gray-200 py-3 rounded-xl hover:bg-gray-300 keypad-btn">8</button>
+            <button data-value="9" class="bg-gray-200 py-3 rounded-xl hover:bg-gray-300 keypad-btn">9</button>
+
+            <button id="backspace" class="bg-gray-200 py-3 rounded-xl hover:bg-gray-300">
+                <span class="material-icons">arrow_back</span>
+            </button>
+
+            <button data-value="0" class="bg-gray-200 py-3 rounded-xl hover:bg-gray-300 keypad-btn">0</button>
+
+            <button id="clear" class="bg-gray-200 py-3 rounded-xl hover:bg-gray-300">x</button>
+
+        </div>
+
+    </div>
+
+    <!-- PIN Logic -->
+    <script>
+        const correctPin = "{{ request.user.pin.pin }}"; // Django PIN
+        const pinDots = document.querySelectorAll(".pin-dot");
+        const pinText = document.getElementById("pin-text");
+        let inputPin = [];
+        let redirected = false; // Prevent multiple redirects
+
+        function updateDots() {
+            pinDots.forEach((dot, i) => {
+                dot.classList.toggle("bg-blue-600", i < inputPin.length);
+                dot.classList.toggle("bg-gray-300", i >= inputPin.length);
+            });
+        }
+
+        function updatePinText() {
+            if (inputPin.length === 0) {
+                pinText.innerText = "Are you sure you want to make this transaction?";
+            } else {
+                // Mask all but last number
+                let masked = inputPin.map((n, i) => (i < inputPin.length - 1 ? "*" : n)).join("");
+                masked = masked.padEnd(4, "*");
+                pinText.innerText = "PIN entered: " + masked;
+            }
+        }
+
+        function shakeDots() {
+            pinDots.forEach(dot => dot.classList.add("bg-red-500"));
+            setTimeout(() => {
+                pinDots.forEach(dot => {
+                    dot.classList.remove("bg-red-500");
+                    dot.classList.add("bg-gray-300");
+                });
+            }, 500);
+        }
+
+        function checkPin() {
+            if (!redirected && inputPin.join("") === correctPin) {
+                redirected = true; // prevent multiple redirects
+                window.location.href = "{% url 'processing' %}";
+            } else if (!redirected && inputPin.length === 4) {
+                shakeDots();
+                inputPin = [];
+                setTimeout(() => {
+                    updateDots();
+                    updatePinText();
+                }, 500);
+            }
+        }
+
+        // Keypad buttons
+        document.querySelectorAll(".keypad-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                if (inputPin.length < 4) {
+                    inputPin.push(btn.dataset.value);
+                    updateDots();
+                    updatePinText();
+
+                    if (inputPin.length === 4) {
+                        checkPin();
+                    }
+                }
+            });
+        });
+
+        // Backspace
+        document.getElementById("backspace").addEventListener("click", () => {
+            inputPin.pop();
+            updateDots();
+            updatePinText();
+        });
+
+        // Clear
+        document.getElementById("clear").addEventListener("click", () => {
+            inputPin = [];
+            updateDots();
+            updatePinText();
+        });
+    </script>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '1863e9123bb497aff1742070f5e601ad812ef9b5';
+    window.smartsupp||(function(d) {
+      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+      s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+      c.type='text/javascript';c.charset='utf-8';c.async=true;
+      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+    </script>
+    <noscript>Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
+    
+</body>
+
+</html>

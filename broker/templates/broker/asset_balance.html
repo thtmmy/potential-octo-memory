@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+{% load static %}
+{%  block content %}
+<html lang="en">
+<head>
+	<script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSRF Token -->
+    <title>Tesla Fx | Exchange currency</title>
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png"/>
+	
+				<!-- Fonts and icons -->
+		<script src="{% static 'js/webfont.min.js' %}"></script>
+	<!-- Sweet Alert -->
+		<script src="{% static 'js/sweetalert.min.js' %} "></script>
+		<!-- CSS Files -->
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/fonts.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/atlantis.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/customs.css' %}">
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+		<link rel="stylesheet" href="{% static 'css/atlantis.min.css' %}">
+		<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/af-2.3.5/b-1.6.3/b-flash-1.6.3/b-html5-1.6.3/b-print-1.6.3/r-2.2.5/datatables.min.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>		
+			
+<link rel="stylesheet"
+href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+crossorigin="anonymous">
+
+		<!-- Bootstrap Notify -->
+		<script src="{% static 'js/bootstrap-notify.min.js' %} "></script>
+		<script src="{% static 'js/sweetalert.min.js' %} "></script>
+		<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
+		<!-- Livewire Styles -->
+<style>
+    [wire\:loading], [wire\:loading\.delay], [wire\:loading\.inline-block], [wire\:loading\.inline], [wire\:loading\.block], [wire\:loading\.flex], [wire\:loading\.table], [wire\:loading\.grid] {
+        display: none;
+    }
+
+    [wire\:offline] {
+        display: none;
+    }
+
+    [wire\:dirty]:not(textarea):not(input):not(select) {
+        display: none;
+    }
+
+    input:-webkit-autofill, select:-webkit-autofill, textarea:-webkit-autofill {
+        animation-duration: 50000s;
+        animation-name: livewireautofill;
+    }
+
+    @keyframes livewireautofill { from {} }
+</style>
+
+		 <!--PayPal-->
+		 <script>
+            // Add your client ID and secret
+            var PAYPAL_CLIENT = 'iidjdjdj';
+            var PAYPAL_SECRET = 'jijdjkdkdk';
+            
+            // Point your server to the PayPal API
+            var PAYPAL_ORDER_API = 'https://api.paypal.com/v2/checkout/orders/';
+        </script>
+        <script src="https://www.paypal.com/sdk/js?client-id=iidjdjdj"></script>
+		
+</head>
+<body data-background-color="dark">
+    <div id="app">
+        
+
+		<div class="wrapper">
+			        <div class="main-header">
+    <!-- Logo Header -->
+    <div class="logo-header" data-background-color="blue">
+       <img src="{% static 'images/logo.png' %}" alt="Image" style="width: 100px; height: 35px;">
+        <button class="ml-auto navbar-toggler sidenav-toggler" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+                <i class="fa-solid fa-bars"></i>
+            </span>
+        </button>
+        <button class="topbar-toggler more"><i class="fas fa-ellipsis-v"></i></button>
+        <div class="nav-toggle">
+            <button class="btn btn-toggle toggle-sidebar">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+    <!-- End Logo Header -->
+
+    <!-- Navbar Header -->
+    <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue">
+        
+        <div class="container-fluid">
+            <div class="text-center d-md-block d-none">
+               
+            </div>
+            <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+               
+                <li class="nav-item hidden-caret">
+                    <form action="javascript:void(0)" method="post" id="styleform" class="form-inline">
+                       
+                        <div class="form-group">
+                            <label class="style_switch">
+                                <input name="style" id="style" type="checkbox" value="true" class="modes">
+                                <span class="slider round"></span>
+                            </label>
+                        </div> 
+                                                <input type="hidden" name="_token" value="CgKTSRIgslzJJNNnxdQPRBPbKXN6DC3CbM0xXDwg">
+                    </form>
+                </li>
+                               
+                                <li class="nav-item dropdown hidden-caret">
+                    <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user animated fadeIn">
+                        <div class="dropdown-user-scroll scrollbar-outer">
+                            <li>
+                                <div class="user-box">
+                                    
+                                    <div class="u-text">
+                                        <h4>{{user.first_name}}{{user.last_name}}</h4>
+                                        <p class="text-muted">{{user.email}}</p><a href="{% url 'account-settings' %}" class="btn btn-xs btn-secondary btn-sm">Account Settings</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'deposits' %}">Deposit</a>
+                                <a class="dropdown-item" href="{% url 'withdrawals' %}">Withdraw</a>
+                                <a class="dropdown-item" href="{% url 'buy-plan' %}">Buy Plan</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'logout' %}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    Logout
+                                    </a>
+                                <form id="logout-form" action="logout" method="POST" style="display: none;">
+                                    {% csrf_token %}
+                                </form> 
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+</div>
+<script type="text/javascript">
+    //create investment
+        $("#styleform").on('change',function(){
+        $.ajax({
+            url: "changetheme",
+            type: 'POST',
+            data:$("#styleform").serialize(),
+            success: function (data) {
+				location.reload(true);
+            },
+            error: function (data) {
+                console.log(data);
+            },
+
+        });
+    });
+    
+</script>        <!-- Stored in resources/views/child.blade.php -->
+
+<!-- Sidebar -->
+
+<div class="sidebar sidebar-style-2" data-background-color="light">
+    <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+            <div class="user">
+                <div class="info">
+                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+                        <span>
+                            {{user.first_name}}{{user.last_name}}
+                            
+                            <span class="caret"></span>
+                        </span>
+                    </a>
+                    <div class="clearfix"></div>
+                    <div class="collapse in" id="collapseExample">
+                        <ul class="nav">
+                            <li>
+                                <a href="{% url 'account-settings' %}">
+                                    <span class="link-collapse">Account Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav nav-primary">
+                <li class="nav-item ">
+                    <a href="{% url 'dashboard' %}">
+                        <i class="fas fa-home"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a href="{% url 'deposits' %}">
+                        <i class="fa fa-download " aria-hidden="true"></i>
+                        <p>Deposit Funds</p>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a href="{% url 'withdrawals' %}">
+                        <i class="fas fa-arrow-alt-circle-up " aria-hidden="true"></i>
+                        <p>Withdraw Funds</p>
+                    </a>
+                </li>
+
+                <li class="nav-item ">
+                    <a href="{% url 'tradinghistory' %}">
+                        <i class="fa fa-signal " aria-hidden="true"></i>
+                        <p>Profit Record</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="{% url 'accounthistory' %}">
+                        <i class="fa fa-briefcase " aria-hidden="true"></i>
+                        <p>Transactions history</p>
+                    </a>
+                </li>
+                                    <li class="nav-item active">
+                        <a href="{% url 'asset-balance' %}">
+                            <i class="fas fa-coins" aria-hidden="true"></i>
+                            <p>Crypto Exchange</p>
+                        </a>
+                    </li>
+                                                
+                <li class="nav-item  ">
+                    <a data-toggle="collapse" href="#mpack">
+                        <i class="fas fa-cubes"></i>
+                        <p>Invest</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="mpack">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{% url 'buy-plan' %}">
+                                    <span class="sub-item">Subscribe to a Plan</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'myplans' %}">
+                                    <span class="sub-item">My Investment</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>  
+                <li class="nav-item ">
+                    <a href="{% url 'referuser' %}">
+                        <i class="fa fa-recycle " aria-hidden="true"></i>
+                        <p>Refer Users</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="{% url 'support' %}">
+                        <i class="fa fa-life-ring" aria-hidden="true"></i>
+                        <p>Help/Support</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<!-- End Sidebar -->
+        <div class="main-panel bg-light">
+			<div class="content bg-light">
+				<div class="page-inner">
+					<div class="mt-2 mb-4">
+						<h1 class="title1 text-dark">Crypto Exchange</h1>
+					</div>
+					<div>
+    </div>					<div>
+    </div>	
+    				<div class="row">
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-75" src="https://img.icons8.com/office/16/000000/us-dollar--v2.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark"><b>{{ request.user.deposit.currency }}{{ request.user.deposit.account_balance|floatformat:2 }}</b></h5>
+                                        <small class="text-muted">Account Balance</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                  <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://img.icons8.com/color/48/000000/bitcoin--v1.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark">
+                                            <b id="balance-btc">Loading...</b>
+                                        </h5>
+                                        <small class="text-muted" id="price-btc">Fetching live price...</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                        						                        <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://img.icons8.com/fluency/48/000000/ethereum.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark">
+                                            <b id="balance-eth">Loading...</b>
+                                        </h5>
+                                        <small class="text-muted" id="price-eth">Fetching live price...</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                                                                        <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://img.icons8.com/fluency/48/000000/litecoin.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark">
+                                            <b id="balance-ltc">Loading...</b>
+                                        </h5>
+                                        <small class="text-muted" id="price-ltc">Fetching live price...</small>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>  
+                                                                        <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://img.icons8.com/cotton/64/000000/chainlink.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark">
+                                            <b id="balance-link">Loading...</b>
+                                        </h5>
+                                        <small class="text-muted" id="price-link">Fetching live price...</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                        
+                                                <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark">
+                                            <b id="balance-bnb">Loading...</b>
+                                        </h5>
+                                        <small class="text-muted" id="price-bnb">Fetching live price...</small>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>  
+                        
+                                                <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://s2.coinmarketcap.com/static/img/coins/64x64/2010.png"/>
+                                    </span>
+
+                                    <div>
+                                        <h5 class="mb-1 text-dark">
+                                            <b id="balance-ada">Loading...</b>
+                                        </h5>
+                                        <small class="text-muted" id="price-ada">Fetching live price...</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                        
+                                                <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-25" src="https://dynamic-assets.coinbase.com/6ad513d3c9108b163cf0a4c9fd3441cadcb9cf656ea7b9fb333eb7e4a94cd503528e0a94188285d31aedfc392f0793fd4161f7ad4e04d5f6b82e4d70a314d295/asset_icons/80f3d2256652f5ccd680fc48702d130dd01f1bd7c9737fac560a02949efac3b9.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark">
+                                            <b id="balance-aave">Loading...</b>
+                                        </h5>
+                                        <small class="text-muted" id="price-aave">Fetching live price...</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                                                                        <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://img.icons8.com/color/48/000000/tether--v2.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark">
+                                            <b id="balance-usdt">Loading...</b>
+                                        </h5>
+                                        <small class="text-muted" id="price-usdt">Fetching live price...</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                                                                        <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-75" src="https://img.icons8.com/material-sharp/24/000000/bitcoin.png"/>
+                                    </span>
+
+                                    <div>
+                                        <h5 class="mb-1 text-dark">
+                                            <b id="balance-bch">Loading...</b>
+                                        </h5>
+                                        <small class="text-muted" id="price-bch">Fetching live price...</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                                                                        <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://img.icons8.com/fluency/48/000000/ripple.png"/>
+                                    </span>
+                                    <div>
+                                        <h5 class="mb-1 text-dark">
+                                            <b id="balance-xrp">Loading...</b>
+                                        </h5>
+                                        <small class="text-muted" id="price-xrp">Fetching live price...</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                                                                        <div class="col-sm-6 col-lg-3">
+                            <div class="p-3 card bg-light shadow">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-3 bg-transparent stamp stamp-md">
+                                        <img class="w-50" src="https://img.icons8.com/ios/50/000000/stellar.png"/>
+                                    </span>
+                                    <div>
+
+                                        <div>
+                                            <h5 class="mb-1 text-dark">
+                                                <b id="balance-xlm">Loading...</b>
+                                            </h5>
+                                            <small class="text-muted" id="price-xlm">Fetching live price...</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                        					</div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="tradingview-widget-container">
+                                <div id="tradingview_f933e"></div>
+                                <div class="tradingview-widget-copyright">
+                                    <a href="#" rel="noopener" target="_blank"><span class="blue-text"></span> <span class="blue-text">Personal trading chart</span></a>
+                                </div>                 
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <form method="POST" action="javascript:void(0)" id="exchnageform">
+                                {% csrf_token %}                               <div class="form-group">
+                                    <h5 class="text-dark">Source Account</h5>
+                                    <select  class="form-control text-dark bg-light" name="source" id="sourceasset">
+                                                                                <option value="btc">BTC</option> 
+                                                                                                                        <option value="link">LINK</option> 
+                                                                                                                        <option value="bnb">BNB</option> 
+                                                                                                                        <option value="ada">ADA</option> 
+                                                                                                                        <option value="aave">AAVE</option> 
+                                                                                                                        <option value="xlm">XLM</option> 
+                                                                                                                        <option value="xrp">XRP</option> 
+                                                                                                                        <option value="ltc">LTC</option> 
+                                                                                                                        <option value="bch">BCH</option> 
+                                                                                                                        <option value="eth">ETH</option> 
+                                                                                                                        <option value="usdt">USDT</option> 
+                                                                                <option value="usd">USD</option> 
+                                    </select>
+                                </div>
+                  
+                                <div class="form-group">
+                                    <h5 class="text-dark">Destination Account</h5>
+                                    <select name="destination" class="form-control text-dark bg-light" id="destinationasset">
+                                        <option value="usd">USD</option> 
+                                                                                <option value="btc">BTC</option> 
+                                                                                                                        <option value="link">LINK</option> 
+                                                                                                                        <option value="bnb">BNB</option> 
+                                                                                                                        <option value="ada">ADA</option> 
+                                                                                                                        <option value="aave">AAVE</option> 
+                                                                                                                        <option value="xlm">XLM</option> 
+                                                                                                                        <option value="xrp">XRP</option> 
+                                                                                                                        <option value="ltc">LTC</option> 
+                                                                                                                        <option value="bch">BCH</option> 
+                                                                                                                        <option value="eth">ETH</option> 
+                                                                                                                        <option value="usdt">USDT</option> 
+                                                                            </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <h5 class="text-dark">Amount</h5>
+                                    <input type="text" name="amount" class="form-control text-dark bg-light" placeholder="Enter amount of btc" id="amount">
+                                </div>
+                                <div class="form-group">
+                                    <h5 class="text-dark">You will get</h5>
+                                    <input type="text"  class="form-control text-dark bg-light" placeholder="Quantity of usd" id="quantity">
+                                </div>
+                                <input type="hidden" id="realquantity" name="quantity">
+                                <div class="form-group">
+                                    <span class="mb-1 ml-2 caption">
+                                        <span class="text-dark"><b>Fees = 2%</b></span>
+                                    </span>
+                                </div>
+                  
+                                <div class="cta inline-group">
+                                    <button class="btn btn-success btn-block btn-sm" disbaled>
+                                        Exchange
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+				</div>
+			</div>
+            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+            <script type="text/javascript">
+            function Market(market) {
+                new TradingView.widget({
+                    "width": "100%",
+                    "height": "400",
+                    "symbol": market,
+                    "interval": "1",
+                    "timezone": "Etc/UTC",
+                    "theme": 'light',
+                    "style": "9",
+                    "locale": "en",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "hide_side_toolbar": false,
+                    "allow_symbol_change": true,
+                    "calendar": false,
+                    "container_id": "tradingview_f933e"
+                });
+            }
+            
+            
+        </script>
+
+
+<script>
+    (function () {
+        "use strict";
+    
+        // Assumes account_balance is denominated in USD.
+        const accountBalance = Number(
+            "{{ request.user.deposit.account_balance|default_if_none:'0' }}"
+        );
+    
+        const coins = [
+            { symbol: "BTC",  id: "bitcoin" },
+            { symbol: "ETH",  id: "ethereum" },
+            { symbol: "LTC",  id: "litecoin" },
+            { symbol: "LINK", id: "chainlink" },
+            { symbol: "BNB",  id: "binancecoin" },
+            { symbol: "ADA",  id: "cardano" },
+            { symbol: "AAVE", id: "aave" },
+            { symbol: "USDT", id: "tether" },
+            { symbol: "BCH",  id: "bitcoin-cash" },
+            { symbol: "XRP",  id: "ripple" },
+            { symbol: "XLM",  id: "stellar" }
+        ];
+    
+        const quantityFormat = new Intl.NumberFormat("en-US", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 8
+        });
+    
+        const priceFormat = new Intl.NumberFormat("en-US", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 8
+        });
+    
+        async function loadCryptoPrices() {
+            const ids = coins.map(coin => coin.id).join(",");
+    
+            try {
+                const response = await fetch(
+                    "https://api.coingecko.com/api/v3/simple/price" +
+                    "?ids=" + encodeURIComponent(ids) +
+                    "&vs_currencies=usd",
+                    { cache: "no-store" }
+                );
+    
+                if (!response.ok) {
+                    throw new Error("Price API returned HTTP " + response.status);
+                }
+    
+                const prices = await response.json();
+    
+                coins.forEach(function (coin) {
+                    const key = coin.symbol.toLowerCase();
+    
+                    const balanceElement = document.getElementById(
+                        "balance-" + key
+                    );
+    
+                    const priceElement = document.getElementById(
+                        "price-" + key
+                    );
+    
+                    if (!balanceElement || !priceElement) return;
+    
+                    const price = prices[coin.id]?.usd;
+    
+                    if (
+                        !Number.isFinite(accountBalance) ||
+                        accountBalance < 0 ||
+                        !Number.isFinite(price) ||
+                        price <= 0
+                    ) {
+                        balanceElement.textContent = "Unavailable";
+                        priceElement.textContent = "Price unavailable";
+                        return;
+                    }
+    
+                    const quantity = accountBalance / price;
+    
+                    balanceElement.textContent =
+                        quantityFormat.format(quantity) + " " + coin.symbol;
+    
+                    priceElement.textContent =
+                        "$" + priceFormat.format(price) +
+                        " per " + coin.symbol;
+                });
+    
+            } catch (error) {
+                console.error("Unable to load cryptocurrency prices:", error);
+    
+                coins.forEach(function (coin) {
+                    const key = coin.symbol.toLowerCase();
+                    const balanceElement = document.getElementById(
+                        "balance-" + key
+                    );
+                    const priceElement = document.getElementById(
+                        "price-" + key
+                    );
+    
+                    if (balanceElement) {
+                        balanceElement.textContent = "Unavailable";
+                    }
+    
+                    if (priceElement) {
+                        priceElement.textContent = "Unable to load live price";
+                    }
+                });
+            }
+        }
+    
+        // Load immediately, then refresh every 60 seconds.
+        loadCryptoPrices();
+        setInterval(loadCryptoPrices, 60000);
+    })();
+    </script>
+    
+        <script>
+    //load chart
+    Market("BINANCE:BTCUSD");
+            
+    let destinationasset = document.getElementById('destinationasset');
+    let sourceasset = document.getElementById('sourceasset');
+    let amount = document.getElementById('amount');
+    let quatity = document.getElementById('quantity');
+    // console.log(destinationasset);
+
+    destinationasset.addEventListener('change', validate);
+    sourceasset.addEventListener('change', validate);
+    if (destinationasset.value == sourceasset.value) {
+        $.notify({
+            // options
+            icon: 'flaticon-alarm-1',
+            title: 'Success',
+            message: 'Source and Destination account cannot be thesame',
+        },{
+            type: 'danger',
+        });
+                
+        destinationasset.value = '';
+        amount.placeholder = '';
+        quatity.placeholder = '';
+        amount.value = '';
+        quatity.value = '';
+    } else {
+        amount.placeholder = `Enter amount of ${sourceasset.value}`;
+        quatity.placeholder = `Quantity of ${destinationasset.value}`;
+
+    }
+    function validate(){
+        Market("BINANCE:"+sourceasset.value.toUpperCase()+"USD");
+        amount.value = '';
+        quatity.value = '';
+        if (destinationasset.value == sourceasset.value) {
+            $.notify({
+                // options
+                icon: 'flaticon-alarm-1',
+                title: 'Success',
+                message: 'Source and Destination account cannot be thesame',
+            },{
+                type: 'danger',
+            });
+                  
+            destinationasset.value = '';
+            amount.placeholder = '';
+            quatity.placeholder = '';
+            amount.value = '';
+            quatity.value = '';
+        } else {
+            amount.placeholder = `Enter amount of ${sourceasset.value}`;
+            quatity.placeholder = `Quantity of ${destinationasset.value}`;
+
+        }
+    }
+
+    amount.addEventListener('keyup', getQuantity);
+
+    function getQuantity(){
+        let uurl = "asset-price" + '/' + sourceasset.value  + '/' + destinationasset.value+ '/' + amount.value;
+        $.ajax({
+            url: uurl,
+            type: 'GET',
+            
+            success: function(response) {
+                if (response.status === 200) {
+                    //console.log(response.data);
+                    quatity.value = response.data + ' ' + destinationasset.value;
+                    document.getElementById('realquantity').value = response.data;
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            },
+    
+        });
+    }
+
+    $('#exchnageform').on('submit', function(event) {
+        event.preventDefault();
+        if (amount.value == '') {
+            $.notify({
+                // options
+                icon: 'flaticon-alarm-1',
+                title: 'Success',
+                message: 'Please Enter an Amount to Exchange',
+            },{
+                type: 'danger',
+            });
+        }else{
+            $.ajax({
+                url: "exchange",
+                type: 'POST',
+                data: $('#exchnageform').serialize(),
+                success: function(response) {
+                    if (response.status === 200) {
+                        $.notify({
+                            icon: 'flaticon-alarm-1',
+                            title: 'Success',
+                            message: response.success,
+                        },{
+                            type: 'success',
+                        });
+
+                        setTimeout(function(){ window.location.reload(true);}, 3000);
+                        
+                    } else {
+                        $.notify({
+                            icon: 'flaticon-alarm-1',
+                            title: 'Error',
+                            message: response.message,
+                        },{
+                            type: 'danger',
+                        });
+                    }
+                },
+                error: function(data) {
+                    console.log(data);
+                },
+        
+            });
+        }
+        
+    });
+    
+</script>					<footer class="footer bg-light text-dark">
+					<div class="container-fluid">
+						<div class="text-center row copyright text-align-center">
+							<p>All Rights Reserved &copy; Tesla Fx 2026</p>
+						</div>
+					</div>
+				</footer>
+			</div>
+		</div>
+	</div>
+    <script>window.gtranslateSettings = {"default_language":"en","detect_browser_language":true,"wrapper_selector":".gtranslate_wrapper"}</script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+				<!--   Core JS Files   -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		
+		<script src="{% static 'js/popper.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.min.js' %} "></script>
+		<script src="{% static 'js/customs.js' %}"></script>
+		
+		<!-- jQuery UI -->
+		<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+		<script src="{% static 'js/jquery.ui.touch-punch.min.js' %}"></script>
+
+		<!-- jQuery Scrollbar -->
+		<script src="{% static 'js/jquery.scrollbar.min.js' %} "></script>
+
+		<!-- jQuery Sparkline -->
+		<script src="{% static 'js/jquery.sparkline.min.js' %} "></script>
+
+		<!-- Sweet Alert -->
+		<script src="{% static 'js/sweetalert.min.js' %} "></script>
+		<!-- Bootstrap Notify -->
+		<script src="{% static 'js/bootstrap-notify.min.js' %} "></script>
+		
+		<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/af-2.3.5/b-1.6.3/b-flash-1.6.3/b-html5-1.6.3/b-print-1.6.3/r-2.2.5/datatables.min.js"></script>
+
+		<script src="{% static 'js/atlantis.min.js' %}"></script>
+		<script src="{% static 'js/atlantis.js' %}"></script>
+
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '1863e9123bb497aff1742070f5e601ad812ef9b5';
+    window.smartsupp||(function(d) {
+      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+      s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+      c.type='text/javascript';c.charset='utf-8';c.async=true;
+      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+    </script>
+    <noscript>Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
+    
+		<script>
+			$(document).ready( function () {
+				$('#ShipTable').DataTable({
+					order: [ [0, 'desc'] ],
+					dom: 'Bfrtip',
+					buttons: [
+					'copy', 'csv', 'print', 'excel','pdf'
+				] 
+				});
+
+				
+				$(".dataTables_length select").addClass("bg-light text-dark");
+				$(".dataTables_filter input").addClass("bg-light text-dark");
+			} );
+		</script>
+		<script>
+			$(document).ready( function () {
+				$('.UserTable').DataTable({
+					order: [ [0, 'desc'] ]
+				});
+				$(".dataTables_length select").addClass("bg-light text-dark");
+				$(".dataTables_filter input").addClass("bg-light text-dark");
+			} );
+		</script>
+				<!-- Livewire Scripts -->
+
+<script src="/livewire/livewire.js?id=25f025805c3c370f7e87" data-turbo-eval="false" data-turbolinks-eval="false"></script>
+<script data-turbo-eval="false" data-turbolinks-eval="false">
+    if (window.livewire) {
+	    console.warn('Livewire: It looks like Livewire\'s @livewireScripts JavaScript assets have already been loaded. Make sure you aren\'t loading them twice.')
+	}
+
+    window.livewire = new Livewire();
+    window.livewire.devTools(true);
+    window.Livewire = window.livewire;
+    window.livewire_app_url = '';
+    window.livewire_token = 'CgKTSRIgslzJJNNnxdQPRBPbKXN6DC3CbM0xXDwg';
+
+	/* Make sure Livewire loads first. */
+	if (window.Alpine) {
+	    /* Defer showing the warning so it doesn't get buried under downstream errors. */
+	    document.addEventListener("DOMContentLoaded", function () {
+	        setTimeout(function() {
+	            console.warn("Livewire: It looks like AlpineJS has already been loaded. Make sure Livewire\'s scripts are loaded before Alpine.\\n\\n Reference docs for more info: http://laravel-livewire.com/docs/alpine-js")
+	        })
+	    });
+	}
+
+	/* Make Alpine wait until Livewire is finished rendering to do its thing. */
+    window.deferLoadingAlpine = function (callback) {
+        window.addEventListener('livewire:load', function () {
+            callback();
+        });
+    };
+
+    document.addEventListener("DOMContentLoaded", function () {
+        window.livewire.start();
+    });
+</script>
+	    
+</body>
+{%  endblock content %}
+</html>
+

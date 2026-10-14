@@ -1,0 +1,7504 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    background: #fff;
+    color: #000;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: poppins, sans-serif;
+    font-size: 16px;
+    line-height: 30px;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+p {
+    font-size: 16px;
+    line-height: 30px
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #252a37;
+    font-weight: 700
+}
+
+h1 {
+    font-size: 48px;
+    line-height: 48px
+}
+
+h2 {
+    font-size: 36px;
+    line-height: 36px
+}
+
+h3 {
+    font-size: 22px;
+    margin-bottom: 20px
+}
+
+h4 {
+    font-size: 18px;
+    line-height: 28px
+}
+
+h5 {
+    font-size: 14px;
+    line-height: 24px
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-rendering: optimizeLegibility
+}
+
+body {
+    border: 0;
+    margin: 0;
+    padding: 0
+}
+
+.body-inner {
+    position: relative;
+    overflow: hidden
+}
+
+.preloader {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20000;
+}
+
+.preloader:before, .preloader:after {
+    position: absolute;
+    left: 0;
+    height: 51%;
+    width: 100%;
+    transition: all .6s ease;
+    background: #fff;
+    content: '';
+}
+
+.preloader:before {
+    top: 0;
+}
+
+.page-loaded .preloader:before {
+    transform: translate(0, -100%);
+}
+
+.preloader:after {
+    bottom: 0;
+}
+
+.page-loaded .preloader:after {
+    transform: translate(0, 100%);
+}
+
+.preloader.no-default {
+    background-color: #122272;
+}
+
+.page-loaded .preloader.no-default:before, .page-loaded .preloader.no-default:after {
+    transform: translate(0, 0);
+}
+
+.preloader.no-default:before, .preloader.no-default:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transition: all .6s;
+    background-color: #122272;
+}
+
+.preloader-alt:after, .preloader-alt:before {
+    background: #1940b0;
+}
+
+.page-loaded .preloader.no-split:before, .page-loaded .preloader.no-split:after {
+    transform: translate(0, 0);
+}
+
+.spinner {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 70px;
+    height: 70px;
+    margin: -35px 0 0 -35px;
+    z-index: 1001;
+}
+
+.spinner-round {
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: #16a3fe;
+    animation: spin 2s linear infinite;
+}
+
+.spinner-round:before, .spinner-round:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid transparent;
+}
+
+.spinner-round:before {
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-top-color: #23c99d;
+    animation: spin 3s linear infinite;
+}
+
+.spinner-round:after {
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-top-color: #122272;
+    animation: spin 1.5s linear infinite;
+}
+
+.spinner-alt {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+}
+
+.spinner-alt:after, .spinner-alt:before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.spinner-alt:before {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.spinner-alt:after {
+    border: 1px solid;
+    border-top-color: #fff;
+    border-right-color: transparent;
+    border-left-width: 0;
+    border-bottom-width: 0;
+    animation: spin 1.5s linear infinite;
+}
+
+.spinner-alt.load-done {
+    transition: all .4s;
+    transform: scale(3);
+    opacity: 0;
+    border-color: transparent;
+}
+
+.spinner-alt.load-done:after, .spinner-alt.load-done:before {
+    opacity: 0;
+}
+
+.spinner-alt.spinner-light {
+    border: 1px solid rgba(10, 16, 21, 0.1);
+}
+
+.spinner-alt.spinner-light:after {
+    border-top-color: #0a1015;
+}
+
+.spinner-brand {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+}
+
+@keyframes spin {
+    0% {
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+/*---------------------------
+** Preloader css
+---------------------------*/
+
+/*
+.loader-container {
+    position: fixed;
+    background-color: #0f3445fa;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1500;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
+.loader {
+    display: inline-block;
+    position: fixed;
+    top: 50%;
+    left:35%;
+    margin-top: -30px;
+    margin-left: -30px;
+    -webkit-animation: loader 2.5s infinite ease-in;
+    animation: loader 2.5s infinite ease-in;
+}
+
+.loader img  {
+    width: 70%;
+}
+
+@media(max-width:760px)
+{
+    .loader {
+        left: 15%;
+    }
+    .loader img
+    {
+        width: 80%;
+    }
+}
+.loader-inner {
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    background-color: #25d06f;
+    -webkit-animation: loader-inner 2s infinite ease-in;
+    animation: loader-inner 2s infinite ease-in;
+}
+
+.loader-fadeout {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@-webkit-keyframes loader {
+    0% {
+
+        opacity:0;
+    }
+
+    50% {
+
+        opacity:1;
+    }
+    100%
+    {
+        opacity:0;
+    }
+
+}
+
+@keyframes loader {
+    0% {
+
+        opacity:0;
+    }
+
+    50% {
+
+        opacity:1;
+    }
+    100%
+    {
+        opacity:0;
+    }
+}
+
+@-webkit-keyframes loader-inner {
+    0% {
+        height: 0%;
+    }
+    25% {
+        height: 0%;
+    }
+    50% {
+        height: 100%;
+    }
+    75% {
+        height: 100%;
+    }
+    100% {
+        height: 0%;
+    }
+}
+
+@keyframes loader-inner {
+    0% {
+        height: 0%;
+    }
+    25% {
+        height: 0%;
+    }
+    50% {
+        height: 100%;
+    }
+    75% {
+        height: 100%;
+    }
+    100% {
+        height: 0%;
+    }
+}
+*/
+
+
+/*end preloader */
+
+a {
+    color: #2154cf
+}
+
+a:link, a:visited {
+    text-decoration: none
+}
+
+a:hover {
+    text-decoration: none;
+    color: #fc6a2a
+}
+
+section, .section-padding {
+    padding: 50px 0;
+    position: relative;
+    z-index: 3
+}
+
+.no-padding {
+    padding: 0 !important
+}
+
+.no-border {
+    border: none !important
+}
+
+a:focus {
+    outline: 0
+}
+
+img {
+    max-width: 100%
+}
+
+img.pull-left {
+    margin-right: 20px;
+    margin-bottom: 20px
+}
+
+img.pull-right {
+    margin-left: 20px;
+    margin-bottom: 20px
+}
+
+.unstyled, ul, ol, li {
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+
+.btn {
+    border-radius: 10px;
+    padding: .35rem 1.2rem
+}
+
+nav.navbar.navbar-expand-lg {
+    justify-content: space-between;
+    z-index: 9;
+    position: relative
+}
+
+.btn.focus, .btn:focus {
+    box-shadow: none !important;
+    outline: none !important
+}
+
+button:focus {
+    outline: none
+}
+
+.nav-tabs > li.active > a {
+    border: 0
+}
+
+.nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    border: 0
+}
+
+.nav-tabs > li > a {
+    border: 0
+}
+
+.nav-tabs > li > a:hover {
+    border: 0
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+    background: 0 0
+}
+
+.pattern-bg {
+    background: #f5f5f5 url(../../../../../index-4.html)
+}
+
+a[href^=tel] {
+    color: inherit;
+    text-decoration: none
+}
+
+.page-title {
+    width: 100%;
+    display: inline-block;
+    text-align: center
+}
+
+.section-title {
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    position: relative;
+    color: #000;
+    font-weight: 700;
+    line-height: normal
+}
+
+.page-title p {
+    font-size: 18px;
+    color: #000;
+    line-height: normal
+}
+
+.pricing-section {
+    margin-top: 40px
+}
+
+.content-title {
+    font-size: 44px;
+    margin-top: 0;
+    border-left: 5px solid #2154cf;
+    padding-left: 15px;
+    margin-bottom: 40px;
+    line-height: 32px
+}
+
+.content-title span {
+    display: block;
+    font-size: 24px;
+    line-height: 34px;
+    margin: 0 0 10px;
+    display: block;
+    font-weight: 400 !important
+}
+
+.content-title-medium {
+    font-size: 36px;
+    line-height: 44px
+}
+
+.list-column-title {
+    font-size: 24px;
+    color: #252a37
+}
+
+.form-control:focus {
+    box-shadow: none
+}
+
+.site-top {
+    position: relative
+}
+
+@media screen and (min-width: 992px) {
+    .site-top-2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999
+    }
+}
+
+.top-bar {
+    padding: 8px 0;
+    position: relative;
+    background: #000;
+    color: #fff;
+    line-height: normal;
+    text-transform: uppercase
+}
+
+.top-bar.solid-bg {
+    color: #626c84;
+    background: #fafafa
+}
+
+.top-bar.solid-bg ul.top-menu li {
+    border-right: 1px solid rgba(0, 0, 0, .2)
+}
+
+.top-bar.solid-bg ul.top-menu li:last-child {
+    border-right: 0
+}
+
+.top-bar.solid-bg ul.top-menu li a {
+    color: #626c84
+}
+
+.top-bar.solid-bg .top-social a {
+    color: #626c84
+}
+
+.top-bar.solid-bg ul.top-menu li a:hover, .top-bar.solid-bg .top-social a:hover {
+    color: #2154cf
+}
+
+ul.top-menu li {
+    display: inline-block;
+    font-size: 14px;
+    border-right: 1px solid #4c5372;
+    margin-right: 10px;
+    padding-right: 10px;
+    line-height: 10px
+}
+
+ul.top-menu li:last-child {
+    border-right: 0
+}
+
+ul.top-menu li a {
+    color: #999
+}
+
+ul.top-menu li a:hover {
+    color: #2154cf
+}
+
+#top-bar .top-info {
+    margin: 0;
+    display: flex;
+    align-items: center
+}
+
+#top-bar .top-info a {
+    color: #fff;
+    font-weight: 500;
+    font-size: 15px;
+    float: left;
+    margin: 0
+}
+
+#top-bar .top-info .info-icon {
+    top: 0;
+    margin-right: 15px;
+    float: left
+}
+
+#top-bar .top-info .info-wrapper:after {
+    height: 15px;
+    top: 2px;
+    background: rgba(255, 255, 255, .2)
+}
+
+#header.fixed, .site-nav-inner.fixed, #header.header-standard.fixed, #header.header-standard.fixed.highlight, .site-nav-inner.site-navigation.fixed, .site-nav-inner.site-navigation.fixed.nav-transparent {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    -webkit-box-shadow: 0 13px 35px -12px rgba(35, 35, 35, .15);
+    box-shadow: 0 13px 35px -12px rgba(35, 35, 35, .15);
+    -webkit-animation: menusticky .5s ease-in-out;
+    animation: menusticky .5s ease-in-out
+}
+
+@-webkit-keyframes menusticky {
+    0% {
+        margin-top: -120px;
+        opacity: 0
+    }
+    50% {
+        margin-top: -64px;
+        opacity: 0
+    }
+    100% {
+        margin-top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes menusticky {
+    0% {
+        margin-top: -120px;
+        opacity: 0
+    }
+    50% {
+        margin-top: -64px;
+        opacity: 0
+    }
+    100% {
+        margin-top: 0;
+        opacity: 1
+    }
+}
+
+.switcher {
+    width: 145px !important;
+    font-size: 12pt !important
+}
+
+.switcher .selected, .switcher .selected a:hover {
+    background: 0 0 !important
+}
+
+.switcher .selected a, .switcher a {
+    font-size: 12pt !important;
+    border: 0 !important
+}
+
+.switcher .option {
+    position: absolute !important;
+    border: 1px solid;
+    background-color: #0a0a0a !important;
+    z-index: 99
+}
+
+.header-standard {
+    background: #fff;
+    -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, .1);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, .1);
+    z-index: 2
+}
+
+.header-standard.header-transparent {
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+    top: 50px
+}
+
+.header-standard.header-transparent ul.navbar-nav > li > a {
+    color: #fff
+}
+
+@media screen and (min-width: 767px) {
+    .header-standard.header-transparent .logo {
+        padding-left: 0
+    }
+}
+
+.header-standard.header-transparent .navbar-nav .active > .nav-link {
+    color: #fff
+}
+
+.header-standard.header-transparent.navbar-fixed {
+    background: #000;
+    top: 0
+}
+
+.header-standard .navbar-nav .active > .nav-link {
+    color: #fff
+}
+
+.header-standard ul.navbar-nav > li > a {
+    color: #fff;
+    font-weight: 500
+}
+
+@media screen and (min-width: 992px) {
+    .header-standard ul.navbar-nav > li > a {
+        color: #fff
+    }
+}
+
+.header-standard ul.navbar-nav > li:hover > a {
+    color: #fff
+}
+
+.header-standard .container {
+    position: relative
+}
+
+.header-standard .nav-search {
+    top: 22px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    background: #037c53;
+    border-radius: 100%
+}
+
+.header-standard .nav-search span {
+    top: 3px;
+    position: relative
+}
+
+.header-standard .search-block .search-close {
+    color: #fff;
+    top: -68px;
+    right: 0;
+    background: #2154cf;
+    opacity: 1;
+    width: 45px;
+    height: 45px;
+    line-height: 30px;
+    border-radius: 100%
+}
+
+.header-standard.header-boxed {
+    background: 0 0;
+    position: absolute;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    top: 50px;
+    left: 0;
+    right: 0
+}
+
+.header-standard.header-boxed .site-nav-inner {
+    background: #fff;
+    z-index: 1;
+    margin: 0;
+    padding: 0 20px
+}
+
+.header-standard.header-boxed .nav-search {
+    right: 40px;
+    background: #0f2765
+}
+
+.header-standard.header-boxed .search-block .search-close {
+    right: 25px;
+    background: #0f2765;
+    top: -68px
+}
+
+.header-standard.header-boxed.highlight .row {
+    background: #0f2765
+}
+
+.header-standard.header-boxed.highlight ul.navbar-nav > li > a {
+    color: #fff
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-left: 20px;
+    padding-right: 20px
+}
+
+.site-navigation.navdown {
+    background: #0f2765;
+    position: relative
+}
+
+.site-navigation.navdown .navbar-collapse {
+    padding-left: 0
+}
+
+.site-navigation.navdown ul.navbar-nav > li > a {
+    line-height: 60px
+}
+
+.site-navigation.navigation.navdown {
+    background: #0f2765
+}
+
+.site-navigation .nav-search {
+    top: 0;
+    z-index: 2;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    right: 15px;
+    background: rgba(0, 0, 0, .2)
+}
+
+.site-navigation .search-block .search-close {
+    top: -70px;
+    z-index: 2;
+    width: 70px;
+    height: 70px;
+    line-height: 50px;
+    right: 0;
+    background: #00000033
+}
+
+.logo {
+    max-width: 260px;
+    padding: 5px 0;
+    display: table
+}
+
+.fixed .logo {
+    max-width: 200px
+}
+
+.logo a {
+    display: table-cell;
+    vertical-align: middle
+}
+
+.logo-area {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -moz-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap
+}
+
+.header.nav-down .logo {
+    height: 110px
+}
+
+.header-right {
+    float: right
+}
+
+.top-info {
+    list-style: none;
+    margin: 35px 0 0;
+    padding: 0;
+    float: right
+}
+
+.top-info li {
+    display: flex;
+    padding: 0 15px;
+    align-items: center
+}
+
+.top-info li:last-child {
+    margin-right: 0;
+    padding-right: 0;
+    border-right: 0
+}
+
+.top-info .info-icon {
+    font-size: 20px;
+    color: #2154cf;
+    display: inline-block;
+    top: -15px;
+    position: relative;
+    margin-right: 10px
+}
+
+.top-info .info-wrapper {
+    display: inline-block;
+    margin-right: 30px;
+    position: relative;
+    padding-right: 10px
+}
+
+.top-info .info-wrapper:after {
+    position: absolute;
+    content: '';
+    background: #ddd;
+    right: -15px;
+    width: 1px;
+    height: 35px;
+    top: 4px
+}
+
+.top-info li .info-wrapper p {
+    font-size: 16px;
+    margin-bottom: 0;
+    line-height: normal;
+    font-weight: 700;
+    color: #252a37
+}
+
+.top-info li.last .info-wrapper:after {
+    background: 0 0
+}
+
+.top-info li .info-wrapper p.info-subtitle {
+    line-height: normal;
+    font-size: 14px;
+    font-weight: 400;
+    color: #7a7a7a;
+    margin-top: 5px
+}
+
+#top-bar .top-info a.btn-register {
+    background: #e55211;
+    color: #fff;
+    padding: 4px 15px;
+    border-radius: 10px;
+    font-weight: 500
+}
+
+.acc-buttons .btn-outline-primary {
+    margin-left: 15px
+}
+
+.btn-outline-primary:hover img {
+    filter: brightness(0)
+}
+
+.navbar-expand-lg .navbar-nav .dropdown-submenu .nav-link {
+    padding-left: 0
+}
+
+.navbar {
+    border-radius: 0;
+    border: 0;
+    margin-bottom: 0;
+    padding: 0;
+    flex-wrap: wrap
+}
+
+.navbar-brand {
+    padding: 0
+}
+
+.navbar-toggle {
+    float: right;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 3px;
+    margin-right: 15px;
+    background: #2154cf
+}
+
+.nav-item.dropdown-submenu:hover > a {
+    color: #fff
+}
+
+.navbar-nav > .nav-item:hover > .nav-link {
+    color: #fff
+}
+
+.navbar-toggle .icon-bar {
+    background: #fff;
+    width: 20px
+}
+
+.navbar-toggle .i-bar {
+    background: #fff
+}
+
+ul.navbar-nav {
+    background-color: #008ad2;
+    border-radius: 10px;
+    width: 92%;
+    justify-content: center
+}
+
+ul.navbar-nav > li {
+    float: none;
+    display: inline-block;
+    position: relative;
+    padding-right: 0
+}
+
+.navbar-expand-lg .navbar-collapse {
+    width: 100%;
+    justify-content: center;
+    position: relative;
+    z-index: 1
+}
+
+ul.navbar-nav > li:last-child {
+    padding-right: 0
+}
+
+ul.navbar-nav > li:last-child:after {
+    background: 0 0
+}
+
+ul.navbar-nav > li > a {
+    color: #fff;
+    text-rendering: optimizeLegibility;
+    display: inline-block;
+    padding: 5px 12px;
+    line-height: 37px;
+    font-size: 16px;
+    margin: 0;
+    position: relative;
+    -webkit-transition: 350ms;
+    transition: 350ms;
+    transition: 350ms
+}
+
+ul.navbar-nav > li > a:hover, ul.navbar-nav > li > a:focus {
+    background: 0 0
+}
+
+ul.navbar-nav > li > a i {
+    font-weight: 700
+}
+
+@media screen and (min-width: 992px) {
+    ul.navbar-nav > li > a i {
+        padding-left: 5px
+    }
+
+    .nav-item:hover > .dropdown-menu, .dropdown-submenu:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible
+    }
+}
+
+@media screen and (min-width: 992px) {
+    ul.navbar-nav {
+        padding-right: 0
+    }
+}
+
+.nav .open > a {
+    background: 0 0;
+    border-color: transparent
+}
+
+.nav .open > a:hover, .nav .open > a:focus {
+    background: 0 0;
+    border-color: transparent
+}
+
+#top-bar .top-info a.dropdown-item {
+    color: #000;
+    font-size: 14px
+}
+
+#top-bar .top-info .dropdown-toggle::after {
+    display: none
+}
+
+.dropdown-submenu {
+    position: relative
+}
+
+.dropdown-submenu .fa-angle-right {
+    float: right;
+    font-size: 18px
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -2px;
+    border-radius: 0
+}
+
+.dropdown-toggle::after {
+    display: none
+}
+
+.dropdown-submenu:hover > a:after {
+    border-left-color: #fff
+}
+
+.dropdown-submenu.pull-left {
+    float: none
+}
+
+.dropdown-submenu.pull-left > .dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px
+}
+
+ul.navbar-nav .dropdown-menu {
+    text-align: left;
+    background: #fff;
+    z-index: 100;
+    min-width: 220px;
+    border-radius: 0;
+    padding: 0;
+    border: 0
+}
+
+.dropdown-menu.menu-center {
+    left: -65px
+}
+
+.dropdown-item {
+    font-size: 14px
+}
+
+.megamenu .mega-dropdown h3 {
+    font-size: 16px;
+    margin: 0
+}
+
+.megamenu .mega-dropdown h3 a.dropdown-item {
+    color: #008ad2;
+    font-size: 16px
+}
+
+@media screen and (min-width: 992px) {
+    ul.navbar-nav .dropdown-menu {
+        padding: 5px 20px
+    }
+
+    .megamenu .mega-dropdown {
+        display: flex
+    }
+
+    .dropdown-column {
+        min-width: 220px
+    }
+
+    ul.navbar-nav .dropdown-menu.megamenu {
+        padding: 10px 0
+    }
+
+    .mega-dropdown .dropdown-item {
+        line-height: 24px
+    }
+}
+
+@media screen and (min-width: 991px) {
+    ul.navbar-nav .dropdown-menu {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        margin-top: 0
+    }
+}
+
+.dropdown-menu-large {
+    min-width: 400px
+}
+
+.dropdown-menu-large > li > ul {
+    padding: 0;
+    margin: 0;
+    list-style: none
+}
+
+.dropdown-menu-large > li > ul > li > a {
+    padding-left: 0
+}
+
+.navbar-nav > li > .dropdown-menu a {
+    background: 0 0
+}
+
+ul.navbar-nav .dropdown-menu li a {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    color: #000
+}
+
+ul.navbar-nav .dropdown-menu li:last-child > a {
+    border-bottom: 0 !important
+}
+
+ul.navbar-nav > li.nav-item .dropdown-menu .mega-dropdown .dropdown-column h3 a:last-child {
+    border-bottom: 1px solid #ddd !important
+}
+
+ul.navbar-nav > li.nav-item .dropdown-menu .mega-dropdown .dropdown-column a:last-child {
+    border-bottom: 0 !important
+}
+
+ul.navbar-nav .dropdown-menu li.active a {
+    color: #fc6a2a
+}
+
+.navbar-nav .active > .nav-link {
+    color: #fff
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: #fff
+}
+
+.navbar-nav .show > .nav-link {
+    color: #fff
+}
+
+.navbar-nav .nav-link {
+    color: #fff
+}
+
+.navbar-nav .nav-link:focus, .navbar-nav .nav-link:hover {
+    color: #fff
+}
+
+.navbar-toggler-icon {
+    background-image: none;
+    color: #fff;
+    width: 39px;
+    height: 35px;
+    border: 1px solid #fff;
+    padding-top: 1px;
+    background-color: #21bdee;
+    font-size: 21px;
+    line-height: 35px;
+    margin: 0
+}
+
+.navbar-toggler-icon:focus {
+    outline: 0 solid
+}
+
+ul.navbar-nav .dropdown-menu li a {
+    -webkit-transition: all .3s;
+    transition: all .3s
+}
+
+ul.navbar-nav .dropdown-menu li a:hover, ul.navbar-nav .dropdown-menu li a:focus {
+    color: #008ad2;
+    background: 0 0 !important
+}
+
+@media (min-width: 768px) {
+    ul.nav li.dropdown:hover ul.dropdown-menu {
+        display: block
+    }
+}
+
+@media (min-width: 767px) {
+    ul.nav li.dropdown ul.dropdown-menu li.dropdown-submenu .dropdown-menu {
+        left: 100%;
+        top: 0;
+        display: none
+    }
+
+    ul.nav li.dropdown ul.dropdown-menu li.dropdown-submenu:hover .dropdown-menu {
+        display: block
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .top-info li.header-get-a-quote {
+        display: none
+    }
+}
+
+ul.navbar-nav > li.header-get-a-quote:hover > a:after {
+    position: relative;
+    content: no-close-quote
+}
+
+.banner-section {
+    position: relative;
+    margin-top: -30px;
+    background: url(../images/partner/partner-home-banner.png);
+    background-size: cover !important;
+    background-position: center !important
+}
+
+.banner-section.home-banner {
+    background: url(../images/home/Homepage-banner.jpg)
+}
+
+.main-banner {
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.main-banner .slick-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.home-banner-content {
+    max-width: 650px;
+    color: #fff
+}
+
+.home-banner-content h3 {
+    color: #fff;
+    font-size: 30px;
+    margin-bottom: 10px;
+    line-height: normal
+}
+
+a.btn.btn-light {
+    font-size: 16px;
+    color: #000;
+    padding: .5rem 2rem
+}
+
+.home-slider .slick-prev:before, .home-slider .slick-next:before {
+    color: #fff
+}
+
+#main-slide.slider-pages .item {
+    min-height: 340px;
+    color: #fff;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-size: cover;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden
+}
+
+.carousel-inner {
+    position: absolute;
+    top: 0
+}
+
+.carousel a.btn.btn-primary {
+    position: absolute;
+    top: 65%;
+    left: 20%;
+    font-weight: 400
+}
+
+.counter-section {
+    position: relative;
+    padding: 0
+}
+
+.counter-box {
+    box-shadow: 0 0 10px rgb(0 0 0/50%);
+    padding: 15px;
+    border-radius: 20px;
+    display: flex;
+    margin-top: -80px;
+    background: #fff
+}
+
+.counter-box .info {
+    padding: 0 12px;
+    width: 16.66%;
+    text-align: center;
+    border-right: 1px solid #e5e5e5
+}
+
+.counter-box .info h3 {
+    font-family: bebas neue, cursive;
+    color: #f22d2d;
+    font-weight: 400;
+    font-size: 60px;
+    margin: 0;
+    line-height: normal
+}
+
+.counter-box .info h3 .counter {
+    font-family: bebas neue, cursive
+}
+
+.counter-box .info p {
+    margin: 0;
+    font-size: 18px;
+    color: #000;
+    line-height: 24px
+}
+
+.counter-box .info:last-child {
+    border-right: 0
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #008ad2;
+    border-radius: 10px;
+    padding: .35rem 1.2rem;
+    font-size: 16px;
+    letter-spacing: .5px;
+    background-image: linear-gradient(37deg, #27c5f0, #0095e6);
+    border: none
+}
+
+.btn-primary:hover {
+    background-image: linear-gradient(37deg, #0095e6, #27c5f0)
+}
+
+.btn-outline-primary {
+    color: #0da5e9;
+    border-color: #18b3ec
+}
+
+.acc-list {
+    position: relative
+}
+
+.acc-list li {
+    width: 100%;
+    margin-bottom: 10px;
+    padding-left: 30px;
+    position: relative
+}
+
+.acc-list li:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    background-image: url(../images/home/tick.png);
+    background-repeat: no-repeat
+}
+
+.uniglobe-acctypes h4 {
+    font-weight: 500;
+    letter-spacing: .5px;
+    font-size: 22px;
+    margin-bottom: 20px
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #008ad2;
+    border-radius: 50px;
+    padding: .25rem 1.3rem;
+    font-size: 18px;
+    font-weight: 500;
+    background-image: linear-gradient(300deg, #27c5f0, #006ca4)
+}
+
+.btn-primary:hover {
+    background-image: linear-gradient(37deg, #0095e6, #27c5f0)
+}
+
+.nav-pills .nav-link {
+    font-size: 18px;
+    color: #000;
+    font-weight: 500;
+    padding: .25rem 1.3rem;
+    border: 1px solid;
+    border-radius: 50px
+}
+
+.nav-pills {
+    justify-content: space-between;
+    border-bottom: 1px solid #93e2f7;
+    padding-bottom: 20px;
+    margin: 20px 0 40px
+}
+
+.about-data .why-uniglobe-market-feature li:after {
+    display: none
+}
+
+.about-data .why-uniglobe-market-feature li img {
+    top: 0 !important
+}
+
+section.uniglobe-platforms {
+    background: #000
+}
+
+.uniglobe-platforms .box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 15px;
+    padding: 25px 15px;
+    border-radius: 15px
+}
+
+.uniglobe-platforms .box .img-box {
+    width: 85px;
+    height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #f22d2d;
+    border-radius: 10px;
+    margin-bottom: 20px
+}
+
+.uniglobe-platforms .box:hover .img-box {
+    border-color: #fff
+}
+
+.uniglobe-platforms .box:hover img {
+    filter: brightness(9)
+}
+
+.uniglobe-platforms .box h3 {
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 10px
+}
+
+.uniglobe-platforms .box p {
+    color: #fff;
+    margin-bottom: 0
+}
+
+.uniglobe-platforms .box:hover {
+    background-image: linear-gradient(37deg, #27c5f0, #0095e6)
+}
+
+.uniglobe-meta-trade h3 {
+    font-size: 28px;
+    font-weight: 500;
+    color: #000
+}
+
+.uniglobe-meta-trade p {
+    font-size: 18px;
+    color: #000
+}
+
+.uniglobe-meta-trade .icons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px
+}
+
+.uniglobe-meta-trade .icons a {
+    padding: 0 10px;
+    background-color: #b7b7b7;
+    color: #fff;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    float: left;
+    margin-right: 15px
+}
+
+.meta-trade-mob {
+    display: none
+}
+
+.customer-logos .slick-slide {
+    margin: 0 20px
+}
+
+.customer-logos .slick-slide img {
+    width: 100%
+}
+
+.customer-logos .slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent
+}
+
+.customer-logos .slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0
+}
+
+.customer-logos .slick-list:focus {
+    outline: none
+}
+
+.customer-logos .slick-list.dragging {
+    cursor: pointer;
+    cursor: hand
+}
+
+.customer-logos .slick-slider .slick-track, .slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0)
+}
+
+.customer-logos .slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block
+}
+
+.customer-logos .slick-track:before, .slick-track:after {
+    display: table;
+    content: ''
+}
+
+.customer-logos .slick-track:after {
+    clear: both
+}
+
+.slick-loading .slick-track {
+    visibility: hidden
+}
+
+.customer-logos .slick-slide {
+    float: left;
+    height: 100%;
+    min-height: 1px
+}
+
+[dir=rtl] .customer-logos .slick-slide {
+    float: right
+}
+
+.slick-slide img {
+    display: block
+}
+
+.customer-logos .slick-initialized .slick-slide {
+    display: block
+}
+
+.customer-logos .slick-loading .slick-slide {
+    visibility: hidden
+}
+
+.customer-logos .slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent
+}
+
+.uniglobe-meta-trade .uniglobe-home-trade-img {
+    max-width: 500px;
+    margin: 0 auto
+}
+
+.live-spread .table-wrap {
+    min-height: 337px
+}
+
+.live-spread-sec {
+    position: relative;
+    background-color: #000;
+    color: #fff
+}
+
+.live-spread-sec ul.list li {
+    width: 100%;
+    margin-bottom: 10px;
+    padding-left: 36px;
+    position: relative;
+    color: #fff
+}
+
+.live-spread-sec ul.list li:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 25px;
+    height: 25px;
+    background-image: url(../images/home/circle-tick.png);
+    background-repeat: no-repeat
+}
+
+.live-spread-sec h3 {
+    font-size: 30px;
+    color: #fff;
+    font-weight: 600
+}
+
+.live-spread-sec p {
+    font-size: 18px;
+    color: #fff;
+    text-align: justify;
+    margin-bottom: 30px
+}
+
+.ls-titles {
+    width: 100%;
+    float: left;
+    background-color: #e9e9e9;
+    padding: 15px 10px
+}
+
+.ls-titles li {
+    color: #000;
+    margin-bottom: 0;
+    width: 33.33%;
+    float: left;
+    padding: 0 15px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: normal
+}
+
+.ls-titles li:after {
+    display: none
+}
+
+.ls-titles li:nth-child(2), .ls-titles li:nth-child(5) {
+    text-align: center
+}
+
+.ls-titles li:nth-child(3), .ls-titles li:nth-child(6) {
+    text-align: right
+}
+
+.live-spread .nav-pills {
+    border: 0;
+    padding: 10px;
+    margin: 0
+}
+
+.live-spread .nav-pills .nav-link.active, .live-spread .nav-pills .show > .nav-link {
+    font-size: 16px;
+    padding: .15rem 1rem
+}
+
+.live-spread .nav-pills .nav-link {
+    font-size: 16px;
+    padding: .15rem 1rem
+}
+
+.uniglobe-trading .eco-calendar {
+    overflow: initial
+}
+
+.uniglobe-trading .eco-calendar table td {
+    font-size: 16px;
+    color: #000
+}
+
+.uniglobe-trading .eco-calendar table td small {
+    font-size: 70%;
+    color: #999
+}
+
+.uniglobe-trading .eco-calendar table td.user span img {
+    border-radius: 50px;
+    overflow: hidden
+}
+
+.uniglobe-trading .eco-calendar table td.user {
+    min-width: 180px !important
+}
+
+.uniglobe-trading .eco-calendar table td.user span {
+    margin-right: 5px
+}
+
+.uniglobe-trading .eco-calendar table td.user span img {
+    width: 48px;
+    height: 48px
+}
+
+.uniglobe-trading td {
+    position: relative
+}
+
+.uniglobe-trading span.num {
+    width: 35px;
+    height: 45px;
+    box-sizing: content-box;
+    padding-top: 2px;
+    position: absolute;
+    background-image: linear-gradient(37deg, #27c5f0, #0095e6);
+    color: #fff;
+    font-size: 24px;
+    letter-spacing: .2em;
+    text-align: center;
+    text-transform: uppercase;
+    display: inline-block;
+    top: 0
+}
+
+.uniglobe-trading span.num:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid #eee;
+    border-left: 19px solid transparent;
+    border-right: 17px solid transparent
+}
+
+.uniglobe-trading .gray-head {
+    background: #ededed;
+    padding: 15px 15px 50px;
+    text-align: center;
+    color: #000;
+    font-size: 22px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-bottom: 10px
+}
+
+.uniglobe-trading .table tr {
+    background: #ededed;
+    margin: 10px 0;
+    display: table;
+    width: -webkit-fill-available
+}
+
+.tech-list {
+    width: 100%;
+    padding: 16px 15px 0
+}
+
+.tech-list h4 {
+    font-weight: 500;
+    font-size: 20px
+}
+
+.tech-list p {
+    font-size: 16px;
+    color: #666;
+    line-height: 20px;
+    margin: 0 0 10px;
+    font-weight: 300
+}
+
+.dateTime {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: 500
+}
+
+.dateTime span {
+    color: #008ad2
+}
+
+.dateTime a {
+    color: #f22d2d
+}
+
+.opt-3 {
+    opacity: .6
+}
+
+.uniglobe-trading .table-wrap {
+    min-height: 440px;
+    background: #f5f5f5
+}
+
+.uniglobe-trading .tech-anls .table-wrap {
+    background: #fff
+}
+
+.uniglob-count .data h2 {
+    font-size: 60px;
+    color: #26c3ee;
+    line-height: 60px
+}
+
+.uniglob-count .data h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: 500
+}
+
+.uniglob-count .data h3 a {
+    color: #252a37
+}
+
+.uniglob-count .data h3 a:hover {
+    color: #26c3ee !important
+}
+
+.uniglob-count .data p {
+    font-size: 18px;
+    color: #666;
+    font-weight: 300;
+    margin: 0
+}
+
+.uniglobe-partner .accordion h2 .btn-link {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    padding: 0;
+    text-decoration: none
+}
+
+.uniglobe-partner .accordion h2 .btn-link img {
+    margin-right: 10px
+}
+
+.uniglobe-partner .accordion .card-body {
+    padding: 10px 20px 10px 55px
+}
+
+.uniglobe-partner .accordion .card-body p {
+    color: #000;
+    line-height: normal;
+    margin: 0
+}
+
+.uniglobe-partner .accordion .card {
+    margin-bottom: 20px
+}
+
+.uniglobe-partner ul li {
+    width: 100%;
+    display: inline-block;
+    margin: 0 0 10px
+}
+
+.uniglobe-partner ul li a {
+    width: 100%;
+    display: inline-block;
+    background-color: #e9e9e9;
+    font-size: 19px;
+    color: #000;
+    padding: 8px;
+    border-radius: 50px
+}
+
+.uniglobe-partner ul li a:hover {
+    background-image: linear-gradient(37deg, #27c5f0, #0095e6);
+    color: #fff
+}
+
+.uniglobe-partner ul li a img {
+    margin-right: 10px
+}
+
+.pricing-section .table-price {
+    box-shadow: 0 0 15px rgb(0 0 0/50%);
+    border-radius: 10px;
+    padding: 30px 15px
+}
+
+.uniglobe-partner .page-title {
+    text-align: left
+}
+
+.mob-trading {
+    display: none
+}
+
+.partnership-program-section {
+    background-image: url(../images/home/Ug-partnership-program-bnr.jpg);
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
+.part-btn-box .part-btn-list {
+    margin-top: 20px
+}
+
+.part-btn-box .part-btn-list li {
+    display: inline-block;
+    margin: 0 5px 20px;
+    width: 100%;
+    max-width: 260px
+}
+
+.part-btn-box .part-btn-list li a.btn {
+    width: 100%;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #fff;
+    color: #fff
+}
+
+.part-btn-box .part-btn-list li a.btn:hover {
+    background-color: #f22d2d;
+    color: #fff;
+    text-decoration: none;
+    border-color: #f22d2d
+}
+
+.inner-banner.datarefer-bg {
+    background-image: url(../images/refer-a-friend/banner.jpg)
+}
+
+.inner-banner.whyus {
+    background-image: url(../images/whyus/Banner.jpg)
+}
+
+section.counter-section.whyus-count {
+    box-shadow: 0 0 10px rgb(0 0 0/50%);
+    background: #f8f8f8
+}
+
+section.counter-section.whyus-count .counter-box {
+    padding: 40px 0;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
+    background: #f8f8f8
+}
+
+section.counter-section.whyus-count .counter-box .info {
+    width: 25%
+}
+
+.why-uniglobe .box {
+    padding: 15px;
+    background-color: #fff;
+    text-align: left;
+    margin: 15px 0
+}
+
+.why-uniglobe .box:after {
+    content: "";
+    border-right: 1px solid #b2b2b2;
+    position: absolute;
+    top: 0;
+    height: 95%;
+    right: 0
+}
+
+.why-uniglobe .box:before {
+    content: "";
+    border-bottom: 1px solid #b2b2b2;
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    left: 10%
+}
+
+.why-uniglobe .box:hover {
+    background-image: linear-gradient(37deg, #27c5f0, #0095e6);
+    border-radius: 15px
+}
+
+.why-uniglobe .box h4 {
+    font-size: 19px;
+    font-weight: 500;
+    color: #000;
+    margin: 20px 0;
+    padding-bottom: 5px
+}
+
+.why-uniglobe .box p {
+    font-size: 17px;
+    line-height: 24px;
+    font-weight: 400;
+    text-align: left;
+    margin: 0
+}
+
+.why-uniglobe .box:hover img {
+    filter: invert(1)
+}
+
+.why-uniglobe .box:hover h4 {
+    color: #fff
+}
+
+.why-uniglobe .box:hover p {
+    color: #fff
+}
+
+.journy-sec {
+    text-align: center
+}
+
+.journy-sec p {
+    font-size: 18px
+}
+
+.inner-banner.profile {
+    background-image: url(../images/whyus/Banner.jpg)
+}
+
+.core-value {
+    background-color: #000
+}
+
+.core-value .why-uniglobe .box {
+    background-color: transparent
+}
+
+.core-value .why-uniglobe .box h4, .core-value .why-uniglobe .box p {
+    color: #fff
+}
+
+.core-value .why-uniglobe .box:hover img {
+    filter: brightness(9)
+}
+
+.core-value .why-uniglobe .box:after {
+    content: "";
+    border-right: 1px solid #4d4d4d
+}
+
+.core-value .why-uniglobe .box:before {
+    content: "";
+    border-bottom: 1px solid #4d4d4d
+}
+
+.business-module .row {
+    align-items: center
+}
+
+.business-module h2 {
+    font-size: 30px;
+    font-weight: 600;
+    color: #000;
+    border-bottom: 1px solid #27c5f0;
+    padding-bottom: 6px;
+    margin-bottom: 20px
+}
+
+.business-module p {
+    font-size: 18px;
+    text-align: justify
+}
+
+.proData-sec {
+    background-image: url(../images/profile/bottom-banner.jpg);
+    background-size: cover;
+    text-align: center
+}
+
+.proData-account {
+    text-align: center
+}
+
+.proData-account .img-box {
+    width: 110px;
+    height: 100px;
+    border-radius: 15px;
+    border: 1px solid #f32d2c;
+    display: inline-block;
+    line-height: 95px;
+    margin-bottom: 10px
+}
+
+.proData-account h3 {
+    font-size: 22px;
+    color: #000;
+    font-weight: 500
+}
+
+.proData-account p {
+    font-size: 18px
+}
+
+.proData-account .img-box:hover {
+    border: 1px solid #00a7ea;
+    background-color: #00a7ea
+}
+
+.proData-account .img-box:hover img {
+    filter: brightness(9)
+}
+
+.table-price ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column
+}
+
+.table-price ul li {
+    width: 100%;
+    line-height: 18px;
+    padding: 15px 10px;
+    display: flex;
+    justify-content: space-between;
+    font-family: poppins, sans-serif;
+    border-bottom: 1px solid #dfdfdf;
+    font-size: 14px;
+    color: #000
+}
+
+.table-price ul li span {
+    text-align: right;
+    font-weight: 600
+}
+
+.table-price ul li small {
+    font-size: 9px;
+    color: #000;
+    font-weight: 500
+}
+
+.table-price .title {
+    font-family: poppins, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+    text-align: center
+}
+
+.table-price .price {
+    font-size: 36px;
+    font-family: poppins, sans-serif;
+    color: #e55211;
+    text-align: center;
+    margin: 0 0 20px
+}
+
+.table-price .price span {
+    font-size: 12px;
+    font-weight: 500;
+    color: #000;
+    width: 100%;
+    display: inline-block;
+    text-align: center
+}
+
+.table-price .gray-bg {
+    background: #e7e7e7
+}
+
+.br-radius-1 {
+    border-radius: 8px 8px 0 0;
+    margin-top: 20px
+}
+
+.br-radius-2 {
+    border-radius: 0 0 8px 8px;
+    margin-bottom: 20px
+}
+
+.table-price .contact {
+    text-align: center
+}
+
+.table-price .contact a {
+    background: #e55211;
+    color: #fff;
+    font-size: 16px;
+    display: inline-block;
+    border-radius: 10px;
+    line-height: normal;
+    padding: 10px 18px
+}
+
+.table-price .contact a span {
+    font-size: 13px
+}
+
+.eco-calendar table td {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: poppins, sans-serif;
+    color: #3e4667;
+    line-height: normal;
+    vertical-align: middle
+}
+
+.eco-calendar table th {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: poppins, sans-serif;
+    color: #000;
+    line-height: normal;
+    vertical-align: middle;
+    padding: .4rem .75rem
+}
+
+.eco-head {
+    background-image: linear-gradient(37deg, #27c5f0, #0095e6);
+    padding: 15px 15px 50px;
+    text-align: center;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    border-radius: 20px
+}
+
+.table-wrap {
+    box-shadow: 0 0 20px rgb(0 0 0/40%);
+    border-radius: 15px;
+    margin-top: -40px;
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    border: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+    overflow: hidden
+}
+
+section.calendar-sec {
+    background: #f0f0f0
+}
+
+.calendar-sec .col-lg-6 {
+    padding: 0 10px
+}
+
+.live-spread table thead {
+    background-image: linear-gradient(37deg, #27c5f0, #0095e6)
+}
+
+.live-spread table td {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: poppins, sans-serif;
+    color: #3e4667;
+    line-height: normal;
+    vertical-align: middle;
+    padding: .75rem .55rem
+}
+
+.live-spread table td span {
+    background: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: #000;
+    border: 1px solid #e7e7e7
+}
+
+.live-spread table td span.buy-btn {
+    padding: 5px 10px;
+    border-radius: 4px;
+    overflow: hidden;
+    color: #000
+}
+
+.live-spread table td span.sell-btn {
+    background: red;
+    border: 1px solid red;
+    padding: 5px 10px;
+    border-radius: 4px;
+    overflow: hidden;
+    color: #fff
+}
+
+.live-spread table th {
+    font-size: 14px;
+    border: 0;
+    font-weight: 500;
+    font-family: poppins, sans-serif;
+    color: #fff;
+    line-height: normal;
+    vertical-align: middle;
+    padding: .4rem .75rem;
+    position: relative
+}
+
+.live-spread table .fa-caret-down {
+    color: #ff6f61;
+    font-size: 18px
+}
+
+.live-spread table .fa-caret-up {
+    color: #42b983;
+    font-size: 18px
+}
+
+.btn-bottom {
+    text-align: center;
+    margin: 0 0 15px
+}
+
+p.bottom-text {
+    font-size: 14px;
+    text-align: center
+}
+
+.partnership-sec ul {
+    width: 100%;
+    float: left;
+    margin-top: 15px
+}
+
+.partnership-sec ul li {
+    width: 100%;
+    float: left;
+    line-height: normal;
+    margin: 0 0 15px
+}
+
+.partnership-sec ul li a {
+    color: #000;
+    font-size: 18px
+}
+
+.partnership-sec ul li a img {
+    margin-right: 10px
+}
+
+.partnership-sec .section-title {
+    line-height: 1.2
+}
+
+section.pay-menthod-sec {
+    box-shadow: 0 0 10px rgb(0 0 0/60%);
+    padding: 20px 0
+}
+
+.slick-prev, .slick-next {
+    width: 35px;
+    height: 35px
+}
+
+.slick-prev {
+    left: -10px
+}
+
+.slick-next {
+    right: -10px
+}
+
+.slick-prev:before, .slick-next:before {
+    color: #000;
+    font-family: fontawesome;
+    font-size: 34px
+}
+
+.slick-next::before {
+    content: "\f105"
+}
+
+.slick-prev::before {
+    content: "\f104"
+}
+
+.slick-slide img {
+    display: inline-block
+}
+
+.slick-slide {
+    text-align: center
+}
+
+.footer {
+    background: #000;
+    width: 100%;
+    float: left
+}
+
+.footer .top-main-footer {
+    padding: 60px 0 0;
+    background: url(../images/footer/footer-top-bnr.jpg);
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
+.footer p {
+    color: #606060;
+    text-align: justify
+}
+
+.appimg {
+    margin: 25px 0
+}
+
+.footer h3 {
+    font-size: 16px;
+    color: #3b4857;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-transform: uppercase
+}
+
+.footer .ft-smbox {
+    width: 16%;
+    float: left;
+    padding: 0 15px;
+    margin-bottom: 30px
+}
+
+.ft-smbox ul li {
+    width: 100%;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px
+}
+
+.ft-smbox ul li:before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    color: #cdcdcd;
+    font-size: 18px
+}
+
+.ft-smbox ul li a {
+    font-size: 16px;
+    color: #cdcdcd;
+    font-weight: 400
+}
+
+.ft-smbox ul li a:hover {
+    color: #008ad2
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 8px;
+    left: 20px;
+    width: 45px;
+    height: 43px;
+    z-index: 9;
+    transform: translateY(-50%)
+}
+
+.back-to-top .btn {
+    padding: 10px;
+    width: 100%;
+    border-radius: 50%
+}
+
+.footer .contact {
+    width: 100%;
+    display: inline-block
+}
+
+.footer .contact a {
+    font-size: 16px;
+    color: #002b49;
+    font-weight: 500;
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 10px
+}
+
+.footer .contact a img {
+    margin-right: 10px
+}
+
+.footer .ft-mdbox-left {
+    width: 24%;
+    float: left;
+    margin-right: 4%
+}
+
+.ft-mdbox-left .ftlogo {
+    margin-top: 40px
+}
+
+.ft-botlinks {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    text-align: center;
+    border-top: 1px solid #444;
+    border-bottom: 1px solid #444
+}
+
+.ft-botlinks li {
+    display: inline-block
+}
+
+.footer a {
+    color: #cdcdcd
+}
+
+.footer .ft-botlinks a {
+    font-size: 21px;
+    display: inline-block;
+    margin-right: 10px;
+    line-height: 30px;
+    text-align: center
+}
+
+.ft-botlinks .meta-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.ft-botlinks .meta-icons img {
+    max-width: 150px
+}
+
+.ft-botlinks .meta-icons img:nth-last-child(1) {
+    margin-left: 20px
+}
+
+.ft-botlinks li:last-child a {
+    border-right: 0
+}
+
+.ft-botlinks a:hover {
+    color: #008ad2
+}
+
+.app_footer-text-icon .foot_app_text h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 0;
+    text-transform: capitalize
+}
+
+.app_footer-text-icon .foot_app_text p {
+    color: #fff !important
+}
+
+.disclaimer {
+    width: 100%;
+    display: inline-block;
+    margin: 15px 0;
+    border-bottom: 1px solid #444;
+    padding: 20px 0 10px
+}
+
+.disclaimer p {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.copyright-text {
+    text-align: center;
+    color: #606060 !important
+}
+
+.app_footer-text-icon {
+    padding: 20px 0;
+    border-bottom: 0
+}
+
+.app_footer-text-icon .foot_app_text {
+    text-align: left
+}
+
+.inner-banner {
+    background-image: url(../images/inner-banner.jpg);
+    background-repeat: no-repeat;
+    margin-top: -30px;
+    text-align: center;
+    background-size: cover;
+    padding: 130px 0;
+    position: relative
+}
+
+.inner-banner .breadcrumb {
+    margin: 0;
+    background: 0 0;
+    padding: 0 50px
+}
+
+.inner-banner h1 {
+    font-size: 40px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px
+}
+
+.inner-banner nav {
+    width: auto;
+    display: inline-block;
+    border-top: 1px solid #fff
+}
+
+.inner-banner .breadcrumb-item + .breadcrumb-item::before {
+    content: '|';
+    color: #fff
+}
+
+.inner-banner .breadcrumb-item a {
+    color: #fff;
+    font-size: 16px
+}
+
+.inner-banner .breadcrumb-item.active a {
+    color: #00b5ee
+}
+
+.about-career p {
+    font-size: 18px;
+    font-weight: 300;
+    text-align: center
+}
+
+.about-career p a {
+    color: #2693d5
+}
+
+.looking-for {
+    position: relative;
+    background-color: #000
+}
+
+.looking-for .box {
+    background-color: #fff;
+    padding: 30px 15px;
+    text-align: center;
+    border-radius: 15px
+}
+
+.looking-for.career-looking .box .img-box {
+    margin-bottom: 10px
+}
+
+.looking-for.career-looking .box h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 0
+}
+
+.looking-for .box p {
+    font-size: 17px;
+    margin: 20px 0 0;
+    color: #000
+}
+
+.looking-for .box:hover {
+    background-image: linear-gradient(37deg, #27c5f0, #0095e6)
+}
+
+.looking-for .box:hover p {
+    color: #fff
+}
+
+.looking-for .box:hover .img-box img {
+    filter: brightness(9)
+}
+
+#applyModal .modal-content {
+    border-radius: 20px
+}
+
+.career-form {
+    padding: 0 15px 10px
+}
+
+.career-form h3 {
+    font-size: 25px;
+    text-align: center;
+    font-weight: 500
+}
+
+.career-form .form-control, .career-form .custom-file-label {
+    border: 0;
+    border-bottom: 1px solid #000;
+    border-radius: 0
+}
+
+.career-form .form-group {
+    margin-bottom: 1.4rem
+}
+
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+    content: "Choose File";
+    height: 25px;
+    line-height: 12px;
+    color: #000;
+    font-size: 14px;
+    border-radius: 30px
+}
+
+.career-form button.btn {
+    width: 160px
+}
+
+.inner-banner.accType-bg {
+    background-image: url(../images/acc-type/Banner.jpg)
+}
+
+.uniglobe-acctype .card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .4)
+}
+
+.uniglobe-acctype .card-header {
+    background-color: #e0e0e0;
+    font-weight: 500;
+    text-align: center;
+    border-bottom: 0
+}
+
+.uniglobe-acctype .card:hover .card-header {
+    background-color: #f32d2e;
+    color: #fff
+}
+
+.uniglobe-acctype .card:hover .list-group-item {
+    background-color: #f2f2f2
+}
+
+.uniglobe-acctype .card .list-group .list-group-item .btn {
+    font-size: 14px
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #f22d2d;
+    border-color: #f22d2d
+}
+
+section.acc-comparison {
+    background: #000
+}
+
+section.acc-comparison .page-title {
+    text-align: left
+}
+
+section.acc-comparison .page-title p {
+    color: #fff;
+    border-top: 1px solid #27c5f0
+}
+
+.acc-comparison .table-responsive {
+    border-radius: 15px;
+    background-color: #fff
+}
+
+.acc-comparison .table thead {
+    background-color: #eee
+}
+
+.acc-comparison .table th {
+    font-size: 13px;
+    text-align: center;
+    line-height: 16px
+}
+
+.acc-comparison .table td {
+    font-size: 12px;
+    text-align: center;
+    line-height: 15px
+}
+
+.acc-comparison .table td b {
+    font-weight: 600
+}
+
+.acc-comparison .table td:first-child {
+    text-align: left
+}
+
+.acc-comparison .table td .fa-check {
+    color: #85c824;
+    font-size: 16px
+}
+
+.acc-comparison .table td .fa-remove {
+    color: #a70918;
+    font-size: 16px
+}
+
+.about-data p {
+    font-size: 18px;
+    line-height: 30px;
+    color: #000;
+    text-align: justify;
+    margin-bottom: 20px
+}
+
+.about-mainbox {
+    width: 100%;
+    display: inline-block
+}
+
+.org-box {
+    background: #e55211;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .4);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+    text-align: center;
+    width: 180px;
+    height: 180px;
+    float: left
+}
+
+.org-box p {
+    font-size: 18px;
+    color: #fff;
+    margin: 15px 0 0
+}
+
+.wht-box {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .4);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+    text-align: center;
+    width: 140px;
+    height: 140px;
+    float: left
+}
+
+.wht-box p {
+    font-size: 14px;
+    color: #000;
+    margin: 15px 0 0
+}
+
+.about-mainbox .box {
+    width: 100%;
+    float: left
+}
+
+.about-data ul {
+    margin-top: 30px
+}
+
+.about-data li {
+    font-size: 18px;
+    font-weight: 300;
+    padding-left: 25px;
+    margin: 0 0 15px;
+    position: relative;
+    line-height: normal
+}
+
+.about-data li:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 8px;
+    height: 8px;
+    background-color: #008ad2;
+    border-radius: 50px
+}
+
+.accordion .card {
+    border: 0
+}
+
+.inner-banner.cryptocurrency-bg {
+    background-image: url(../images/crypto-currency/crypto-currency-banner.jpg)
+}
+
+.cryptocurrency .card {
+    padding: 25px 15px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgb(0 0 0/40%)
+}
+
+.cryptocurrency .card h3 {
+    font-size: 20px;
+    text-align: center;
+    color: #f42c2e;
+    font-weight: 500
+}
+
+.cryptocurrency .card p {
+    text-align: justify;
+    margin-bottom: 0
+}
+
+.why-trade-crypto .box {
+    text-align: left;
+    margin-bottom: 30px
+}
+
+.why-trade-crypto .box h3 {
+    font-size: 20px;
+    font-weight: 500;
+    transition: all ease-in-out .5ms;
+    color: #000;
+    position: relative;
+    padding-bottom: 10px;
+    margin: 15px 0 0
+}
+
+.why-trade-crypto .box h3:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 90px;
+    border-bottom: 1px solid #f43335;
+    transition: .9s
+}
+
+.why-trade-crypto .page-title p {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 20px
+}
+
+.why-trade-crypto .box:hover .img-box img {
+    filter: brightness(9)
+}
+
+.why-trade-crypto .box:hover h3 {
+    color: #fff
+}
+
+.why-trade-crypto .box:hover h3:after {
+    border-bottom: 1px solid #fff;
+    width: 100%
+}
+
+.crypt-specification .card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .4)
+}
+
+.crypt-specification .table th {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 16px;
+    text-align: center;
+    vertical-align: middle
+}
+
+.crypt-specification .table td {
+    font-size: 14px;
+    line-height: 15px;
+    text-align: center
+}
+
+.available-crypt-section {
+    background-image: url(../images/crypto-currency/crypto-currency-bt-map-img.png);
+    background-position: bottom;
+    background-repeat: no-repeat
+}
+
+.available-crypt-section .available-crypt ul {
+    display: block;
+    text-align: center
+}
+
+.available-crypt-section .available-crypt ul li {
+    display: inline-block;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500
+}
+
+.available-crypt-section .available-crypt ul li .av-img {
+    display: block;
+    margin-bottom: 20px;
+    transition: transform .5s ease
+}
+
+.available-crypt-section .available-crypt ul li .av-img:hover {
+    transform: scale(1.1)
+}
+
+.inner-banner.forex-bg {
+    background-image: url(../images/instrument/forex-banner.jpg)
+}
+
+.inner-banner.stock-bg {
+    background-image: url(../images/instrument/stock-banner.jpg)
+}
+
+.inner-banner.metal-indices-bg {
+    background-image: url(../images/instrument/commodities-metal-banner.jpg)
+}
+
+.commodities .tab-pane img {
+    border-radius: 20px;
+    overflow: hidden
+}
+
+.commodities .nav-pills .nav-link {
+    color: #f42c2e
+}
+
+.commodities .nav-pills .nav-link.active, .commodities .nav-pills .show > .nav-link {
+    color: #fff
+}
+
+.deposit-bonus-banner {
+    background-image: url(../images/promotion/100-deposit-bonus-banner.jpg)
+}
+
+.inner-banner.datawb-bg {
+    background-image: url(../images/data-wb/banner.jpg)
+}
+
+.about-wbdata .img-box {
+    border-radius: 0 80px 0 80px;
+    overflow: hidden;
+    max-width: 400px;
+    margin: auto
+}
+
+.about-wbdata .row {
+    align-items: center
+}
+
+.about-wbdata .page-title p {
+    font-weight: 300
+}
+
+.why-trade-crypto.benifit .box h3:after {
+    width: 100%;
+    border-bottom: 1px solid #000
+}
+
+.why-trade-crypto.benifit .box:hover h3:after {
+    border-bottom: 1px solid #fff
+}
+
+.acc-opening .steps .box {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column
+}
+
+.acc-opening .steps .box .count {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #000;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px
+}
+
+.acc-opening .steps .box .count span {
+    width: 80px;
+    height: 80px;
+    background-color: #000;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 80px;
+    color: #fff;
+    text-align: center;
+    border-radius: 50px
+}
+
+.acc-opening .steps .box.active .count span, .acc-opening .steps .box:hover .count span {
+    background-image: linear-gradient(37deg, #27c5f0, #0095e6)
+}
+
+.acc-opening .steps .box.active .count, .acc-opening .steps .box:hover .count {
+    border: 2px dashed #27c5f0
+}
+
+.acc-opening .steps .box h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px
+}
+
+.acc-opening .steps .arrow {
+    margin-top: 30px
+}
+
+.twinty-bonus-bnr-section {
+    background: url(../images/promotion/20-bonus-banner.jpg)
+}
+
+.second-bonus-sections .img-box {
+    box-shadow: 0 0 12px 0 #00000054
+}
+
+.trade-win-banner {
+    background-image: url(../images/promotion/trade-to-win-banner.jpg)
+}
+
+.tradewin-acc .steps .arrow {
+    position: absolute
+}
+
+.tradewin-acc .steps .arrow.arrow1 {
+    left: 29%
+}
+
+.tradewin-acc .steps .arrow.arrow2 {
+    left: auto;
+    right: 26%
+}
+
+.promotion-bnr-bg {
+    background-image: url(../images/promotion/promotion-home-banner.jpg)
+}
+
+.promotion-main-box {
+    border-radius: 20px;
+    color: #fff;
+    position: relative;
+    margin-top: 30px;
+    overflow: hidden;
+    background-size: cover !important;
+    background-position: center !important
+}
+
+.promotion-main-box .promotion-box-content {
+    width: 100%;
+    height: 100%;
+    padding: 20px
+}
+
+.promotion-main-box .promotion-box-img-onheading {
+    display: none
+}
+
+.promotion-main-box .promotion-box-content h3 {
+    position: relative;
+    padding-bottom: 15px;
+    color: #fff
+}
+
+.promotion-main-box .promotion-box-content h3:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 140px;
+    height: 6px;
+    border-radius: 50px;
+    background-color: #fff
+}
+
+.promotion-main-box .promotion-box-content p {
+    display: none;
+    font-size: 18px;
+    opacity: 0;
+    line-height: 26px;
+    transition: all .5s ease
+}
+
+.promotion-main-box .promotion-box-content .promotion-box-btn .btn {
+    color: #000;
+    background: #fff;
+    padding: 1px 10px
+}
+
+.prmotion-popular-sec {
+    background: #000;
+    color: #fff
+}
+
+.promotion-invest-partner .slide {
+    border-radius: 6px;
+    margin: 10px 15px;
+    box-shadow: 5px 5px 6px 0 #4c4c4c54
+}
+
+.promotion-invest-partner .slide img {
+    border-radius: 6px
+}
+
+@media (min-width: 1500px) {
+    .tradewin-acc .steps .arrow.arrow1 {
+        left: 35%
+    }
+
+    .tradewin-acc .steps .arrow.arrow2 {
+        left: auto;
+        right: 28%
+    }
+}
+
+.acc-opening .steps .box p {
+    line-height: 22px
+}
+
+.term-condition {
+    width: 100%
+}
+
+.term-condition .card {
+    padding: 40px 15px;
+    box-shadow: 0 0 12px 0 #00000054;
+    border-radius: 20px;
+    border: 0
+}
+
+.term-condition .section-title {
+    margin-bottom: 0
+}
+
+.contact-section .data {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 50px;
+    text-align: center
+}
+
+.contact-section .data p {
+    font-size: 18px;
+    color: #000
+}
+
+.contact-box {
+    width: 100%;
+    display: inline-block;
+    background: #fff;
+    box-shadow: 0 0 10px rgb(0 0 0/40%);
+    border-radius: 10px;
+    overflow: hidden
+}
+
+.left-conatct {
+    background-color: #000
+}
+
+.left-conatct img {
+    max-width: 100%
+}
+
+.left-conatct ul {
+    padding: 20px 50px 20px 20px
+}
+
+.left-conatct ul li {
+    color: #fff
+}
+
+form.contact-form {
+    padding: 30px 30px 30px 0
+}
+
+form.contact-form .form-group {
+    margin-bottom: 35px
+}
+
+.contact-box .form-control {
+    border: 0;
+    border-bottom: 1px solid #999;
+    border-radius: 0;
+    padding: .375rem 1rem
+}
+
+.btn-center {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    margin-top: 0
+}
+
+.tradewin-bg {
+    background-image: url(../images/tradewin/banner.jpg)
+}
+
+.tradewin {
+    width: 100%;
+    display: inline-block
+}
+
+.tradewin-list {
+    position: relative;
+    margin: 0 -5px;
+    padding: 0
+}
+
+.tradewin-list li {
+    width: 16.66%;
+    float: left;
+    padding: 0 10px;
+    margin: 0 0 20px
+}
+
+.tradewin-list li .main-box {
+    background-color: #000;
+    text-align: center;
+    border-radius: 24px
+}
+
+.tradewin-list li .main-box:hover .inn-box {
+    background-image: linear-gradient(37deg, #27c5f0, #0095e6)
+}
+
+.tradewin-list li .main-box:hover .inn-box h4 {
+    color: #fff
+}
+
+.tradewin-list li .inn-box {
+    background: #efefef;
+    border-radius: 20px;
+    padding: 20px
+}
+
+.tradewin-list li .img-box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 120px;
+    align-items: center
+}
+
+.tradewin-list li .inn-box h4 {
+    margin: 10px 0 0;
+    font-size: 18px;
+    font-weight: 500
+}
+
+.tradewin-list li h3 {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 14px 6px
+}
+
+.tradewin p {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 300;
+    display: inline-block;
+    margin-bottom: 0
+}
+
+.funding-bg {
+    background-image: url(../images/funding/banner.jpg)
+}
+
+section.funding p {
+    font-size: 18px;
+    text-align: center;
+    color: #434343;
+    font-weight: 300;
+    margin-bottom: 50px
+}
+
+section.funding .nav-tabs {
+    border-bottom: 1px solid #000;
+    margin-bottom: 10px;
+    padding-bottom: 1px
+}
+
+section.funding .nav-tabs .nav-item {
+    text-align: center;
+    width: 50%
+}
+
+section.funding .nav-tabs .nav-link {
+    font-size: 26px;
+    font-weight: 500;
+    padding: 18px;
+    color: #000;
+    border: 0;
+    position: relative
+}
+
+.funding .nav-tabs .nav-item.show .nav-link, .funding .nav-tabs .nav-link.active {
+    color: #008ad2;
+    border: 0
+}
+
+.funding .nav-tabs .nav-link.active:after {
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 4px;
+    background: #008ad2;
+    bottom: 0;
+    left: 50%;
+    margin-left: -20%
+}
+
+.funding thead {
+    background: #000;
+    color: #fff
+}
+
+.funding thead th {
+    font-weight: 500;
+    text-align: center
+}
+
+.funding td {
+    text-align: center
+}
+
+a.deposit-btn {
+    background: #fff;
+    border: 1px solid #666;
+    color: #000;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 17px
+}
+
+.funding td.redbg {
+    background-color: #f22d2d;
+    text-align: left;
+    color: #fff;
+    font-weight: 500;
+    padding: 5px 35px
+}
+
+.funding td.redbg span {
+    margin-right: 8px
+}
+
+.funding-notes {
+    position: relative;
+    padding: 30px 0 20px
+}
+
+.funding-notes p {
+    font-size: 18px
+}
+
+.platform-bg {
+    background-image: url(../images/platform/Banner.jpg)
+}
+
+.platform-sec h2 {
+    font-weight: 600;
+    margin: 0 0 20px
+}
+
+.platform-sec .social-ic {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 20px
+}
+
+.platform-sec .social-ic a {
+    background-color: #b7b7b7;
+    color: #fff;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    float: left;
+    margin-right: 15px
+}
+
+.platform-sec a.btn {
+    width: 160px
+}
+
+.uniglobe-feature {
+    background-color: #000;
+    width: 100%;
+    display: inline-block
+}
+
+.feature-list {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+}
+
+.feature-list li {
+    width: 20%;
+    padding: 0 15px;
+    margin-bottom: 30px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+}
+
+.feature-list li p {
+    width: 100%;
+    color: #fff;
+    padding: 0;
+    text-align: center;
+    margin: 0;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 600
+}
+
+.feature-list li .box {
+    text-align: center;
+    display: flex;
+    background-color: #fff;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px
+}
+
+.feature-list li:hover .box {
+    background-image: linear-gradient(37deg, #27c5f0, #0095e6)
+}
+
+.feature-list li:hover .box img {
+    filter: brightness(9)
+}
+
+.uniglobe-advantages .feature-list li {
+    width: 16.66%
+}
+
+.uniglobe-advantages .feature-list li .box {
+    width: 115px;
+    height: 115px;
+    line-height: 115px
+}
+
+.uniglobe-advantages .acc-buttons .btn-outline-primary {
+    background-color: #fff;
+    border: 1px solid #fff;
+    color: #000
+}
+
+.uniglobe-advantages .acc-buttons .btn-outline-primary:hover {
+    color: #049ae7
+}
+
+section.pay-method ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 0 50px
+}
+
+.mega-dropdown .dropdown-column {
+    margin: 10px
+}
+
+.mega-dropdown .dropdown-column a {
+    border-bottom: 1px solid #ddd;
+    padding: 8px
+}
+
+.footer h3 {
+    color: #fff !important
+}
+
+.frxTraning-bg {
+    background-image: url(../images/uniglobe/frx-traning-banner.jpg)
+}
+
+.uniglobe-data p {
+    font-weight: 300;
+    text-align: center
+}
+
+.forex-traning p {
+    color: #fff !important;
+    font-size: 18px;
+    font-weight: 300
+}
+
+.forex-traning {
+    background-color: #000
+}
+
+.forex-traning .img-box {
+    border-radius: 10px;
+    overflow: hidden
+}
+
+.forex-traning .forex-list li {
+    position: relative;
+    padding-left: 38px;
+    font-size: 18px;
+    line-height: 20px;
+    margin-bottom: 15px
+}
+
+.forex-traning .forex-list li img {
+    position: absolute;
+    left: 0
+}
+
+.forex-traning p span {
+    color: #f22d2d
+}
+
+.uniglobe-advantages .card {
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+    padding: 40px 50px 20px
+}
+
+.uniglobe-advantages .card h2 {
+    text-align: center;
+    font-size: 30px;
+    line-height: 32px;
+    padding-bottom: 10px;
+    font-weight: 600
+}
+
+.uniglobe-advantages .card h2:after {
+    content: "";
+    background-color: #f22d2d;
+    width: 60%;
+    height: 1px;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    margin-left: -30%
+}
+
+.uniglobe-advantages .card li {
+    margin-bottom: 25px
+}
+
+.uniglobe-advantages .data h4 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 20px
+}
+
+.uniglobe-advantages .data p {
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 0
+}
+
+.uniglobe-advantages .data h4 img {
+    margin-right: 6px
+}
+
+.gray-forexsec {
+    width: 100%;
+    display: inline-block
+}
+
+.gray-forexsec p {
+    font-weight: 400;
+    text-align: center
+}
+
+.gray-forexsec .acc-buttons {
+    width: 100%;
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center
+}
+
+.whatisfrx-bg {
+    background-image: url(../images/uniglobe/forex-banner.jpg)
+}
+
+.technical-analysis-bg {
+    background-image: url(../images/uniglobe/technical-banner.jpg)
+}
+
+.start-trading-bg {
+    background-image: url(../images/uniglobe/start-trading-banner.jpg)
+}
+
+section.gray-forexsec.trading {
+    background-color: #ececec;
+    padding: 30px 0;
+    box-shadow: 0 2px 6px #999
+}
+
+.economical-bg {
+    background-image: url(../images/uniglobe/ecocal-banner.jpg)
+}
+
+.uniglobe-ecocal-sec {
+    background-color: #000
+}
+
+.uniglobe-ecocal-sec .eco-calendar .table .title {
+    background: #efc34b
+}
+
+.frxexp-list.br-top {
+    border-top: 1px dashed #ccc
+}
+
+.frxexp-list .box {
+    padding: 10px
+}
+
+.frxexp-list .box .img-box {
+    margin: 0 auto 10px;
+    text-align: center
+}
+
+.frxexp-list .box .img-box img {
+    width: 100px
+}
+
+.frxexp-list .box .data h4 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #4c4c4c;
+    text-align: center
+}
+
+.frxexp-list .box .data p {
+    font-size: 17px;
+    color: #616161;
+    margin-bottom: 6px
+}
+
+.frxexp-list .box a.know-more {
+    color: #f22d2d;
+    font-size: 17px;
+    text-decoration: underline
+}
+
+.trading-hours {
+    background-color: #000
+}
+
+.trading-hours .table-responsive {
+    border-radius: 20px;
+    background-color: #fff
+}
+
+.trading-hours .table thead {
+    background-color: #f22d2d;
+    color: #fff
+}
+
+.markethrs-bg {
+    background-image: url(../images/uniglobe/markethrs-banner.jpg)
+}
+
+.technical-analysis-bg2 {
+    background-image: url(../images/uniglobe/technical-analysis.jpg)
+}
+
+.uniglobe-technical-analysis h3 {
+    background-color: #f22d2d;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 10px 15px
+}
+
+.analysis-list {
+    width: 100%;
+    display: inline-block;
+    margin: 20px 0 0
+}
+
+.analysis-list li {
+    width: 50%;
+    float: left;
+    margin: 0 0 30px;
+    padding: 0 15px
+}
+
+.analysis-list li .box {
+    width: 100%;
+    padding: 25px 15px;
+    position: relative;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .45);
+    border-radius: 15px
+}
+
+.analysis-list li .box:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 70%;
+    height: 6px;
+    background-color: #000;
+    border-radius: 0 0 15px 15px;
+    margin-left: -35%
+}
+
+.analysis-list li:hover .box:after {
+    background-color: #f22d2d
+}
+
+.analysis-list li h4 {
+    font-size: 19px;
+    font-weight: 600;
+    color: #000
+}
+
+.analysis-list li p.date {
+    color: #f22d2d;
+    font-size: 18px
+}
+
+.analysis-list li p {
+    color: #000;
+    font-size: 17px
+}
+
+.analysis-list li a.btn {
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 0;
+    padding: .2rem 1.2rem
+}
+
+.analysis-list li:hover a.btn {
+    background-image: linear-gradient(37deg, #27c5f0, #0095e6);
+    border: 1px solid #0095e6
+}
+
+nav.nav-pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center
+}
+
+.pagination li.page-item {
+    margin: 0 10px
+}
+
+.uniglobe-technical-analysis .nav-pagination .page-num {
+    display: none
+}
+
+.nav-pagination span, .nav-pagination a {
+    padding: 2px 14px;
+    border-radius: 5px;
+    margin-right: 5px
+}
+
+.nav-pagination a {
+    background-color: #000 !important;
+    color: #fff !important
+}
+
+.nav-pagination span.current {
+    color: #fff;
+    background-color: #f22d2d;
+    border-color: #f22d2d
+}
+
+.hru {
+    position: absolute;
+    bottom: 15px;
+    background: #fff;
+    height: 20px;
+    width: 100%
+}
+
+.eco-calendar {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px
+}
+
+.social-ic .social-window:hover {
+    background: #00adef
+}
+
+.social-ic .social-android:hover {
+    background: #a4c639
+}
+
+.social-ic .social-apple:hover {
+    background: #000
+}
+
+.social-ic .social-linux:hover {
+    background: #185886
+}
+
+.advantage-bg {
+    background-image: url(../images/partner/advantages-banner.jpg)
+}
+
+.advantages-sec ul {
+    display: flex;
+    flex-wrap: wrap
+}
+
+.advantages-sec ul li {
+    width: 33.33%;
+    padding: 0 14px;
+    margin-bottom: 30px
+}
+
+.advantages-sec ul li .box {
+    width: 100%;
+    display: inline-block;
+    height: 100%;
+    padding: 30px 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    text-align: center
+}
+
+.advantages-sec ul li .box h4 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 10px 0
+}
+
+.advantages-sec ul li .box .list {
+    text-align: left
+}
+
+.advantages-sec ul li .box .list p {
+    font-size: 16px;
+    margin-bottom: 5px
+}
+
+.advantages-sec ul li .box:hover {
+    background-image: linear-gradient(37deg, #27c5f0, #0095e6)
+}
+
+.advantages-sec ul li .box:hover .img-box img {
+    filter: brightness(9)
+}
+
+.advantages-sec ul li .box:hover h4, .advantages-sec ul li .box:hover p {
+    color: #fff
+}
+
+.pamm-banner {
+    background-image: url(../images/partner/pamm-banner.jpg)
+}
+
+.pamm-list .box {
+    text-align: center
+}
+
+.pamm-list .box h4 {
+    margin-bottom: 0
+}
+
+.pamm-market {
+    text-align: center
+}
+
+.pamm-market .box {
+    margin-bottom: 30px
+}
+
+.pamm-market .box p {
+    font-weight: 500;
+    font-size: 22px
+}
+
+.pamm-acc-btn-top p {
+    font-size: 18px
+}
+
+.gray-forexsec .about-data ul {
+    display: flex;
+    justify-content: space-between
+}
+
+.home-counter .counter-box .info {
+    display: flex;
+    width: auto;
+    padding: 0 40px;
+    align-items: center;
+    justify-content: center
+}
+
+.home-counter .counter-box .info p {
+    text-align: left;
+    margin-left: 20px
+}
+
+.home-counter .counter-box {
+    justify-content: center
+}
+
+.partner-feature .feature-list li {
+    width: 16.66%
+}
+
+.partner-feature .feature-list li .box {
+    box-shadow: 0 0 15px rgba(0, 0, 0, .6);
+    width: 140px;
+    height: 132px
+}
+
+.partner-feature .feature-list li p {
+    color: #000
+}
+
+section.partner-objective {
+    background-color: #000
+}
+
+.partner-objective .box {
+    width: 100%;
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden
+}
+
+.partner-objective .box .data {
+    padding: 30px 10px;
+    text-align: center
+}
+
+.partner-objective .box .data h4 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000
+}
+
+.partner-objective .box .data p {
+    font-size: 17px;
+    font-weight: 300;
+    text-align: justify;
+    margin-bottom: 0
+}
+
+.partner-objective .box .data a.btn-dark {
+    background-color: #000;
+    padding: 4px 30px
+}
+
+.partner-objective .partner-benifit-on-home {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 5px
+}
+
+.partner-objective .partner-benifit-on-home li {
+    text-align: left;
+    list-style-type: disc !important;
+    font-size: 17px;
+    font-weight: 300
+}
+
+.partner-objective .box:hover .data a.btn-dark {
+    background-color: #f22d2d;
+    border-color: #f22d2d
+}
+
+.partner-feature.uniglobe-data .feature-list li {
+    width: 25%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start
+}
+
+.faq-bg {
+    background-image: url(../images/partner/faq-banner.jpg)
+}
+
+#faqaccordion .card .card-header .btn-header-link:after {
+    content: "\f107";
+    font-size: 24px;
+    font-family: fontawesome;
+    font-weight: 500;
+    float: right;
+    color: #fff
+}
+
+#faqaccordion .card .card-header {
+    padding: 0;
+    background-color: transparent;
+    border: 0
+}
+
+#faqaccordion .card .card-header .btn-header-link.collapsed {
+    background: #fff;
+    border-radius: 15px;
+    color: #333
+}
+
+.faq-sec .accordion .card .card-header .btn-header-link {
+    width: 100%;
+    display: inline-block;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    background: #000;
+    border-radius: 15px 15px 0 0;
+    padding: 18px 30px;
+    box-shadow: 0 0 6px rgb(0 0 0/30%)
+}
+
+#faqaccordion .card .card-header .btn-header-link.collapsed:after {
+    content: "\f106";
+    color: #f22d2d
+}
+
+#faqaccordion .card .collapsing {
+    background: #fff;
+    line-height: 30px
+}
+
+#faqaccordion .card .collapse {
+    border: 0
+}
+
+#faqaccordion .card .collapse.show {
+    background: #000;
+    line-height: 30px;
+    color: #fff;
+    box-shadow: 0 4px 10px rgb(0 0 0/30%);
+    border-radius: 0 0 8px 8px
+}
+
+.faq-sec .accordion .card {
+    margin-bottom: 30px;
+    border: 0
+}
+
+.faq-sec .accordion .card-body {
+    padding: 10px 30px 30px;
+    font-size: 17px
+}
+
+.faq-sec .accordion .partnr-faq-list {
+    padding-left: 25px !important
+}
+
+.faq-sec .accordion .partnr-faq-list li {
+    list-style-type: disc !important
+}
+
+.mrktool-bg {
+    background-image: url(../images/partner/mrkt-banner.jpg)
+}
+
+.marketting-tool .box {
+    width: 100%;
+    min-height: 93%;
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #b7b1b1;
+    margin-bottom: 20px
+}
+
+.marketting-tool .box img {
+    width: 100%
+}
+
+.marketting-tool .box .data {
+    padding: 30px 15px
+}
+
+.marketting-tool .box .data h4 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #000
+}
+
+.marketting-tool .box .data p {
+    text-align: justify;
+    margin-bottom: 0
+}
+
+.marketting-tool .box:hover .data h4 {
+    color: #f22d2d
+}
+
+.markeiting-more-adon .box {
+}
+
+.white-labelbg {
+    background-image: url(../images/partner/label-banner.jpg)
+}
+
+.whtLabel-benifits ul {
+    display: flex;
+    align-items: center
+}
+
+.whtLabel-benifits ul li {
+    width: 20%;
+    padding: 0 15px
+}
+
+.whtLabel-benifits ul li .box {
+    background-color: #fff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .3);
+    border-radius: 15px;
+    padding: 30px 10px;
+    text-align: center;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center
+}
+
+.whtLabel-benifits ul li p {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0
+}
+
+.whtLabel-benifits ul li .img-box {
+    margin-bottom: 10px
+}
+
+.darkbg {
+    background-color: #000
+}
+
+.darkbg h2 {
+    color: #fff;
+    border-color: #fff
+}
+
+.darkbg p {
+    color: #fff
+}
+
+.btn-dark {
+    background-color: #000
+}
+
+.partner-typebg {
+    background-image: url(../images/partner/partner-typebg.jpg)
+}
+
+.partner-type .box {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 30px
+}
+
+.partner-type .box img {
+    width: 100%
+}
+
+.partner-type .box .data {
+    padding: 20px
+}
+
+.partner-type .box .data h4 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #000
+}
+
+.partner-type .btn-dark {
+    padding: .35rem 2rem
+}
+
+.calculate-form {
+    background: #fff;
+    padding: 50px 30px;
+    box-shadow: 0 5px 10px rgb(0 0 0/30%);
+    border-radius: 20px
+}
+
+.calculate-form label {
+    color: #4188e1;
+    font-size: 14px;
+    font-weight: 500
+}
+
+.calculate-form .form-control {
+    background-color: #f1f2f2;
+    border: 0;
+    font-size: 14px;
+    font-weight: 300;
+    color: #000
+}
+
+.partner-type ul.list li {
+    font-size: 18px;
+    margin: 0 0 20px;
+    position: relative;
+    padding-left: 40px;
+    font-weight: 300
+}
+
+.partner-type ul.list li:before {
+    content: "";
+    width: 21px;
+    height: 21px;
+    background-image: url(../images/partner/tick.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    top: 8px
+}
+
+.personal-info {
+    width: 100%;
+    display: inline-block;
+    margin-top: 20px
+}
+
+.personal-info h3 {
+    font-weight: 500;
+    color: #f22d2d
+}
+
+.personal-info label {
+    color: #666;
+    font-weight: 400;
+    font-size: 16px
+}
+
+.personal-info .red {
+    color: #f22d2d
+}
+
+.personal-info label span {
+    color: #f22d2d
+}
+
+.personal-info .form-control {
+    background-color: #e3e3e3;
+    border-color: #e3e3e3;
+    border-radius: 20px;
+    height: 47px !important
+}
+
+.styled-checkbox {
+    position: absolute;
+    opacity: 0
+}
+
+.styled-checkbox + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0
+}
+
+.styled-checkbox + label:before {
+    content: "";
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 25px;
+    height: 25px;
+    background: #ccc
+}
+
+.styled-checkbox:hover + label:before {
+    background: #f22d2d
+}
+
+.styled-checkbox:checked + label:before {
+    background: #f22d2d
+}
+
+.styled-checkbox:checked + label:after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 12px;
+    background: #fff;
+    width: 4px;
+    height: 4px;
+    box-shadow: 4px 0 0 #fff, 6px 0 0 #fff, 6px -4px 0 #fff, 6px -4px 0 #fff, 6px -8px 0 #fff, 6px -12px 0 #fff;
+    transform: rotate(45deg)
+}
+
+.warningTxt {
+    font-size: 18px;
+    font-weight: 300;
+    position: relative;
+    padding-left: 30px
+}
+
+.warningTxt img {
+    position: absolute;
+    left: 0;
+    top: 6px
+}
+
+.additional-acc h4 {
+    font-weight: 600
+}
+
+.acc-steps {
+    display: flex;
+    align-items: center;
+    margin: 40px 0 0
+}
+
+.acc-steps .count {
+    color: #f22d2d;
+    font-size: 50px;
+    position: relative;
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
+    font-family: bebas-neue-light;
+    font-weight: 600
+}
+
+.acc-steps .count span {
+    border: 1px solid;
+    width: 20px;
+    height: 110px;
+    border-left: 0;
+    border-radius: 3px;
+    position: absolute;
+    right: -10px
+}
+
+.social-info a {
+    margin: 0 8px
+}
+
+.demo-account-bnr-bg {
+    background: url(../images/demo-account/demo-acc-banner.jpg)
+}
+
+.sign-free-demo-form {
+    padding: 15px 25px;
+    box-shadow: 0 0 20px 4px #d3d3d3;
+    border-radius: 30px
+}
+
+.sign-free-demo-form .sign-demo-form-title {
+    color: #000;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 15px
+}
+
+.sign-free-demo-form .form-group .btn-primary {
+    background: #f22d2d;
+    min-width: 150px
+}
+
+.sign-free-demo-form .form-group {
+    position: relative
+}
+
+.sign-free-demo-form .form-group .form-control {
+    position: relative;
+    padding-left: 20px;
+    font-size: 14px;
+    height: 36px !important
+}
+
+.sign-free-demo-form .form-group label {
+    position: absolute;
+    top: 3px;
+    left: 12px;
+    margin: 0
+}
+
+.sign-free-demo-form .form-group .form-control {
+    color: #000
+}
+
+.sign-free-demo-form .form-group .form-control::-webkit-input-placeholder {
+    color: #000
+}
+
+.sign-free-demo-form .form-group .form-control::-moz-placeholder {
+    color: #000
+}
+
+.sign-free-demo-form .recaptche-valid .form-control {
+    padding-left: 95px !important
+}
+
+.sign-free-demo-form .recaptche-valid .form-para {
+    position: absolute;
+    left: 20px;
+    top: 3px;
+    font-size: 14px
+}
+
+.sign-free-demo-form .recaptche-valid .form-para label {
+    position: static !important
+}
+
+.demo-acc-service-section .box {
+    width: 100%;
+    min-height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: auto !important;
+    padding: 30px 15px
+}
+
+.demo-acc-service-section .box .img-box {
+    margin-bottom: 20px
+}
+
+.demo-acc-service-section .box h4 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px 0
+}
+
+.demo-acc-service-section .box:hover h4 {
+    color: #fff
+}
+
+.demo-acc-service-section .box p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    margin-top: 0;
+    margin-top: 0
+}
+
+.why-uniglobe-market-imagebox {
+    padding-right: 70px
+}
+
+.why-uniglobe-market-feature li {
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 40px
+}
+
+.why-uniglobe-market-feature li .why-market-optin-checkimg {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    max-width: 30px
+}
+
+.why-uniglobe-market-info .btn {
+    margin-left: 40px
+}
+
+.trading-instrument-bnr-bg {
+    background: url(../images/instrument/instrument-banner.jpg)
+}
+
+.trading-instrument-service-box {
+    margin-bottom: 30px;
+    border-radius: 20px;
+    transition: all .8s
+}
+
+.trading-instrument-service-box .tr-instrument-box-content {
+    padding: 25px;
+    text-align: center
+}
+
+.trading-instrument-service-box:hover {
+    background: #ededed
+}
+
+.trading-instrument-service-box .tr-instrument-box-img img {
+    width: 100%
+}
+
+.trading-instrument-service-box .tr-instrument-box-content p {
+    margin-bottom: 0
+}
+
+.instrument-specification-main-wrapper {
+    margin-bottom: 10px
+}
+
+.instrument-specification-main-wrapper .nav {
+    border-bottom: 0;
+    padding-bottom: 0;
+    margin-bottom: 20px;
+    justify-content: center
+}
+
+.instrument-specification-main-wrapper .nav li {
+    margin: 0 8px 20px
+}
+
+.instrument-specification-main-wrapper .nav li a {
+    background: #f22d2d;
+    color: #fff;
+    border-radius: 50px;
+    padding: .25rem 1.3rem;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    min-width: 110px;
+    text-align: center
+}
+
+.instrument-specification-main-wrapper table tr th {
+    vertical-align: top
+}
+
+.instrument-specification-main-wrapper .dataTables_length, .instrument-specification-main-wrapper .dataTables_filter, .instrument-specification-main-wrapper .dataTables_info {
+    display: none !important
+}
+
+.instrument-specification-main-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 5px 12px;
+    min-width: 40px;
+    background-color: #000 !important;
+    margin-right: 5px;
+    border-radius: 5px !important;
+    color: #fff !important;
+    border: 0 !important
+}
+
+.instrument-specification-main-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button.current, .instrument-specification-main-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover, .instrument-specification-main-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: #f22d2d !important
+}
+
+.instrument-specification-main-wrapper .dataTables_paginate .paginate_button.previous, .dataTables_paginate .paginate_button.next {
+    display: none !important
+}
+
+.thankyou-main-box {
+    background: #fff;
+    padding: 20px 20px 0;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 0 20px 0 rgb(0 0 0/41%)
+}
+
+.thankyou-main-box .thankyou-main-box-img {
+    max-width: 300px;
+    margin: 0 auto 30px
+}
+
+.thankyou-main-box .thankyou-main-box-img img {
+    width: 100%
+}
+
+.thankyou-main-box .thankyou-box-content .text-primary {
+    color: #008ad2 !important
+}
+
+.thankyou-box-footer ul li {
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 30px;
+    padding-left: 35px;
+    position: relative
+}
+
+.thankyou-box-footer ul li:nth-last-child(1) {
+    margin-right: 0
+}
+
+.thankyou-box-footer ul li img {
+    position: absolute;
+    left: 0;
+    top: 8px
+}
+
+.thankyou-box-footer ul li a {
+    color: #000
+}
+
+.thankyou-box-footer {
+    border-top: 1px solid #008ad2;
+    padding: 25px 20px 20px;
+    margin: 0 -20px
+}
+
+.confirmation-main-box .thankyou-main-box-img {
+    max-width: 180px !important
+}
+
+.confirmation-main-box .thank-pg-title {
+    font-size: 28px;
+    color: #008ad2;
+    text-transform: uppercase;
+    margin-bottom: 20px
+}
+
+.confirmation-main-box .confirmation-type-phone a {
+    margin: 0 15px;
+    display: inline-block
+}
+
+.confirmation-main-box .thankyou-box-content p strong {
+    font-weight: 600
+}
+
+.contact-us-bnr-bg {
+    background: url(../images/contact/contact-us-banner.jpg)
+}
+
+.contact-us-form-designmain {
+    box-shadow: 0 0 20px 4px #d3d3d3;
+    border-radius: 30px;
+    position: relative
+}
+
+.contact-us-info-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 20px
+}
+
+.contact-us-info-list li .contact-info-icon {
+    position: absolute;
+    top: 5px;
+    left: 0
+}
+
+.contact-us-form-designmain .contact-form-title {
+    font-weight: 500;
+    color: #0e0e0e
+}
+
+.contact-us-info-div2 .contact-form-title {
+    margin-bottom: 5px
+}
+
+.contact-us-info-div2 p {
+    margin-bottom: 30px
+}
+
+.contact-us-info-div2 p .contact-info-icon {
+    margin-right: 5px
+}
+
+.contact-us-info-div2 p a {
+    color: #000
+}
+
+.contact-us-form-section .contact-us-info-colum {
+    position: relative;
+    margin: 0 !important
+}
+
+.contact-us-form-section .contact-us-info-colum::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -8px;
+    width: 100%;
+    height: 100%;
+    background: url(../images/contact/form-image.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    z-index: -1;
+    border-bottom-right-radius: 38px;
+    border-top-right-radius: 38px
+}
+
+.contact-us-form-section .contact-us-info-main, .contact-us-form-section .contact-us-form {
+    padding: 40px;
+    margin-top: 20px
+}
+
+.partnership-register-banner-bg {
+    background: url(../images/partner/partnership-register-banner.jpg)
+}
+
+.partnership-register-personl-info .form-title, .partnership-register-personl-info .form-group label {
+    text-transform: uppercase
+}
+
+.partnership-register-add-acc .acc-steps .data .pr-icon {
+    margin-bottom: 10px
+}
+
+.legal-decuments-bnr {
+    background: url(../images/home/legal-documents-banner.png)
+}
+
+.legal-decuments-box {
+    box-shadow: 0 2px 6px 0 rgb(0 0 0/50%);
+    width: 100%;
+    border-radius: 30px;
+    margin: 15px 0
+}
+
+.legal-decuments-box a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 240px;
+    height: 100%;
+    padding: 22px
+}
+
+.legal-decuments-box h4 {
+    margin-bottom: 0;
+    margin-top: 10px;
+    font-weight: 400
+}
+
+.privacy-policy-bg-bnr {
+    background: url(../images/home/privacy-policy-banner.jpg)
+}
+
+.privacy-policy-cont-section {
+    padding: 30px;
+    box-shadow: 0 0 5px 1px rgb(177 177 177)
+}
+
+.privacy-policy-cont-section .privacy-cn-box h3 {
+    font-weight: 500;
+    position: relative;
+    line-height: 38px;
+    margin-bottom: 15px
+}
+
+.privacy-policy-cont-section .privacy-cn-box h3:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    height: 2px;
+    background-color: #f22d2d
+}
+
+.privacy-policy-cont-section .privacy-cn-box h4 {
+    font-weight: 500;
+    margin-top: 30px
+}
+
+.privacy-cn-box p, .privacy-policy-cont-section .tearm-condition-list-point li {
+    font-size: 18px;
+    font-weight: 300
+}
+
+.privacy-policy-cont-section .tearm-condition-list-point {
+    padding-left: 25px
+}
+
+.privacy-policy-cont-section .tearm-condition-list-point li {
+    list-style-type: disclosure-closed;
+    margin-bottom: 15px
+}
+
+.terms-conditions-bg-bnr {
+    background: url(../images/home/Term-%26-Conditions.jpg)
+}
+
+.tearm-condition-list-point-sub {
+    padding-left: 25px;
+    margin-top: 10px
+}
+
+span#readtext {
+    display: none
+}
+
+.pamm-register-banner-bg {
+    background-image: url(../images/partner/pamm-registration-banner.jpg)
+}
+
+.pamm-why-ug-market .box {
+    max-width: 270px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.affiliates-register-banner-bg {
+    background: url(../images/partner/affiliates-registration-banner.jpg)
+}
+
+.affiliate-terms-conditions-bg-bnr {
+    background: url(../images/home/Affiliate-Terms-and-Conditions.jpg)
+}
+
+.uniglobe-affiliate-terms-conditions-data .privacy-policy-cont-section .tearm-condition-list-point li {
+    list-style-type: decimal
+}
+
+.risk-disclosure-st-bg-bnr {
+    background: url(../images/home/Risk-Disclosure-banner.jpg)
+}
+
+.carr-apply-recaptche {
+    position: relative
+}
+
+.carr-apply-recaptche .form-control {
+    padding-left: 80px !important
+}
+
+.carr-apply-recaptche .form-para {
+    position: absolute;
+    left: 12px;
+    top: 4px
+}
+
+.carr-apply-recaptche input[type=number]::-webkit-inner-spin-button, .carr-apply-recaptche input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+
+.pamm-market .box:hover .img-box img {
+    filter: brightness(9)
+}
+
+#message .modal-content .modal-header .close {
+    padding: .5rem !important
+}
+
+#message .modal-content .modal-body p {
+    font-size: 20px
+}
+
+.four-zero-four-top-section {
+    background: url(../../../../../index-4.html);
+    background-size: cover;
+    position: relative;
+    padding-top: 180px
+}
+
+.four-zero-four-top-section:before {
+    content: "";
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    right: 0;
+    background: url(../images/404/404-error-vector.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    overflow: hidden
+}
+
+.four-zero-four-main-box-img {
+    max-width: 500px;
+    margin: auto
+}
+
+.four-zero-four-box-content p {
+    font-weight: 600;
+    color: #2e2e2e
+}
+
+.best-new-offer .modal-dialog {
+    max-width: 950px;
+    margin: auto !important;
+    height: 100%;
+    display: flex;
+    align-items: center
+}
+
+.new-offer-left-content {
+    position: relative
+}
+
+.new-offer-left-content button.close {
+    position: absolute;
+    right: 25px;
+    top: 21px;
+    opacity: 0
+}
+
+.new-offer-left-content .offer-popup {
+    position: absolute;
+    bottom: 17px;
+    right: 30px
+}
+
+.new-offer-left-content .offer-popup a {
+    color: #000;
+    font-style: italic
+}
+
+@media only screen and (max-width: 580px) {
+    .new-offer-left-content .offer-popup {
+        font-size: 13px;
+        bottom: 0;
+        right: 10px
+    }
+}
+
+@media (max-width: 1440px) {
+    .platform-section .section-data img {
+        max-width: 740px
+    }
+
+    .platform-section .section-data h1 {
+        font-size: 38px;
+        margin-bottom: 60px
+    }
+}
+
+@media (min-width: 1200px) {
+    .partner-objective .box {
+        min-height: 100% !important
+    }
+
+    .footer .ft-smbox {
+        min-width: 190px
+    }
+}
+
+@media (max-width: 1199px) {
+    .container {
+        max-width: 96%
+    }
+
+    .logo {
+        max-width: 200px
+    }
+
+    ul.navbar-nav > li {
+        padding-right: 0
+    }
+
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-left: 15px;
+        padding-right: 15px
+    }
+
+    .counter-box .info h3 {
+        font-size: 40px
+    }
+
+    .counter-box {
+        padding: 20px 10px;
+        margin-top: -75px
+    }
+
+    .counter-box .info {
+        padding: 0 10px
+    }
+
+    .counter-box .info p {
+        font-size: 14px;
+        line-height: 18px
+    }
+
+    .about-mainbox .ml-5 {
+        margin-left: 1.8rem !important
+    }
+
+    img {
+        max-width: 100%
+    }
+
+    .left-conatct {
+        height: 100%
+    }
+
+    .left-conatct ul {
+        height: 68%
+    }
+
+    .learning-section p {
+        padding: 0 50px
+    }
+
+    .trading-instruments .item .data p {
+        line-height: 26px
+    }
+
+    .partner-history .data {
+        max-width: 85%
+    }
+
+    .benifit-wrap {
+        width: 100%
+    }
+
+    .redmars-trading h2 {
+        font-size: 36px;
+        line-height: 42px
+    }
+
+    .carousel a.btn.btn-primary {
+        font-size: 14px;
+        padding: .3rem 1.2rem;
+        top: 62%
+    }
+
+    .acc-buttons .btn img {
+        display: none
+    }
+
+    .cryptocurrency .card p {
+        font-size: 15px
+    }
+
+    .home-counter .counter-box .info {
+        padding: 0 10px
+    }
+
+    .partner-objective .box {
+        min-height: 92%;
+        margin-bottom: 30px
+    }
+
+    .partner-objective .box img {
+        width: 100%
+    }
+}
+
+@media (min-width: 992px) {
+    .why-forex-trading-section .card, .why-crypto-cr-section .card, .trade-stock-cfd-section .card {
+        min-height: 100% !important
+    }
+
+    .why-uniglobe .col-lg-4:nth-child(4) .box:before, .why-uniglobe .col-lg-4:nth-child(5) .box:before, .why-uniglobe .col-lg-4:nth-child(6) .box:before {
+        border-bottom: 1px solid transparent
+    }
+
+    .why-uniglobe .col-lg-4:nth-child(3) .box:after, .why-uniglobe .col-lg-4:nth-child(6) .box:after {
+        border-right: 1px solid transparent
+    }
+
+    .partner-type .br-right {
+        border-right: 1px solid #000
+    }
+
+    .partner-type .personal-info {
+        padding-right: 30px
+    }
+
+    .partner-type .additional-acc {
+        padding-left: 25px
+    }
+
+    .looking-for .box p {
+        min-height: 60px
+    }
+
+    header .navbar-nav .nav-item:nth-last-child(1) .dropdown-menu.megamenu {
+        right: 0;
+        left: auto;
+        z-index: 99
+    }
+
+    .available-crypt-section .available-crypt ul {
+        display: flex
+    }
+
+    .available-crypt-section .available-crypt ul li {
+        padding: 10px 20px
+    }
+
+    .four-zero-four-top-section {
+        padding-top: 240px
+    }
+
+    .four-zero-four-top-section:before {
+        width: 200px;
+        height: 300px
+    }
+
+    .page-template-why-us-template .demo-acc-service-section .box {
+        min-height: 100%
+    }
+
+    .partner-type {
+        margin-top: 0;
+        padding: 80px 0 !important
+    }
+}
+
+@media (max-width: 991px) {
+    .banner-section {
+        margin-top: 0
+    }
+
+    .main-banner {
+        min-height: 400px
+    }
+
+    .navbar-expand-lg .navbar-collapse {
+        position: absolute;
+        top: 55px;
+        z-index: 9
+    }
+
+    ul.navbar-nav .dropdown-menu {
+        overflow: auto;
+        max-height: 191px
+    }
+
+    ul.navbar-nav .mega-dropdown .dropdown-column > a {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem
+    }
+
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link, .nav-pills .nav-link {
+        font-size: 15px;
+        text-align: center
+    }
+
+    .nav-pills .nav-link {
+        font-size: 15px
+    }
+
+    section, .section-padding {
+        padding: 40px 0
+    }
+
+    .page-title p, .about-career p {
+        font-size: 16px
+    }
+
+    .acc-list li {
+        font-size: 15px;
+        line-height: 18px
+    }
+
+    .section-title {
+        font-size: 26px;
+        margin-bottom: 15px
+    }
+
+    .uniglobe-platforms .box {
+        padding: 20px 10px
+    }
+
+    .uniglobe-platforms .box h3 {
+        font-size: 18px
+    }
+
+    .uniglobe-platforms .box p {
+        font-size: 14px;
+        line-height: 22px
+    }
+
+    .live-spread-sec h3 {
+        font-size: 24px
+    }
+
+    .live-spread-sec p {
+        font-size: 15px
+    }
+
+    .uniglob-count .data h2 {
+        font-size: 40px
+    }
+
+    .uniglob-count .data p {
+        font-size: 15px
+    }
+
+    .cryptocurrency .card h3 {
+        margin-bottom: 10px
+    }
+
+    .cryptocurrency .card {
+        margin-bottom: 30px
+    }
+
+    .why-trade-crypto .page-title p {
+        font-size: 16px
+    }
+
+    .inner-banner {
+        margin-top: 0
+    }
+
+    .tradewin-list li {
+        width: 33.33%
+    }
+
+    section.funding p {
+        font-size: 15px;
+        line-height: 22px;
+        margin-bottom: 20px
+    }
+
+    .feature-list li .box {
+        width: 110px;
+        height: 110px;
+        padding: 20px
+    }
+
+    .platform-sec h3 {
+        font-size: 24px
+    }
+
+    .uniglobe-advantages .feature-list li {
+        width: 33.33%
+    }
+
+    .analysis-list li {
+        width: 100%;
+        padding: 0
+    }
+
+    .advantages-sec ul li {
+        width: 50%
+    }
+
+    .partner-feature .feature-list li {
+        width: 30%;
+        display: inline-block;
+        text-align: center
+    }
+
+    .partner-feature .feature-list li .box {
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    section.gray-forexsec.looking-for .col {
+        width: 33%;
+        flex: 0 0 33.33%;
+        margin-bottom: 20px
+    }
+
+    .whtLabel-benifits ul {
+        flex-wrap: wrap
+    }
+
+    .whtLabel-benifits ul li {
+        width: 33.33%
+    }
+
+    .footer .ft-smbox {
+        width: 33.33%
+    }
+
+    .contact-us-form-section .contact-us-info-colum::before {
+        opacity: 0
+    }
+
+    .why-uniglobe .col-lg-4:nth-child(5) .box:before, .why-uniglobe .col-lg-4:nth-child(6) .box:before {
+        border-bottom: 1px solid transparent
+    }
+
+    .partnership-register-add-acc {
+        margin-top: 50px
+    }
+
+    .why-uniglobe .col-lg-4:nth-child(2) .box:after, .why-uniglobe .col-lg-4:nth-child(4) .box:after, .why-uniglobe .col-lg-4:nth-child(6) .box:after {
+        border-right: 1px solid transparent
+    }
+
+    .looking-for .box {
+        margin-bottom: 30px
+    }
+
+    .business-module .wh-lable-broker-plateofrm-img {
+        margin-bottom: 30px
+    }
+
+    .whtLabel-benifits ul li .box {
+        margin-bottom: 30px
+    }
+
+    .plateform-device-img {
+        max-width: 500px;
+        margin: 0 auto 20px
+    }
+
+    .app_footer-text-icon {
+        padding: 20px 0;
+        display: inline-block
+    }
+
+    .app_footer-text-icon .foot_app_text {
+        margin-bottom: 20px
+    }
+
+    .app_footer-text-icon .foot_app_text, .app_footer-text-icon .foot_app_text p {
+        text-align: center
+    }
+
+    .forex-traning p, .forex-traning .forex-list li {
+        font-size: 16px
+    }
+
+    ul.navbar-nav .dropdown-menu li a {
+        padding: 12px 15px
+    }
+
+    .uniglobe-trading .table-wrap {
+        min-height: auto;
+        background: #f5f5f5;
+        margin-bottom: 20px
+    }
+}
+
+@media (max-width: 775px) {
+    .acc-buttons {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        text-align: center
+    }
+
+    .acc-buttons .btn {
+        font-size: 13px;
+        margin: 5px 0
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        max-width: 180px
+    }
+
+    ul.navbar-nav > li > a {
+        line-height: 40px
+    }
+
+    .live-spread {
+        margin-top: 30px
+    }
+
+    img {
+        max-width: 100%
+    }
+
+    .social-icons {
+        width: 145px
+    }
+
+    .ft-smbox ul li a {
+        font-size: 14px
+    }
+
+    .footer h3 {
+        font-size: 18px;
+        margin-bottom: 15px
+    }
+
+    .disclaimer p {
+        font-size: 14px;
+        line-height: 24px
+    }
+
+    .footer .ft-mdbox-left p {
+        text-align: center
+    }
+
+    .footer .ft-mdbox-left {
+        width: 100% !important;
+        margin-right: 0 !important;
+        text-align: center
+    }
+
+    .footer .ft-mdbox-right {
+        width: 33.33%
+    }
+
+    .ft-mdbox-right .ftlogo {
+        margin-top: 10px
+    }
+
+    .footer .contact a {
+        font-size: 14px;
+        margin-bottom: 0
+    }
+
+    #header.fixed, .site-nav-inner.fixed, #header.header-standard.fixed, #header.header-standard.fixed.highlight, .site-nav-inner.site-navigation.fixed, .site-nav-inner.site-navigation.fixed.nav-transparent {
+        position: relative
+    }
+
+    ul.navbar-nav {
+        width: 100%;
+        border-radius: 0
+    }
+
+    ul.navbar-nav > li {
+        width: 100%
+    }
+
+    ul.navbar-nav > li > a, .fixed ul.navbar-nav > li > a {
+        font-size: 15px;
+        line-height: 34px;
+        width: 100%
+    }
+
+    ul.navbar-nav > li.active > a:before {
+        border-bottom: 1px solid rgba(255, 255, 255, .6)
+    }
+
+    ul.navbar-nav > li:hover > a:before {
+        border-bottom: 0
+    }
+
+    ul.navbar-nav > li > a i {
+        float: right;
+        margin-top: 8px
+    }
+
+    .navbar-expand-lg .navbar-collapse {
+        position: absolute;
+        top: 103px !important
+    }
+
+    .megamenu .mega-dropdown h3 a.dropdown-item {
+        padding: 12px 15px;
+        border-bottom: 1px solid #ddd
+    }
+
+    .our-people-sec .sec-spacing .col-lg-4 {
+        text-align: center;
+        margin-bottom: 20px
+    }
+
+    .our-people-sec .sec-spacing {
+        padding: 0 15px
+    }
+
+    .left-conatct ul {
+        padding: 20px
+    }
+
+    .left-conatct ul li p {
+        font-size: 14px;
+        line-height: 22px
+    }
+
+    .left-conatct ul {
+        height: 78%
+    }
+
+    .faq-contact .card {
+        padding: 30px 50px
+    }
+
+    .trading-instruments .item .data p {
+        font-size: 16px;
+        line-height: 24px
+    }
+
+    .trading-instruments .item .data h3 {
+        font-size: 20px
+    }
+
+    .instruments-list .box {
+        padding: 20px 0 20px 50px
+    }
+
+    .partner-history .border-right {
+        border-right: 0 solid #999 !important
+    }
+
+    .partner-history .row.br-bottm:after {
+        display: none
+    }
+
+    .partner-history .box {
+        margin: 20px 0 0;
+        border-bottom: 1px solid #999;
+        padding-bottom: 20px
+    }
+
+    .counter-box .info h3 {
+        font-size: 32px
+    }
+
+    .counter-box .info p {
+        font-size: 13px
+    }
+
+    .overnight-fees .section-title br {
+        display: none
+    }
+
+    .white-label .col-lg-5 {
+        text-align: center;
+        margin-bottom: 20px
+    }
+
+    .white-label .col-lg-5 img {
+        display: inline-block
+    }
+
+    .platform-section .section-data img {
+        max-width: 90%
+    }
+
+    .platform-section .section-data h1 {
+        font-size: 32px;
+        margin-bottom: 40px
+    }
+
+    .platform-section .section-data h1 br {
+        display: none
+    }
+
+    .feature-wrap .colbox {
+        width: 195px
+    }
+
+    .feature-wrap .iconbox {
+        height: 195px
+    }
+
+    .feature-wrap h4 {
+        font-size: 16px
+    }
+
+    .feature-wrap h4 span {
+        font-size: 13px
+    }
+
+    .app-section .btn {
+        margin: 0 10px
+    }
+
+    .redmars-trading h2 {
+        font-size: 30px;
+        line-height: 40px
+    }
+
+    .btn-primary {
+        font-size: 15px
+    }
+
+    .banner-section {
+        margin-top: 0
+    }
+
+    ul.navbar-nav .dropdown-menu .dropdown-submenu .dropdown-menu {
+        background-color: #f5f8fa;
+        margin: 0 10px
+    }
+
+    ul.navbar-nav .dropdown-menu .dropdown-submenu .dropdown-menu li a.dropdown-item {
+        padding: 8px 15px 8px 30px
+    }
+
+    .tech-list p {
+        font-size: 14px
+    }
+
+    .section-title br {
+        display: none
+    }
+
+    section.counter-section.whyus-count .counter-box .info {
+        width: 50%
+    }
+
+    section.counter-section.whyus-count .counter-box {
+        padding: 20px 0
+    }
+
+    section.funding .nav-tabs .nav-link {
+        font-size: 18px;
+        padding: 10px
+    }
+
+    .funding thead th, .funding tbody td {
+        font-size: 12px;
+        line-height: normal;
+        vertical-align: middle
+    }
+
+    a.deposit-btn {
+        font-size: 13px
+    }
+
+    .funding td.redbg {
+        padding: 5px 15px
+    }
+
+    .funding-notes p {
+        font-size: 14px;
+        line-height: 20px
+    }
+
+    .mega-dropdown .dropdown-column {
+        margin: 0
+    }
+
+    .uniglobe-advantages .card {
+        padding: 30px 20px 0
+    }
+
+    .uniglobe-advantages .data p {
+        font-size: 15px
+    }
+
+    .uniglobe-advantages .data h4 {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 10px;
+        position: relative;
+        padding-left: 35px
+    }
+
+    .uniglobe-advantages .data h4 img {
+        max-width: 24px;
+        position: absolute;
+        left: 0
+    }
+
+    .uniglobe-advantages p {
+        font-size: 15px
+    }
+
+    .uniglobe-advantages p br {
+        display: none
+    }
+
+    .partner-feature .feature-list li .box {
+        width: 100px;
+        height: 100px
+    }
+
+    .faq-sec .accordion .card .card-header .btn-header-link {
+        padding: 12px 20px;
+        font-size: 16px
+    }
+
+    .faq-sec .accordion .card-body {
+        font-size: 14px;
+        line-height: 22px;
+        padding: 5px 20px 20px
+    }
+
+    .faq-sec .accordion .card {
+        margin-bottom: 20px
+    }
+
+    section.gray-forexsec.looking-for .col .box {
+        margin-bottom: 0;
+        padding: 20px 15px
+    }
+
+    section.gray-forexsec.looking-for .col .box p {
+        font-size: 16px
+    }
+}
+
+@media (max-width: 767px) {
+    .col-lg-7.desktop-partner {
+        display: none
+    }
+
+    .col-lg-7.mobile-partner {
+        display: block !important
+    }
+
+    .uniglobe-partner ul li a {
+        background-color: #040404;
+        color: #fff;
+        text-align: center
+    }
+
+    .uniglobe-trading .gray-head {
+        background: #000;
+        color: #fff
+    }
+
+    .uniglobe-trading .table-wrap {
+        margin-left: 0;
+        margin-right: 0
+    }
+
+    .top-info .info-icon img {
+        width: 19px
+    }
+
+    #top-bar .top-info .info-icon {
+        top: 0;
+        margin-right: 15px;
+        float: left;
+        display: none
+    }
+
+    #header.header-standard.fixed {
+        position: fixed
+    }
+
+    .counter-box {
+        height: auto;
+        margin-top: 30px;
+        border-radius: 10px;
+        flex-wrap: wrap;
+        width: 100%
+    }
+
+    .counter-box .info {
+        width: 33.33%;
+        float: left;
+        display: inline-block;
+        text-align: center;
+        padding: 0 8px;
+        margin-bottom: 10px
+    }
+
+    .counter-box .info h3 {
+        font-size: 38px;
+        line-height: 38px
+    }
+
+    .counter-box .info p {
+        padding-left: 0;
+        font-size: 14px
+    }
+
+    .inner-banner {
+        padding: 50px 0
+    }
+
+    .inner-banner h1 {
+        font-size: 30px
+    }
+
+    .inner-banner .breadcrumb-item a {
+        font-size: 14px;
+        font-weight: 500;
+        margin-right: .3rem;
+        text-align: center
+    }
+
+    .about-data p {
+        font-size: 15px;
+        line-height: 24px
+    }
+
+    .left-conatct ul {
+        height: auto
+    }
+
+    form.contact-form {
+        padding: 30px 15px
+    }
+
+    form.contact-form .form-group {
+        margin-bottom: 25px
+    }
+
+    .contact-section .data p {
+        font-size: 15px;
+        line-height: 24px
+    }
+
+    .contact-section .data {
+        margin-bottom: 15px
+    }
+
+    .news-section .data h3 {
+        font-size: 18px;
+        margin-top: 15px
+    }
+
+    .news-section .data p {
+        font-size: 14px;
+        line-height: 20px
+    }
+
+    .complaints p {
+        font-size: 15px;
+        line-height: 24px
+    }
+
+    .redmars-pagination {
+        margin-top: 0
+    }
+
+    .accordion .card .card-header .btn-header-link {
+        font-size: 16px;
+        line-height: normal;
+        padding: 12px 20px
+    }
+
+    .accordion .card-body {
+        padding: 20px 25px
+    }
+
+    .accordion li {
+        font-size: 15px;
+        line-height: normal;
+        margin-bottom: 5px
+    }
+
+    .accordion li::marker {
+        font-size: 20px
+    }
+
+    .instruments-list .box {
+        padding: 20px 0 20px 30px
+    }
+
+    .instruments-list .box .forex-list p {
+        width: 50%
+    }
+
+    .become-box {
+        width: 100%;
+        height: auto
+    }
+
+    .table-wrap {
+        height: auto
+    }
+
+    .top-bar .row.align-items-center {
+        flex-wrap: nowrap
+    }
+
+    .inner-banner .breadcrumb {
+        padding: 0;
+        justify-content: center
+    }
+
+    section.uniglobe-platforms .col-md-4 {
+        width: 50%
+    }
+
+    .uniglobe-acctypes .tab-pane .col-md-4 {
+        display: none
+    }
+
+    .uniglobe-acctypes h4 {
+        text-align: center
+    }
+
+    section.uniglobe-platforms .page-title p {
+        display: none
+    }
+
+    .uniglobe-platforms .box {
+        margin-top: 0
+    }
+
+    .uniglobe-platforms .box p {
+        display: none
+    }
+
+    .uniglobe-platforms .box h3 {
+        margin-bottom: 0;
+        font-size: 16px
+    }
+
+    .uniglobe-platforms .box .img-box {
+        height: 75px
+    }
+
+    .uniglobe-meta-trade h3 {
+        display: none
+    }
+
+    .uniglobe-meta-trade p {
+        display: none;
+        text-align: center
+    }
+
+    .meta-trade-mob {
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+        padding: 0 15px;
+        margin-bottom: 30px
+    }
+
+    .meta-trade-mob a {
+        max-width: 230px;
+        display: inline-block;
+        padding: 10px;
+        background: #bef;
+        border-radius: 10px
+    }
+
+    .uniglobe-meta-trade .data .row {
+        display: none
+    }
+
+    .live-spread-sec h3 {
+        text-align: center
+    }
+
+    .live-spread-sec p {
+        display: none
+    }
+
+    .live-spread-sec ul.list {
+        display: none
+    }
+
+    .live-spread {
+        margin-top: 0
+    }
+
+    .live-spread .nav-pills {
+        padding: 10px 5px
+    }
+
+    .live-spread .nav-pills .nav-link {
+        font-size: 14px;
+        padding: .15rem .5rem
+    }
+
+    .live-spread .nav-pills .nav-link.active, .live-spread .nav-pills .show > .nav-link {
+        font-size: 14px;
+        padding: .15rem .5rem
+    }
+
+    .mob-trading {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        background-color: #09a0e9;
+        padding: 15px
+    }
+
+    .mob-trading a {
+        padding: 6px 15px;
+        background-color: #fff;
+        border-radius: 6px;
+        color: #000;
+        font-size: 16px;
+        font-weight: 600
+    }
+
+    section.uniglobe-trading {
+        display: block
+    }
+
+    .uniglob-count .data p {
+        display: none
+    }
+
+    .uniglob-count .col-md-4 {
+        width: 33.33%;
+        text-align: center
+    }
+
+    .uniglob-count .data h3 {
+        font-size: 18px
+    }
+
+    .uniglob-count .data h2 {
+        font-size: 34px;
+        line-height: 40px
+    }
+
+    section.uniglobe-partner .section-title {
+        text-align: center
+    }
+
+    .uniglobe-partner .page-title p {
+        display: none
+    }
+
+    .about-wbdata .page-title p {
+        margin-bottom: 0
+    }
+
+    .acc-opening .steps .arrow {
+        margin-top: 0;
+        height: 36px;
+        overflow: hidden;
+        text-align: center;
+        margin-bottom: 20px
+    }
+
+    .acc-opening .steps .arrow img {
+        transform: rotate(90deg)
+    }
+
+    .about-wbdata .page-title h2 {
+        margin-top: 20px
+    }
+
+    .why-uniglobe .box p {
+        display: none
+    }
+
+    .why-uniglobe .box h4 {
+        margin-bottom: 0;
+        font-size: 16px;
+        line-height: normal
+    }
+
+    .core-value .why-uniglobe .box:before {
+        display: none
+    }
+
+    .why-uniglobe .box:after {
+        display: none
+    }
+
+    .why-uniglobe .box:before {
+        display: none
+    }
+
+    .why-uniglobe .box {
+        margin: 10px 0;
+        padding: 10px;
+        text-align: center
+    }
+
+    section.business-module .col-md-5 {
+        display: none
+    }
+
+    .proData-account .col-md-4 {
+        width: 50%
+    }
+
+    .proData-account h3 {
+        font-size: 15px
+    }
+
+    .proData-account p {
+        font-size: 14px;
+        line-height: 22px
+    }
+
+    .proData-account .row {
+        justify-content: center
+    }
+
+    .acc-buttons {
+        padding: 0
+    }
+
+    .acc-buttons .btn {
+        padding: .35rem .8rem
+    }
+
+    section.about-redmars.p-0 {
+        padding: 30px 0 !important
+    }
+
+    section.about-career.uniglobe-acctype .col-md-4:nth-child(2) .card-header, section.about-career.uniglobe-acctype .col-md-4:nth-child(4) .card-header {
+        background: #000;
+        color: #fff
+    }
+
+    section.about-career.uniglobe-acctype .col-md-4:nth-child(2) .list-group-item, section.about-career.uniglobe-acctype .col-md-4:nth-child(4) .list-group-item {
+        background: #404040;
+        color: #fff;
+        border-top: 1px solid #c4c4c4
+    }
+
+    section.about-career.uniglobe-acctype .col-md-4:nth-child(5) {
+        margin-top: 20px
+    }
+
+    .tradewin-list li {
+        width: 50%;
+        padding: 0 6px
+    }
+
+    .tradewin-list li .inn-box {
+        padding: 15px 6px
+    }
+
+    .tradewin-list li .inn-box h4 {
+        font-size: 14px
+    }
+
+    .tradewin-list li h3 {
+        font-size: 15px;
+        margin: 0
+    }
+
+    .tradewin-acc .steps .arrow {
+        position: relative
+    }
+
+    .tradewin-acc .steps .arrow.arrow1 {
+        left: auto
+    }
+
+    .tradewin-acc .steps .arrow.arrow2 {
+        right: auto
+    }
+
+    .feature-list li {
+        width: 33.33%
+    }
+
+    .uniglobe-advantages .feature-list li {
+        width: 33.33%
+    }
+
+    .forex-traning .col-lg-4 {
+        display: none
+    }
+
+    .gray-forexsec .acc-buttons {
+        padding: 0
+    }
+
+    .uniglobe-advantages .card h2 {
+        font-size: 22px
+    }
+
+    .uniglobe-technical-analysis h3 {
+        font-size: 15px
+    }
+
+    .analysis-list li h4 {
+        font-size: 16px;
+        line-height: 22px
+    }
+
+    .analysis-list li p.date, .analysis-list li p {
+        font-size: 15px;
+        line-height: 20px
+    }
+
+    .analysis-list li a.btn {
+        font-size: 15px
+    }
+
+    .partner-feature .feature-list li {
+        width: 50%
+    }
+
+    .partner-objective .box img {
+        width: 100%
+    }
+
+    section.partner-feature.uniglobe-data .feature-list li {
+        width: 50%
+    }
+
+    section.gray-forexsec.looking-for .col {
+        width: 50%;
+        flex: 0 0 50%
+    }
+
+    section.gray-forexsec.looking-for .row {
+        justify-content: center
+    }
+
+    .partner-type .box .data p {
+        font-size: 15px;
+        line-height: 22px
+    }
+
+    .partner-type .box .data h4 {
+        font-size: 20px
+    }
+
+    .calculate-form {
+        padding: 20px
+    }
+
+    .form-row .col-md-3, .form-row .col-md-4 {
+        width: 100px
+    }
+
+    .personal-info .form-control {
+        min-height: 40px !important
+    }
+
+    .personal-info label {
+        font-size: 15px;
+        margin-bottom: 0
+    }
+
+    .warningTxt {
+        font-size: 15px;
+        line-height: 20px
+    }
+
+    .partner-type .section-title {
+        text-align: center
+    }
+
+    .partner-type ul.list li {
+        font-size: 15px;
+        line-height: 20px;
+        padding-left: 35px
+    }
+
+    .additional-acc h4 {
+        font-size: 18px
+    }
+
+    .additional-acc p {
+        font-size: 15px;
+        line-height: 20px
+    }
+
+    .acc-steps {
+        display: none
+    }
+
+    .row .col-xs-6 {
+        width: 50%
+    }
+
+    .looking-for.career-looking .box h4 {
+        font-size: 16px
+    }
+
+    .demo-acc-service-section .box h4, .advantages-sec ul li .box h4 {
+        font-size: 16px !important;
+        margin-bottom: 0
+    }
+
+    .why-uniglobe-market-info .section-title {
+        text-align: center
+    }
+
+    .why-uniglobe-market-info .why-uniglobe-m-btn {
+        text-align: center
+    }
+
+    .why-uniglobe-market-info .btn {
+        margin-left: 0;
+        float: none !important;
+        display: inline-block
+    }
+
+    .contact-us-form-section .contact-us-info-main, .contact-us-form-section .contact-us-form {
+        padding: 30px !important
+    }
+
+    .privacy-cn-box p, .privacy-policy-cont-section .tearm-condition-list-point li {
+        font-size: 16px;
+        font-weight: 400
+    }
+
+    .gray-forexsec .about-data ul {
+        flex-direction: column
+    }
+
+    .business-module h2 {
+        font-size: 20px
+    }
+
+    .business-module p {
+        font-size: 15px;
+        line-height: 24px
+    }
+
+    .counter-box .info:nth-child(2) {
+        border-right: 0
+    }
+
+    .home-counter-sec .counter-box .info:nth-child(2) {
+        border-right: 1px solid #e5e5e5
+    }
+
+    .home-counter-sec .counter-box .info:nth-child(3) {
+        border-right: 0
+    }
+
+    .commodities .commodities-more-markets-img {
+        max-width: 450px;
+        margin: 0 auto 30px
+    }
+
+    .app_footer-text-icon .foot_app_text {
+        text-align: center
+    }
+
+    .frxexp-list .col-sm-6 {
+        width: 50%
+    }
+
+    .frxexp-list .data h4 {
+        font-size: 16px !important;
+        line-height: 20px
+    }
+
+    .available-crypt-section .available-crypt ul li {
+        width: 49%
+    }
+
+    .available-crypt-section .available-crypt ul li .av-img img {
+        max-width: 150px;
+        width: 100%
+    }
+
+    .bottom-live-demo-point .about-data h2, .bottom-live-demo-point .about-data h4 {
+        text-align: center
+    }
+
+    .bottom-live-demo-point .about-data ul {
+        max-width: 225px;
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    .bottom-live-demo-point .about-data ul li {
+        font-size: 16px
+    }
+
+    .bottom-live-demo-point .about-data > div {
+        text-align: center !important
+    }
+
+    .demo-acc-form-section .section-title {
+        text-align: center
+    }
+}
+
+@media (min-width: 768px) {
+    .demo-acc-form-section .section-title {
+        font-size: 36px
+    }
+
+    .demo-acc-form-section .section-discription {
+        font-size: 18px;
+        line-height: 30px
+    }
+
+    .thankyou-top-section, .contact-us-form-section {
+        padding: 100px 0
+    }
+
+    .thankyou-main-box {
+        padding: 35px 35px 0
+    }
+
+    .thankyou-main-box .thankyou-main-box-img {
+        max-width: 500px;
+        margin: 0 auto 30px
+    }
+
+    .thankyou-main-box .thankyou-box-content p {
+        font-size: 18px
+    }
+
+    .thankyou-box-footer {
+        margin: 0 -35px
+    }
+
+    .confirmation-main-box .thank-pg-title {
+        font-size: 52px;
+        margin-bottom: 30px
+    }
+
+    .why-trade-crypto.benifit .box h3 {
+        min-height: 60px
+    }
+
+    .why-forex-trading-section .card, .why-crypto-cr-section .card, .trade-stock-cfd-section .card {
+        min-height: 90%
+    }
+
+    .contact-us-form-section .contact-us-info-colum {
+        display: flex;
+        align-items: center
+    }
+
+    .uniglobe-meta-trade .data .page-title {
+        text-align: left !important;
+        margin-top: 0
+    }
+
+    .banner-section .home-banner-content h3 {
+        font-size: 32px
+    }
+
+    .banner-section .home-banner-content p {
+        font-size: 18px
+    }
+
+    .white-lable-pointssection .about-data ul li {
+        flex: 1
+    }
+
+    .frxexp-list .box {
+        padding: 10px;
+        display: flex;
+        justify-content: center
+    }
+
+    .frxexp-list .box .img-box {
+        width: 200px;
+        margin-right: 10px !important
+    }
+
+    .frxexp-list .box .data h4 {
+        text-align: left !important
+    }
+
+    .four-zero-four-box-content p {
+        font-size: 22px
+    }
+
+    .promotion-main-box .promotion-box-content {
+        position: absolute;
+        bottom: -70%;
+        left: 0%;
+        transition: bottom .5s ease
+    }
+
+    .promotion-main-box .promotion-box-img-onheading {
+        display: block;
+        padding: 20px;
+        text-align: center;
+        color: #fff !important;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .promotion-main-box:hover .promotion-box-content {
+        background: #f22d2d;
+        bottom: 0;
+        transition: bottom .5s ease
+    }
+
+    .promotion-main-box:hover .promotion-box-content p {
+        opacity: 1;
+        display: block
+    }
+
+    .promotion-main-box .promotion-box-content .promotion-box-btn .btn {
+        opacity: 0
+    }
+
+    .promotion-main-box:hover .promotion-box-content .promotion-box-btn .btn {
+        opacity: 1
+    }
+
+    .promotion-invest-partner .slide {
+        margin: 10px 30px !important
+    }
+
+    .partner-type .box {
+        min-height: 94%
+    }
+
+    .pamm-why-ug-market .box {
+        min-height: auto
+    }
+}
+
+@media (min-width: 668px) {
+    .platform-sec .page-title {
+        text-align: left
+    }
+}
+
+@media (max-width: 667px) {
+    div#cookie-law-info-bar {
+        width: 95% !important;
+        top: 70% !important
+    }
+
+    .meta-icons {
+        margin-top: 10px
+    }
+
+    .footer .appimg {
+        margin: 10px 0
+    }
+
+    .social-icons a {
+        padding: 0 10px
+    }
+
+    .social-icons {
+        width: 100%
+    }
+
+    .container {
+        max-width: 100%
+    }
+
+    .top-info li {
+        padding: 0 7px
+    }
+
+    #main-slide .carousel-control i {
+        width: 40px;
+        height: 40px;
+        line-height: 38px;
+        font-size: 24px
+    }
+
+    #top-bar .top-info a {
+        font-size: 12px
+    }
+
+    #top-bar .top-info .info-icon.lang {
+        display: inline-block;
+        margin-right: 0
+    }
+
+    #top-bar .top-info a.btn-register {
+        padding: 4px 6px;
+        border-radius: 6px
+    }
+
+    .carousel a.btn.btn-primary {
+        left: 7.5%
+    }
+
+    .page-title p {
+        font-size: 15px;
+        line-height: 24px
+    }
+
+    section, .section-padding {
+        padding: 40px 0
+    }
+
+    .pricing-section {
+        margin-top: 0
+    }
+
+    .pricing-section .table-price {
+        margin: 20px 0
+    }
+
+    .partnership-sec ul li {
+        width: 100%
+    }
+
+    .partnership-sec ul li a {
+        font-size: 15px
+    }
+
+    .footer .ft-smbox {
+        width: 50%
+    }
+
+    .social-icons {
+        display: inline-block;
+        margin: 0
+    }
+
+    .ft-botlinks li:last-child a {
+        margin-right: 0;
+        padding-right: 0
+    }
+
+    .ft-botlinks a {
+        font-size: 14px;
+        margin-right: 8px;
+        padding-right: 8px
+    }
+
+    .carousel-item {
+        height: 245px
+    }
+
+    .org-box {
+        width: 160px;
+        height: 160px
+    }
+
+    .wht-box {
+        width: 128px;
+        height: 128px
+    }
+
+    .about-mainbox .ml-5 {
+        margin-left: 1.2rem !important
+    }
+
+    .our-people-sec .sec-spacing {
+        padding: 0
+    }
+
+    .faq-contact .card {
+        padding: 30px 25px
+    }
+
+    .faq-contact .form-check-label {
+        font-size: 14px;
+        line-height: normal
+    }
+
+    .faq-contact p.note {
+        line-height: normal
+    }
+
+    .bottom-btn {
+        margin-top: 20px
+    }
+
+    .learning-section p {
+        padding: 0;
+        font-size: 14px
+    }
+
+    .partner-section .section-data p {
+        font-size: 15px;
+        line-height: 22px
+    }
+
+    .benifit-wrap {
+        display: inline-block;
+        text-align: center
+    }
+
+    .benifit-wrap .colbox {
+        width: 100%;
+        margin-bottom: 20px
+    }
+
+    .benifit-wrap h4 {
+        margin-top: 10px
+    }
+
+    .partner-history h2 {
+        line-height: 34px;
+        margin-bottom: 10px
+    }
+
+    .white-label form.contact-form {
+        padding: 30px 20px
+    }
+
+    .white-label form.contact-form h3 {
+        font-size: 24px;
+        margin-bottom: 20px
+    }
+
+    .white-label .btn {
+        margin-top: 10px
+    }
+
+    .platform-section .section-data h1 {
+        font-size: 28px;
+        line-height: 34px;
+        margin-bottom: 20px
+    }
+
+    .platform-section .section-data img {
+        max-width: 100%
+    }
+
+    .feature-wrap {
+        flex-wrap: wrap;
+        margin: 30px 0 0
+    }
+
+    .feature-wrap .colbox {
+        margin-bottom: 30px
+    }
+
+    .app-section .btn {
+        margin: 0 8px
+    }
+
+    .breadcrumb-item + .breadcrumb-item::before {
+        padding-left: 0;
+        padding-right: .3rem
+    }
+
+    .main-banner {
+        min-height: 290px
+    }
+
+    .home-banner-content h3 {
+        font-size: 24px
+    }
+
+    .home-banner-content p {
+        font-size: 14px;
+        padding: 0 30px;
+        line-height: normal
+    }
+
+    a.btn.btn-light {
+        font-size: 14px;
+        padding: .3rem 1.2rem
+    }
+
+    .dateTime {
+        flex-wrap: wrap
+    }
+
+    .section-title br {
+        display: none
+    }
+
+    .uniglobe-partner .accordion h2 .btn-link {
+        word-break: break-all;
+        white-space: normal;
+        font-size: 16px
+    }
+
+    .uniglobe-partner .accordion .card-body p {
+        font-size: 14px
+    }
+
+    .uniglobe-partner ul li a {
+        font-size: 16px
+    }
+
+    .ft-smbox ul li {
+        margin-bottom: 0
+    }
+
+    .live-spread-sec h3 {
+        font-size: 20px;
+        font-weight: 500
+    }
+
+    .career-form .form-group {
+        margin-bottom: .6rem
+    }
+
+    .career-form .form-control, .career-form .custom-file-label {
+        font-size: 14px
+    }
+
+    .about-mainbox .box img {
+        max-width: 90%
+    }
+
+    .counter-box .info img {
+        max-width: 38px
+    }
+
+    .nav-pills {
+        justify-content: center;
+        padding-bottom: 15px;
+        margin: 15px 0 25px
+    }
+
+    .nav-pills li {
+        margin: 0 10px 10px
+    }
+
+    .uniglobe-meta-trade .icons {
+        margin: 10px 0 20px
+    }
+
+    .uniglobe-meta-trade .data .col-md-6 {
+        text-align: center
+    }
+
+    .live-spread-sec li {
+        font-size: 14px;
+        line-height: 22px
+    }
+
+    .live-spread-sec li:after {
+        width: 22px;
+        height: 22px;
+        background-size: 100%
+    }
+
+    .live-spread-sec p {
+        font-size: 14px;
+        line-height: 22px
+    }
+
+    .uniglobe-trading .eco-calendar table td {
+        font-size: 14px;
+        min-width: 55px !important
+    }
+
+    .uniglobe-trading .eco-calendar table tr .uni-trd-sno {
+        min-width: 40px !important
+    }
+
+    .uniglobe-trading .eco-calendar table td.user {
+        min-width: 100px !important;
+        text-align: center
+    }
+
+    .uniglobe-trading .eco-calendar table td.user span {
+        display: block;
+        margin-bottom: 10px
+    }
+
+    .section-title {
+        font-size: 24px
+    }
+
+    .about-career p, .why-trade-crypto .page-title p {
+        font-size: 15px;
+        line-height: 24px
+    }
+
+    .about-data li {
+        font-size: 15px
+    }
+
+    .list-group-flush .list-group-item {
+        font-size: 15px;
+        line-height: 16px
+    }
+
+    .live-spread table td span.sell-btn {
+        padding: 3px 6px
+    }
+
+    .live-spread table td span.buy-btn {
+        padding: 3px 6px
+    }
+
+    .live-spread table td {
+        font-size: 12px;
+        padding: .75rem .35rem
+    }
+
+    .live-spread table th {
+        font-size: 13px;
+        padding: .4rem .75rem
+    }
+
+    .footer p {
+        font-size: 14px;
+        line-height: 20px
+    }
+
+    .ft-smbox ul li {
+        line-height: 24px
+    }
+
+    .disclaimer {
+        padding: 0
+    }
+
+    .feature-list li p {
+        font-size: 16px
+    }
+
+    .platform-sec {
+        text-align: center
+    }
+
+    .platform-sec .social-ic a {
+        float: none;
+        display: inline-block
+    }
+
+    .uniglobe-markrt .section-title {
+        text-align: center
+    }
+
+    .uniglobe-markrt .about-data p {
+        text-align: center
+    }
+
+    .uniglobe-markrt .about-data ul {
+        padding-left: 0;
+        max-width: 260px;
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    .uniglobe-markrt .col-lg-6 img {
+        display: none
+    }
+
+    .page-title p br {
+        display: none
+    }
+
+    .uniglobe-advantages .feature-list li {
+        width: 50%
+    }
+
+    section.pay-method ul {
+        padding: 0
+    }
+
+    section.pay-method ul li {
+        padding: 0 6px
+    }
+
+    .advantages-sec ul li .box .list p {
+        font-size: 14px;
+        line-height: 22px
+    }
+
+    .advantages-sec ul li .box h4 {
+        font-size: 18px
+    }
+
+    .whtLabel-benifits ul li {
+        width: 50%
+    }
+
+    .whtLabel-benifits ul li p {
+        line-height: 20px
+    }
+
+    .whtLabel-benifits ul {
+        justify-content: center
+    }
+
+    .privacy-policy-cont-section {
+        padding: 25px
+    }
+
+    .ft-botlinks {
+        padding: 15px 0;
+        display: inline-block
+    }
+
+    .social-icons {
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    .forex-traning p, .forex-traning .forex-list li {
+        font-size: 15px;
+        line-height: 24px
+    }
+}
+
+@media (max-width: 585px) {
+    .thankyou-box-footer ul li {
+        margin-right: 0
+    }
+
+    .contact-us-form-section .contact-us-info-main, .contact-us-form-section .contact-us-form {
+        padding: 15px !important
+    }
+
+    .counter-section .counter-box .info {
+        width: 50% !important
+    }
+
+    .home-counter-sec .counter-box .info:nth-child(3) {
+        border-right: 1px solid #e5e5e5
+    }
+
+    .home-counter-sec .counter-box .info:nth-child(2), .home-counter-sec .counter-box .info:nth-child(4) {
+        border-right: 0
+    }
+
+    .nav-pills {
+        flex-direction: column
+    }
+
+    .available-crypt-section .available-crypt ul li {
+        font-size: 16px !important;
+        padding-left: 0;
+        padding-right: 0;
+        vertical-align: top
+    }
+
+    .acc-buttons .btn {
+        min-width: 200px
+    }
+
+    header .site-nav-inner .acc-buttons .btn {
+        min-width: auto
+    }
+
+    .acc-buttons .ml-2 {
+        margin-left: 0 !important
+    }
+}
+
+@media (min-width: 576px) {
+    .trading-instrument-service-box .tr-instrument-box-content {
+        text-align: left
+    }
+
+    .trading-instrument-service-box .tr-instrument-box-content p {
+        text-align: justify
+    }
+
+    .acc-buttons .btn-outline-primary {
+        margin-left: 10px
+    }
+}
+
+@media (max-width: 414px) {
+    .carousel-item {
+        height: 145px
+    }
+
+    .trading-calculator p {
+        font-size: 16px;
+        line-height: 24px
+    }
+
+    .pip-calculator .col-form-label {
+        font-size: 18px
+    }
+
+    .trading-instruments .item .data p {
+        height: auto
+    }
+
+    .partner-history .data p {
+        font-size: 14px;
+        line-height: 20px
+    }
+
+    .partner-history .icon-box {
+        width: 50px;
+        height: 50px;
+        line-height: 42px
+    }
+
+    .app-section .btn {
+        margin: 0 0 15px
+    }
+
+    .instruments-list .box .col-md-3.col-sm-6.col-xs-6 {
+        width: 50%
+    }
+
+    .instruments-list .box p {
+        padding-left: 20px
+    }
+
+    .carousel a.btn.btn-primary {
+        font-size: 10px;
+        padding: .175rem .5rem;
+        top: 62%;
+        border-radius: 4px;
+        left: 9%
+    }
+
+    .about-mainbox .box.bx4 {
+        margin-top: -5px
+    }
+
+    .uniglobe-partner ul li a {
+        padding: 8px 25px
+    }
+
+    .uniglobe-partner ul li a img {
+        display: none
+    }
+
+    .feature-list li {
+        width: 50%
+    }
+
+    .demo-acc-service-section .box h4 span {
+        width: 100%;
+        display: block
+    }
+
+    .instrument-specification-main-wrapper .nav li {
+        width: 100%
+    }
+}
+
+@media (max-width: 375px) {
+    .carousel a.btn.btn-primary {
+        left: 5%
+    }
+}
+
+@media (max-width: 360px) {
+    .carousel a.btn.btn-primary {
+        left: 3%
+    }
+}
+
+.fixed-contact {
+    -ms-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    position: fixed;
+    left: unset;
+    right: 0;
+    bottom: 0;
+    height: unset;
+    border-radius: 16px 0 0 16px;
+    cursor: pointer;
+    width: 150px;
+    z-index: 9
+}
+
+.fixed-contact.open {
+    position: fixed;
+    padding: 8px;
+    bottom: 0;
+    background: #fff;
+    box-shadow: -8px 0 24px rgb(0 0 0/16%);
+    transform: translateY(-50%);
+    width: 45px;
+    z-index: 99
+}
+
+.fixed-contact .blg-c.live-chat {
+    background-image: url(../images/live-chat.png);
+    background-repeat: no-repeat;
+    background-size: contain
+}
+
+.fixed-contact .blg-c.wp {
+    background-image: url(../images/whatsapp.png);
+    background-repeat: no-repeat;
+    background-size: contain
+}
+
+.fixed-contact .blg-c.fb {
+    background-image: url(../images/facebook.png);
+    background-repeat: no-repeat;
+    background-size: contain
+}
+
+.fixed-contact .blg-c.vb {
+    background-image: url(../images/viber.png);
+    background-repeat: no-repeat;
+    background-size: contain
+}
+
+.fixed-contact .blg-c.tg {
+    background-image: url(../images/telegram.png);
+    background-repeat: no-repeat;
+    background-size: contain
+}
+
+.fixed-contact .blg-tp {
+    right: 40px;
+    width: unset
+}
+
+@media (min-width: 1440px) .fixed-contact .blg-c {
+    border-radius: 50%;
+}
+
+    .fixed-contact .blg-c {
+        margin: unset;
+        width: 24px;
+        height: 24px;
+        background-color: transparent;
+        background-size: 16px;
+        border-radius: var(--soc-rdz-openBox);
+        box-shadow: none;
+    }
+
+    .blg-c {
+        position: relative;
+        margin: 0 auto 4px;
+        border-radius: 50%;
+        background: center center no-repeat #ff4242;
+        transition: all .6s;
+        width: 50px;
+        height: 50px;
+        box-shadow: 0 0 3px rgb(0 0 0 / 20%);
+        background-size: 55% 55%;
+    }
+
+    .fixed-contact .blg-c {
+        margin: unset;
+        width: 24px;
+        height: 24px;
+        background-color: transparent;
+        background-size: 16px;
+        border-radius: var(--soc-rdz-openBox);
+        box-shadow: none;
+    }
+
+    .blg-c-wp .blg-tp-inner {
+        border-radius: 10px;
+        color: #444;
+        font-size: 14px;
+        font-weight: 700;
+        text-align: right;
+    }
+
+    .blg-c-w, .blg-rs.blinger-hide {
+        display: none;
+    }
+
+    .blg-c, .blg-c-w.blinger-show {
+        display: block;
+    }
+
+    .fixed-contact__icon {
+        position: relative;
+        margin-bottom: unset;
+        padding: 1px 3px;
+        width: 150px;
+        height: 100px;
+        background: transparent url(../images/calls.png) center no-repeat;
+        border-radius: 50%;
+        -ms-flex-order: unset;
+        order: unset;
+        transition: all .2s ease-out;
+        margin: 3px -4px;
+        background-size: contain;
+    }
+
+    .fixed-contact__icon.fixed-contact__icon--active {
+        width: 100%;
+        background: transparent url(../images/ico-popup-close.svg) center center no-repeat;
+        height: 16px;
+    }
+
+    .blg-c-w {
+        width: 62px;
+        height: auto;
+        right: 0;
+        bottom: 68px;
+        animation: blg-cs-desktop-show .4s cubic-bezier(.16, .44, .2, .96);
+    }
+
+    .blg-c-wp {
+        padding: 6px 0px;
+    }
+
+    .live-spread table td span {
+        padding: 6px 14px;
+        border: 1px solid #d6d6d6;
+        border-radius: 4px;
+        color: #000;
+    }
+
+    .cli-modal-backdrop.cli-fade.cli-popupbar-overlay.cli-show {
+        z-index: 99999;
+    }
+
+    div#cookie-law-info-bar {
+        top: 80%;
+        margin: auto;
+        padding: 8px 15px !important;
+        width: 35%;
+        z-index: 999999;
+    }
+
+    :lang(si) > .uniglobe-trading .eco-calendar table td.user span {
+        display: block;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+
+    :lang(si) > .uniglobe-trading .eco-calendar table td.user {
+        min-width: 120px !important;
+        text-align: center;
+    }
+
+    :lang(ar) > .why-forex-trading-section .card p, :lang(si) > .why-forex-trading-section .card p {
+        font-size: 16px;
+    }
+
+    .funding .table-wrap table tr td:nth-last-child(1) a {
+        min-width: 150px;
+        display: inline-block;
+    }
+
+    @media (min-width: 992px) {
+        :lang(si) > .uniglobe-trading .table-wrap {
+            min-height: 580px
+        }
+
+        :lang(ar) > .analysis-list li .box {
+            min-height: 245px
+        }
+
+        :lang(si) > .analysis-list li .box {
+            min-height: 276px
+        }
+    }@media (max-width: 870px) {
+    :lang(si) > header .acc-buttons {
+        display: block;
+        width: 100%;
+        padding: 0 12px;
+        margin-bottom: 10px;
+        text-align: center
+    }
+}@media (max-width: 510px) {
+    :lang(si) > .live-spread table tr td:nth-child(3) {
+        min-width: 90px
+    }
+
+    :lang(si) > .uniglobe-trading .table-wrap .btn {
+        font-size: 11px
+    }
+}@media (max-width: 462px) {
+    :lang(si) > .navbar-expand-lg .navbar-collapse {
+        top: 146px !important
+    }
+}

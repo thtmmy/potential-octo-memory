@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+{% load static %}
+{%  block content %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <meta name="csrf-token" content="CgKTSRIgslzJJNNnxdQPRBPbKXN6DC3CbM0xXDwg">
+    <title>Tesla Fx | User panel</title>
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png"/>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+				<!-- Fonts and icons -->
+		<script src="{% static 'js/webfont.min.js' %}"></script>
+	<!-- Sweet Alert -->
+		<script src="{% static 'js/sweetalert.min.js' %} "></script>
+		<!-- CSS Files -->
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/fonts.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/atlantis.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/customs.css' %}">
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+		<link rel="stylesheet" href="{% static 'css/atlantis.min.css' %}">
+		<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/af-2.3.5/b-1.6.3/b-flash-1.6.3/b-html5-1.6.3/b-print-1.6.3/r-2.2.5/datatables.min.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>		
+			
+<link rel="stylesheet"
+href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+crossorigin="anonymous">
+
+		<!-- Bootstrap Notify -->
+		<script src="{% static 'js/bootstrap-notify.min.js' %} "></script>
+		<script src="{% static 'js/sweetalert.min.js' %} "></script>
+		<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
+	<script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="wUz8ehW7ZqBU7ay9AbZ6yKtV9h1lSzC706cgn7un">
+    <title>Tesla Fx | Profile</title>
+    <link rel="icon" href="{% url 'storage/app/public/photos/FSiuGxfavicon.png1778681507" type="image/png"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet"
+href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+				<!-- Fonts and icons -->
+		<script src="{% static 'js//webfont.min.js' %}"></script>
+	<!-- Sweet Alert -->
+		<script src="{% static 'js/sweetalert.min.js' %} "></script>
+		<!-- CSS Files -->
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/fonts.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/atlantis.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/customs.css' %}">
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+		<link rel="stylesheet" href="{% static 'css/atlantis.min.css' %}">
+		<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/af-2.3.5/b-1.6.3/b-flash-1.6.3/b-html5-1.6.3/b-print-1.6.3/r-2.2.5/datatables.min.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js' %}"></script>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js' %}"></script>		
+			
+		<!-- Bootstrap Notify -->
+		<script src="{% static 'js/bootstrap-notify.min.js' %} "></script>
+		<script src="{% static 'js/sweetalert.min.js' %} "></script>
+		<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js' %}"></script>
+		<!-- Livewire Styles -->
+<style>
+    [wire\:loading], [wire\:loading\.delay], [wire\:loading\.inline-block], [wire\:loading\.inline], [wire\:loading\.block], [wire\:loading\.flex], [wire\:loading\.table], [wire\:loading\.grid] {
+        display: none;
+    }
+
+    [wire\:offline] {
+        display: none;
+    }
+
+    [wire\:dirty]:not(textarea):not(input):not(select) {
+        display: none;
+    }
+
+    input:-webkit-autofill, select:-webkit-autofill, textarea:-webkit-autofill {
+        animation-duration: 50000s;
+        animation-name: livewireautofill;
+    }
+
+    @keyframes livewireautofill { from {} }
+
+
+    /* Fix black text boxes on the profile settings page */
+.form-control,
+input.form-control,
+textarea.form-control,
+select.form-control,
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+    border: 1px solid #ced4da !important;
+}
+
+/* Placeholder text */
+.form-control::placeholder,
+input::placeholder,
+textarea::placeholder {
+    color: #6c757d !important;
+    opacity: 1;
+}
+
+/* When a text box is selected */
+.form-control:focus,
+input.form-control:focus,
+textarea.form-control:focus,
+select.form-control:focus {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+    border-color: #00b060 !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 176, 96, 0.15) !important;
+    outline: none;
+}
+
+label,
+.form-label,
+.form-group label,
+.control-label {
+    color: #000000 !important;
+}
+
+/* Dropdown options */
+select option {
+    background-color: #070707;
+    color: #212529;
+}
+</style>
+
+		 <!--PayPal-->
+		 <script>
+            // Add your client ID and secret
+            var PAYPAL_CLIENT = 'iidjdjdj';
+            var PAYPAL_SECRET = 'jijdjkdkdk';
+            
+            // Point your server to the PayPal API
+            var PAYPAL_ORDER_API = 'https://api.paypal.com/v2/checkout/orders/';
+        </script>
+        <script src="https://www.paypal.com/sdk/js?client-id=iidjdjdj"></script>
+		
+</head>
+<body data-background-color="dark">
+    <div id="app">
+        
+        <!--/PayPal-->
+
+		<div class="wrapper">
+			        <div class="main-header">
+    <!-- Logo Header -->
+    <div class="logo-header" data-background-color="blue">
+       <img src="{% static 'images/logo.png' %}" alt="Image" style="width: 100px; height: 35px;">
+        <button class="ml-auto navbar-toggler sidenav-toggler" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+                <i class="fa-solid fa-bars"></i>
+            </span>
+        </button>
+        <button class="topbar-toggler more"><i class="fas fa-ellipsis-v"></i></button>
+        <div class="nav-toggle">
+            <button class="btn btn-toggle toggle-sidebar">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+    <!-- End Logo Header -->
+
+    <!-- Navbar Header -->
+    <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue">
+        
+        <div class="container-fluid">
+            <div class="text-center d-md-block d-none">
+               
+            </div>
+            <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+               
+                <li class="nav-item hidden-caret">
+                    <form action="javascript:void(0)" method="post" id="styleform" class="form-inline">
+                       
+                        <div class="form-group">
+                            <label class="style_switch">
+                                <input name="style" id="style" type="checkbox" value="true" class="modes">
+                                <span class="slider round"></span>
+                            </label>
+                        </div> 
+                                                <input type="hidden" name="_token" value="wUz8ehW7ZqBU7ay9AbZ6yKtV9h1lSzC706cgn7un">
+                    </form>
+                </li>
+                               
+                                <li class="nav-item dropdown hidden-caret">
+                    <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user animated fadeIn">
+                        <div class="dropdown-user-scroll scrollbar-outer">
+                            <li>
+                                <div class="user-box">
+                                    
+                                    <div class="u-text">
+                                        <h4>{{user.first_name}}{{user.last_name}}</h4>
+                                        <p class="text-muted">{{user.email}}</p><a href="{% url 'account-settings' %}" class="btn btn-xs btn-secondary btn-sm">Account Settings</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'deposits' %}">Deposit</a>
+                                <a class="dropdown-item" href="{% url 'withdrawals' %}">Withdraw</a>
+                                <a class="dropdown-item" href="{% url 'buy-plan' %}">Buy Plan</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'logout' %}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    Logout
+                                    </a>
+                                <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: none;">
+                                    {% csrf_token %}
+                                </form> 
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+</div>
+<script type="text/javascript">
+    //create investment
+        $("#styleform").on('change',function(){
+        $.ajax({
+            url: "{% url 'changetheme",
+            type: 'POST',
+            data:$("#styleform").serialize(),
+            success: function (data) {
+				location.reload(true);
+            },
+            error: function (data) {
+                console.log(data);
+            },
+
+        });
+    });
+    
+</script>        <!-- Stored in resources/views/child.blade.php -->
+
+<!-- Sidebar -->
+
+<div class="sidebar sidebar-style-2" data-background-color="light">
+    <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+            <div class="user">
+                <div class="info">
+                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+                        <span>
+                            {{user.first_name}}{{user.last_name}}
+                            
+                            <span class="caret"></span>
+                        </span>
+                    </a>
+                    <div class="clearfix"></div>
+                    <div class="collapse in" id="collapseExample">
+                        <ul class="nav">
+                            <li>
+                                <a href="{% url 'account-settings' %}">
+                                    <span class="link-collapse">Account Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav nav-primary">
+                <li class="nav-item ">
+                    <a href="{% url 'dashboard' %}">
+                        <i class="fas fa-home"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a href="{% url 'deposits' %}">
+                        <i class="fa fa-download " aria-hidden="true"></i>
+                        <p>Deposit Funds</p>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a href="{% url 'withdrawals' %}">
+                        <i class="fas fa-arrow-alt-circle-up " aria-hidden="true"></i>
+                        <p>Withdraw Funds</p>
+                    </a>
+                </li>
+
+                <li class="nav-item ">
+                    <a href="{% url 'tradinghistory' %}">
+                        <i class="fa fa-signal " aria-hidden="true"></i>
+                        <p>Profit Record</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="{% url 'accounthistory' %}">
+                        <i class="fa fa-briefcase " aria-hidden="true"></i>
+                        <p>Transactions history</p>
+                    </a>
+                </li>
+                                    <li class="nav-item ">
+                        <a href="{% url 'asset-balance' %}">
+                            <i class="fas fa-coins" aria-hidden="true"></i>
+                            <p>Crypto Exchange</p>
+                        </a>
+                    </li>
+                                                
+                <li class="nav-item  ">
+                    <a data-toggle="collapse" href="#mpack">
+                        <i class="fas fa-cubes"></i>
+                        <p>Invest</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="mpack">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{% url 'buy-plan' %}">
+                                    <span class="sub-item">Subscribe to a Plan</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'myplans' %}">
+                                    <span class="sub-item">My Investment</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>  
+                <li class="nav-item ">
+                    <a href="{% url 'referuser' %}">
+                        <i class="fa fa-recycle " aria-hidden="true"></i>
+                        <p>Refer Users</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="{% url 'support' %}">
+                        <i class="fa fa-life-ring" aria-hidden="true"></i>
+                        <p>Help/Support</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<!-- End Sidebar -->
+        <div class="main-panel bg-light">
+			<div class="content bg-light">
+				<div class="page-inner">
+					<div>
+    </div>                    <div>
+    </div>					<div>
+    </div>					<div class="row profile">
+                        <div class="p-2 col-md-12">
+                            <div class="card p-md-5 p-1 shadow-lg bg-light">
+								<ul class="nav nav-pills">
+									<li class="nav-item">
+										<a href="#per" class="nav-link active" data-toggle="tab">Personal Settings</a>
+									</li>
+									<li class="nav-item">
+										<a href="#set" class="nav-link" data-toggle="tab">Withdrawal Settings</a>
+									</li>
+									<li class="nav-item">
+										<a href="#pas" class="nav-link" data-toggle="tab">Password/Security</a>
+									</li>
+									<li class="nav-item">
+										<a href="#sec" class="nav-link" data-toggle="tab">Other Settings</a>
+									</li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane fade show active" id="per">
+
+    <form method="POST" action="{% url 'account-settings' %}">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="profile">
+    
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Full Name</label>
+                <input type="text" class="form-control"
+                       name="full_name"
+                       value="{{ full_name }}" required>
+            </div>
+    
+            <div class="form-group col-md-6">
+                <label>Email Address</label>
+                <input type="email" class="form-control"
+                       name="email"
+                       value="{{ request.user.email }}" required>
+            </div>
+    
+            <div class="form-group col-md-6">
+                <label>Phone Number</label>
+                <input type="text" class="form-control"
+                       name="phone_number"
+                       value="{{ settings.phone_number }}">
+            </div>
+    
+            <div class="form-group col-md-6">
+                <label>Date of Birth</label>
+                <input type="date" class="form-control"
+                       name="date_of_birth"
+                       value="{{ settings.date_of_birth|date:'Y-m-d' }}">
+            </div>
+    
+            <div class="form-group col-md-6">
+                <label>Nationality</label>
+                <input type="text" class="form-control"
+                       name="nationality"
+                       value="{{ settings.nationality }}">
+            </div>
+        </div>
+    
+        <button type="submit" class="btn btn-primary">
+            Update Profile
+        </button>
+        {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+            <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show"
+                 role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+    </form>
+    
+
+<script>
+    
+$('#updateprofileform').on('submit', function() {
+    //alert('love');
+    $.ajax({
+        url: "{% url 'profileinfo",
+        type: 'POST',
+        data: $('#updateprofileform').serialize(),
+        success: function(response) {
+            if (response.status === 200) {
+                $.notify({
+                    // options
+                    icon: 'flaticon-alarm-1',
+	                title: 'Success',
+                    message: response.success,
+                },{
+                    // settings
+                    type: 'success',
+                    allow_dismiss: true,
+	                newest_on_top: false,
+	                showProgressbar: true,
+                    placement: {
+                        from: "top",
+                        align: "right"
+                    },
+                    offset: 20,
+                    spacing: 10,
+                    z_index: 1031,
+                    delay: 5000,
+                    timer: 1000,
+                    url_target: '_blank',
+                    mouse_over: null,
+                    animate: {
+                        enter: 'animated fadeInDown',
+                        exit: 'animated fadeOutUp'
+                    },
+
+                });
+            } else {
+               
+            }
+        },
+        error: function(data) {
+            console.log(data);
+        },
+
+    });
+});
+</script>									</div>
+									<div class="tab-pane fade" id="set">
+
+                                        <form method="POST" action="{% url 'account-settings' %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="action" value="withdrawal">
+                                        
+                                            <fieldset>
+                                                <legend>Bank Account</legend>
+                                        
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label>Bank Name</label>
+                                                        <input type="text" name="bank_name"
+                                                               value="{{ settings.bank_name }}"
+                                                               class="form-control">
+                                                    </div>
+                                        
+                                                    <div class="form-group col-md-6">
+                                                        <label>Account Name</label>
+                                                        <input type="text" name="account_name"
+                                                               value="{{ settings.account_name }}"
+                                                               class="form-control">
+                                                    </div>
+                                        
+                                                    <div class="form-group col-md-6">
+                                                        <label>Account Number</label>
+                                                        <input type="text" name="account_number"
+                                                               value="{{ settings.account_number }}"
+                                                               class="form-control">
+                                                    </div>
+                                        
+                                                    <div class="form-group col-md-6">
+                                                        <label>SWIFT Code</label>
+                                                        <input type="text" name="swift_code"
+                                                               value="{{ settings.swift_code }}"
+                                                               class="form-control">
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        
+                                            <fieldset class="mt-3">
+                                                <legend>Cryptocurrency</legend>
+                                        
+                                                <div class="form-group">
+                                                    <label>Bitcoin Address</label>
+                                                    <input type="text" name="bitcoin_address"
+                                                           value="{{ settings.bitcoin_address }}"
+                                                           class="form-control">
+                                                </div>
+                                        
+                                                <div class="form-group">
+                                                    <label>Ethereum Address</label>
+                                                    <input type="text" name="ethereum_address"
+                                                           value="{{ settings.ethereum_address }}"
+                                                           class="form-control">
+                                                </div>
+                                        
+                                                <div class="form-group">
+                                                    <label>Litecoin Address</label>
+                                                    <input type="text" name="litecoin_address"
+                                                           value="{{ settings.litecoin_address }}"
+                                                           class="form-control">
+                                                </div>
+                                            </fieldset>
+                                        
+                                            <button type="submit" class="btn btn-primary">
+                                                Save Withdrawal Settings
+                                            </button>
+                                            {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+            <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show"
+                 role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+                                        </form>
+                                        
+
+
+<script>
+    
+    $('#updatewithdrawalinfo').on('submit', function() {
+       // alert('love');
+        $.ajax({
+            url: "{% url 'updateacct",
+            type: 'POST',
+            data: $('#updatewithdrawalinfo').serialize(),
+            success: function(response) {
+                if (response.status === 200) {
+                    $.notify({
+                        // options
+                        icon: 'flaticon-alarm-1',
+                        title: 'Success',
+                        message: response.success,
+                    },{
+                        // settings
+                        type: 'success',
+                        allow_dismiss: true,
+                        newest_on_top: false,
+                        showProgressbar: true,
+                        placement: {
+                            from: "top",
+                            align: "right"
+                        },
+                        offset: 20,
+                        spacing: 10,
+                        z_index: 1031,
+                        delay: 5000,
+                        timer: 1000,
+                        url_target: '_blank',
+                        mouse_over: null,
+                        animate: {
+                            enter: 'animated fadeInDown',
+                            exit: 'animated fadeOutUp'
+                        },
+    
+                    });
+                } else {
+                   
+                }
+            },
+            error: function(data) {
+                console.log(data);
+            },
+    
+        });
+    });
+</script>									</div>
+									<div class="tab-pane fade" id="pas">
+                                        <form method="POST" action="{% url 'account-settings' %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="action" value="password">
+                                        
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label>Old Password</label>
+                                                    <input type="password" name="old_password"
+                                                           class="form-control" required
+                                                           autocomplete="current-password">
+                                                </div>
+                                        
+                                                <div class="form-group col-md-6">
+                                                    <label>New Password</label>
+                                                    <input type="password" name="new_password"
+                                                           class="form-control" required
+                                                           autocomplete="new-password">
+                                                </div>
+                                        
+                                                <div class="form-group col-md-6">
+                                                    <label>Confirm New Password</label>
+                                                    <input type="password" name="confirm_password"
+                                                           class="form-control" required
+                                                           autocomplete="new-password">
+                                                </div>
+                                            </div>
+                                        
+                                            <button type="submit" class="btn btn-primary">
+                                                Update Password
+                                            </button>
+                                            {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+            <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show"
+                 role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+                                        </form>
+<div class="mt-4">
+    <a href="#" class="text-decoration-none">Advance Account Settings <i class="fas fa-arrow-right"></i> </a>
+</div>									</div>
+									<div class="tab-pane fade" id="sec">
+										<form method="POST" action="javascript:void(0)" id="updateemailpref">
+    <input type="hidden" name="_token" value="wUz8ehW7ZqBU7ay9AbZ6yKtV9h1lSzC706cgn7un">    <input type="hidden" name="_method" value="PUT">    <div class="row">
+        <div class="mb-3 col-md-6">
+            <h5 class="text-dark">Send confirmation OTP to my email when withdrawing my funds.</h5>
+            <div class="selectgroup">
+                <label class="selectgroup-item">
+                    <input type="radio" name="otpsend" id="otpsendYes" value="Yes" class="selectgroup-input" checked="">
+                    <span class="selectgroup-button">Yes</span>
+                </label>
+                <label class="selectgroup-item">
+                    <input type="radio" name="otpsend" id="otpsendNo" value="No" class="selectgroup-input">
+                    <span class="selectgroup-button">No</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="mb-3 col-md-6">
+            <h5 class="text-dark">Send me email when i get profit.</h5>
+            <div class="selectgroup">
+                <label class="selectgroup-item">
+                    <input type="radio" name="roiemail" id="roiemailYes" value="Yes" class="selectgroup-input" checked="">
+                    <span class="selectgroup-button">Yes</span>
+                </label>
+                <label class="selectgroup-item">
+                    <input type="radio" name="roiemail" id="roiemailNo" value="No" class="selectgroup-input">
+                    <span class="selectgroup-button">No</span>
+                </label>
+            </div>
+        </div>
+        <div class="mb-3 col-md-6">
+            <h5 class="text-dark">Send me email when my investment plan expires.</h5>
+            <div class="selectgroup">
+                <label class="selectgroup-item">
+                    <input type="radio" name="invplanemail" id="invplanemailYes" value="Yes" class="selectgroup-input" checked="">
+                    <span class="selectgroup-button">Yes</span>
+                </label>
+                <label class="selectgroup-item">
+                    <input type="radio" name="invplanemail" id="invplanemailNo" value="No" class="selectgroup-input">
+                    <span class="selectgroup-button">No</span>
+                </label>
+            </div>
+        </div>
+        <div class="mt-2 col-12">
+            <button type="submit" class="px-5 btn btn-primary">Save</button>
+        </div>
+    </div>
+    
+</form>
+
+
+
+    <script>
+        document.getElementById('otpsendYes').checked = true;
+    </script>    
+
+
+
+
+
+    <script>
+        document.getElementById('roiemailYes').checked = true;
+    </script>    
+
+
+    <script>
+        document.getElementById('invplanemailYes').checked = true;
+    </script>    
+
+
+
+<script>
+    
+    $('#updateemailpref').on('submit', function() {
+       // alert('love');
+        $.ajax({
+            url: "{% url 'update-email-preference",
+            type: 'POST',
+            data: $('#updateemailpref').serialize(),
+            success: function(response) {
+                if (response.status === 200) {
+                    $.notify({
+                        // options
+                        icon: 'flaticon-alarm-1',
+                        title: 'Success',
+                        message: response.success,
+                    },{
+                        // settings
+                        type: 'success',
+                        allow_dismiss: true,
+                        newest_on_top: false,
+                        showProgressbar: true,
+                        placement: {
+                            from: "top",
+                            align: "right"
+                        },
+                        offset: 20,
+                        spacing: 10,
+                        z_index: 1031,
+                        delay: 5000,
+                        timer: 1000,
+                        url_target: '_blank',
+                        mouse_over: null,
+                        animate: {
+                            enter: 'animated fadeInDown',
+                            exit: 'animated fadeOutUp'
+                        },
+    
+                    });
+                } else {
+                   
+                }
+            },
+            error: function(data) {
+                console.log(data);
+            },
+    
+        });
+    });
+</script>									</div>
+								</div>
+                            </div>
+                        </div>
+					</div>
+				</div>	
+			</div>
+					<footer class="footer bg-light text-dark">
+					<div class="container-fluid">
+						<div class="text-center row copyright text-align-center">
+							<p>All Rights Reserved &copy; Tesla Fx 2026</p>
+						</div>
+					</div>
+				</footer>
+			</div>
+		</div>
+	</div>
+
+				<!--   Core JS Files   -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+		
+		<script src="{% static 'js/popper.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.min.js' %} "></script>
+		<script src="{% static 'js/customs.js' %}"></script>
+		
+		<!-- jQuery UI -->
+		<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+		<script src="{% static 'js/jquery.ui.touch-punch.min.js' %}"></script>
+
+		<!-- jQuery Scrollbar -->
+		<script src="{% static 'js/jquery.scrollbar.min.js'%} "></script>
+
+		<!-- jQuery Sparkline -->
+		<script src="{% static 'js/plugin/jquery.sparkline/jquery.sparkline.min.js' %} "></script>
+
+		<!-- Sweet Alert -->
+		<script src="{% static 'js/sweetalert.min.js' %} "></script>
+		<!-- Bootstrap Notify -->
+		<script src="{% static 'js/bootstrap-notify.min.js' %} "></script>
+		
+		<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/af-2.3.5/b-1.6.3/b-flash-1.6.3/b-html5-1.6.3/b-print-1.6.3/r-2.2.5/datatables.min.js "></script>
+
+		<script src="{% static 'js/atlantis.min.js' %}"></script>
+		<script src="{% static 'js/atlantis.js' %}"></script>
+
+		<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+		<script type="text/javascript">
+			function googleTranslateElementInit() {
+			new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+			}
+		</script>
+
+
+		<script>
+			$(document).ready( function () {
+				$('#ShipTable').DataTable({
+					order: [ [0, 'desc'] ],
+					dom: 'Bfrtip',
+					buttons: [
+					'copy', 'csv', 'print', 'excel','pdf'
+				] 
+				});
+
+				
+				$(".dataTables_length select").addClass("bg-light text-dark");
+				$(".dataTables_filter input").addClass("bg-light text-dark");
+			} );
+		</script>
+		<script>
+			$(document).ready( function () {
+				$('.UserTable').DataTable({
+					order: [ [0, 'desc'] ]
+				});
+				$(".dataTables_length select").addClass("bg-light text-dark");
+				$(".dataTables_filter input").addClass("bg-light text-dark");
+			} );
+		</script>
+				<!-- Livewire Scripts -->
+
+<script src="/livewire/livewire.js?id=25f025805c3c370f7e87" data-turbo-eval="false" data-turbolinks-eval="false"></script>
+<script data-turbo-eval="false" data-turbolinks-eval="false">
+    if (window.livewire) {
+	    console.warn('Livewire: It looks like Livewire\'s @livewireScripts JavaScript assets have already been loaded. Make sure you aren\'t loading them twice.')
+	}
+
+    window.livewire = new Livewire();
+    window.livewire.devTools(true);
+    window.Livewire = window.livewire;
+    window.livewire_app_url = '';
+    window.livewire_token = 'wUz8ehW7ZqBU7ay9AbZ6yKtV9h1lSzC706cgn7un';
+
+	/* Make sure Livewire loads first. */
+	if (window.Alpine) {
+	    /* Defer showing the warning so it doesn't get buried under downstream errors. */
+	    document.addEventListener("DOMContentLoaded", function () {
+	        setTimeout(function() {
+	            console.warn("Livewire: It looks like AlpineJS has already been loaded. Make sure Livewire\'s scripts are loaded before Alpine.\\n\\n Reference docs for more info: http://laravel-livewire.com/docs/alpine-js")
+	        })
+	    });
+	}
+
+	/* Make Alpine wait until Livewire is finished rendering to do its thing. */
+    window.deferLoadingAlpine = function (callback) {
+        window.addEventListener('livewire:load', function () {
+            callback();
+        });
+    };
+
+    document.addEventListener("DOMContentLoaded", function () {
+        window.livewire.start();
+    });
+</script>
+<script>window.gtranslateSettings = {"default_language":"en","detect_browser_language":true,"wrapper_selector":".gtranslate_wrapper"}</script>
+<script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '1863e9123bb497aff1742070f5e601ad812ef9b5';
+    window.smartsupp||(function(d) {
+      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+      s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+      c.type='text/javascript';c.charset='utf-8';c.async=true;
+      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+    </script>
+    <noscript>Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
+    
+</body>
+{%  endblock content %}
+</html>
+

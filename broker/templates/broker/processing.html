@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0d6efd">
+    <title>Processing | Please Wait</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #172b4d;
+            background:
+                radial-gradient(circle at 10% 10%, #dceaff 0, transparent 35%),
+                radial-gradient(circle at 90% 90%, #dceaff 0, transparent 35%),
+                #f5f8ff;
+        }
+
+        .processing-card {
+            width: 100%;
+            max-width: 460px;
+            padding: 45px 35px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.97);
+            border: 1px solid #e7efff;
+            border-radius: 24px;
+            box-shadow: 0 20px 65px rgba(31, 91, 180, 0.12);
+            animation: appear 0.6s ease;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 38px;
+            color: #155eef;
+            font-size: 19px;
+            font-weight: 750;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-icon {
+            display: grid;
+            place-items: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            color: white;
+            font-size: 22px;
+            background: linear-gradient(135deg, #4388ff, #0754d8);
+            box-shadow: 0 6px 16px rgba(13, 110, 253, 0.25);
+        }
+
+        .loader-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 112px;
+            height: 112px;
+            margin: 0 auto 28px;
+        }
+
+        .loader {
+            position: absolute;
+            inset: 0;
+            border: 6px solid #e8f0ff;
+            border-top-color: #0d6efd;
+            border-right-color: #5da0ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loader-inner {
+            display: grid;
+            place-items: center;
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #edf5ff, #ffffff);
+            color: #0d6efd;
+            font-size: 30px;
+            box-shadow: inset 0 0 15px rgba(13, 110, 253, 0.07);
+        }
+
+        h1 {
+            margin-bottom: 12px;
+            color: #172b4d;
+            font-size: 27px;
+            font-weight: 750;
+            letter-spacing: -0.8px;
+        }
+
+        .description {
+            max-width: 320px;
+            margin: 0 auto;
+            color: #73819a;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .progress-section {
+            margin-top: 32px;
+            text-align: left;
+        }
+
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 11px;
+            color: #687994;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .progress-labels strong {
+            color: #0d6efd;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 8px;
+            overflow: hidden;
+            border-radius: 20px;
+            background: #eaf1ff;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #4d91ff, #0754d8);
+            box-shadow: 0 0 12px rgba(13, 110, 253, 0.3);
+            transition: width 0.2s linear;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            margin-top: 25px;
+            color: #73819a;
+            font-size: 12px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #0d6efd;
+            animation: pulse 1.5s infinite;
+        }
+
+        .dashboard-button {
+            display: none;
+            width: 100%;
+            margin-top: 30px;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #3985ff, #0754d8);
+            box-shadow: 0 9px 22px rgba(13, 110, 253, 0.23);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .dashboard-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 13px 26px rgba(13, 110, 253, 0.3);
+        }
+
+        .complete-icon {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 88px;
+            height: 88px;
+            margin: 0 auto 28px;
+            color: white;
+            font-size: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3985ff, #0754d8);
+            box-shadow: 0 10px 25px rgba(13, 110, 253, 0.25);
+            animation: appear 0.5s ease;
+        }
+
+        .processing-card.completed .loader-wrap,
+        .processing-card.completed .status-dot {
+            display: none;
+        }
+
+        .processing-card.completed .complete-icon {
+            display: flex;
+        }
+
+        .processing-card.completed .dashboard-button {
+            display: block;
+        }
+
+        .processing-card.completed .progress-fill {
+            width: 100% !important;
+        }
+
+        .processing-card.completed .status {
+            color: #0875e1;
+        }
+
+        .footer {
+            margin-top: 28px;
+            color: #a0acc0;
+            font-size: 11px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
+        }
+
+        @keyframes appear {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+            .processing-card {
+                padding: 36px 24px;
+                border-radius: 20px;
+            }
+
+            h1 { font-size: 24px; }
+
+            .brand { margin-bottom: 32px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="processing-card" id="processingCard">
+
+        <div class="brand">
+            <div class="brand-icon">✦</div>
+            <span>Secure Processing</span>
+        </div>
+
+        <div class="loader-wrap">
+            <div class="loader"></div>
+            <div class="loader-inner">↻</div>
+        </div>
+
+        <div class="complete-icon">✓</div>
+
+        <h1 id="pageTitle">Processing Your Request</h1>
+
+        <p class="description" id="pageDescription">
+            Please wait while we prepare your next step.
+            This process will finish shortly.
+        </p>
+
+        <div class="progress-section">
+            <div class="progress-labels">
+                <span id="progressLabel">Processing...</span>
+                <strong id="percentage">0%</strong>
+            </div>
+
+            <div
+                class="progress-track"
+                role="progressbar"
+                aria-label="Processing progress"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+                id="progressBar"
+            >
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <div class="status" aria-live="polite">
+            <span class="status-dot" id="statusDot"></span>
+            <span id="statusText">Please keep this page open...</span>
+        </div>
+
+        <a href="/dashboard/" class="dashboard-button" id="dashboardButton">
+            Go to Dashboard &nbsp; →
+        </a>
+
+        <div class="footer">
+            Please do not refresh or close this page.
+        </div>
+
+    </main>
+
+
+    <script>
+        (function () {
+            const duration = 30;
+            const startTime = Date.now();
+        
+            const title = document.getElementById("pageTitle");
+            const description = document.getElementById("pageDescription");
+            const percentage = document.getElementById("percentage");
+            const progressFill = document.getElementById("progressFill");
+            const progressBar = document.getElementById("progressBar");
+            const progressLabel = document.getElementById("progressLabel");
+            const statusText = document.getElementById("statusText");
+            const dashboardButton = document.getElementById("dashboardButton");
+        
+            function updateProgress() {
+                const elapsed = (Date.now() - startTime) / 1000;
+                const progress = Math.min((elapsed / duration) * 100, 100);
+                const roundedProgress = Math.floor(progress);
+        
+                percentage.textContent = roundedProgress + "%";
+                progressFill.style.width = progress + "%";
+                progressBar.setAttribute("aria-valuenow", roundedProgress);
+        
+                // Keep the page in processing mode.
+                title.textContent = "Processing Your Request";
+                description.textContent =
+                    "Please wait while we process your request. You may continue to your dashboard when ready.";
+        
+                if (progress < 35) {
+                    progressLabel.textContent = "Initializing...";
+                    statusText.textContent = "Preparing your request...";
+                } else if (progress < 70) {
+                    progressLabel.textContent = "Processing...";
+                    statusText.textContent = "Please keep this page open...";
+                } else if (progress < 100) {
+                    progressLabel.textContent = "Finalizing...";
+                    statusText.textContent = "Almost ready...";
+                } else {
+                    clearInterval(timer);
+        
+                    progressLabel.textContent = "Processing";
+                    statusText.textContent = "Your request is still processing.";
+        
+                    // Reveal the dashboard link without showing a completion message.
+                    dashboardButton.style.display = "block";
+                }
+            }
+        
+            const timer = setInterval(updateProgress, 100);
+            updateProgress();
+        })();
+        </script>
+            <script>window.gtranslateSettings = {"default_language":"en","detect_browser_language":true,"wrapper_selector":".gtranslate_wrapper"}</script>
+            <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>    
+</body>
+</html>
